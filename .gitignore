@@ -1,0 +1,10 @@
+node_modules/
+
+package-lock.json 
+build
+out
+.next
+/api/GlobalData.js
+.DS_Store
+dev.log
+dev.err.log

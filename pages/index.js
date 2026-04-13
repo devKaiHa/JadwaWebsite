@@ -10,18 +10,35 @@ import Industries from "@/components/sections/home1/Industries";
 import Partners from "@/components/sections/home2/Partners";
 import Working from "@/components/sections/home2/Working";
 import { getHomeData } from "@/api/getHomeData";
+import TestimonialSlider03 from "@/components/slider/TestimonialSlider03";
+import { getOtherData } from "@/api/getOtherData";
 
 export async function getStaticProps() {
   try {
     const data = await getHomeData();
-    return { props: { data }, revalidate: 300 };
+    const otherData = await getOtherData();
+
+    return {
+      props: {
+        data,
+        otherData,
+      },
+      revalidate: 300,
+    };
   } catch (err) {
     console.error("Home data error:", err);
-    return { props: { data: {} }, revalidate: 300 };
+
+    return {
+      props: {
+        data: {},
+        otherData: {},
+      },
+      revalidate: 300,
+    };
   }
 }
 
-export default function Home({ data = {} }) {
+export default function Home({ data = {}, otherData = {} }) {
   const {
     banners = [],
     about = {},
@@ -36,23 +53,28 @@ export default function Home({ data = {} }) {
     companies = [],
   } = data;
 
+  const { testimonials = [] } = otherData;
+  console.log("testimonials", testimonials);
+
   return (
     <div className="homePage">
       <Layout>
         <Banner HomeSlides={banners} />
         <About aboutUs={about} />
-        <Services services={services} />
+        <Statistics statistics={statistics} />
+        <Working funds={funds} />
+        {/* <Services services={services} /> */}
 
-        <Sectors values={values} />
+        {/* <Sectors values={values} /> */}
 
-        <Industries sectors={sectors} />
+        {/* <Industries sectors={sectors} /> */}
+
+        <TestimonialSlider03 testimonials={testimonials} />
 
         <News news={news} />
 
         <Project projects={projects} companies={companies} />
 
-        <Working funds={funds} />
-        <Statistics statistics={statistics} />
         <Partners partners={partners} />
       </Layout>
     </div>

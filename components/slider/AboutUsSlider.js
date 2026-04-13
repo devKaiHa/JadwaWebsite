@@ -4,48 +4,57 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useTranslation } from "react-i18next";
 
-const swiperOptions = {
-  modules: [Autoplay, Pagination, Navigation],
-  slidesPerView: 2,
-  spaceBetween: 30,
-  autoplay: { delay: 10000, disableOnInteraction: false },
-  loop: true,
-  navigation: { nextEl: ".h1n", prevEl: ".h1p" },
-  pagination: { el: ".swiper-pagination", clickable: true },
-  breakpoints: {
-    320: { slidesPerView: 1 },
-    575: { slidesPerView: 1 },
-    767: { slidesPerView: 1 },
-    991: { slidesPerView: 1 },
-    1199: { slidesPerView: 1 },
-    1350: { slidesPerView: 1 },
-  },
-};
-
 export default function AboutUsSlider({ slides = [] }) {
   const { i18n } = useTranslation();
   const lang = i18n.language || "en";
+  const isRtl = lang === "ar";
 
   if (!slides.length) return null;
 
   return (
-    <Swiper {...swiperOptions} className="theme_carousel owl-theme">
-      {slides?.map((slide, idx) => (
-        <SwiperSlide className="slide" key={idx}>
-          <div className="inner-box">
-            <div className="icon-box">
-              <div className="icon">
-                <i className="flaticon-knowledge" />
+    <div className={`jadwa-about-slider-wrap ${isRtl ? "is-rtl" : "is-ltr"}`}>
+      <Swiper
+        key={lang}
+        modules={[Autoplay, Pagination, Navigation]}
+        slidesPerView={1}
+        spaceBetween={20}
+        autoplay={{ delay: 7000, disableOnInteraction: false }}
+        loop={slides.length > 1}
+        pagination={{ clickable: true }}
+        dir={isRtl ? "rtl" : "ltr"}
+        className="jadwa-about-slider"
+      >
+        {slides.map((slide, idx) => (
+          <SwiperSlide className="slide" key={`${lang}-${idx}`}>
+            <div className="jadwa-about-slide-card">
+              <div className="jadwa-about-slide-top">
+                <div className="jadwa-about-slide-icon">
+                  <i
+                    className={
+                      slide?.type === "vision"
+                        ? "flaticon-target"
+                        : "flaticon-pie-chart"
+                    }
+                  />
+                </div>
+
+                <span className="jadwa-about-slide-count">
+                  {String(idx + 1).padStart(2, "0")}
+                </span>
               </div>
-              <span className="count-text">
-                {String(idx + 1).padStart(2, "0")}
-              </span>
+
+              <h3>{slide?.title?.[lang] || ""}</h3>
+
+              <div
+                className="jadwa-about-slide-text"
+                dangerouslySetInnerHTML={{
+                  __html: slide?.content?.[lang] || "",
+                }}
+              />
             </div>
-            <h3>{slide?.title?.[lang] || ""}</h3>
-            <p dangerouslySetInnerHTML={{ __html: slide?.content?.[lang] }} />
-          </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 }

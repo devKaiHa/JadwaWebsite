@@ -6,28 +6,27 @@ import { useTranslation } from "react-i18next";
 export default function About({ aboutUs = [] }) {
   const { i18n, t } = useTranslation();
   const lang = i18n?.language || "en";
+  const isRtl = lang === "ar";
 
-  // allow array or object
   const item = Array.isArray(aboutUs) ? aboutUs[0] || {} : aboutUs || {};
 
-  // helper: pick current lang, then fall back
   const pick = (obj) =>
     obj && typeof obj === "object"
-      ? (obj[lang] ?? obj.en ?? obj.ar ?? obj.tr ?? "")
+      ? obj[lang] ?? obj.en ?? obj.ar ?? obj.tr ?? ""
       : "";
 
   const content = pick(item?.content);
 
   const sliderItems = [
     {
-      title: item?.message || { en: "Our Mission" },
-      content: item?.messageDescription || { en: "" },
-      url: "/mission",
+      title: item?.message || { en: "Our Mission", ar: "رسالتنا" },
+      content: item?.messageDescription || { en: "", ar: "" },
+      type: "mission",
     },
     {
-      title: item?.vision || { en: "Our Vision" },
-      content: item?.visionDescription || { en: "" },
-      url: "/vision",
+      title: item?.vision || { en: "Our Vision", ar: "رؤيتنا" },
+      content: item?.visionDescription || { en: "", ar: "" },
+      type: "vision",
     },
   ];
 
@@ -37,44 +36,46 @@ export default function About({ aboutUs = [] }) {
   if (!hasAny) return null;
 
   return (
-    <section className="about-style-three sec-pad">
+    <section className="jadwa-about-section sec-pad">
       <div className="auto-container">
-        <div className="row clearfix" dir="ltr" style={{ direction: "ltr" }}>
+        <div className={`row clearfix ${isRtl ? "rtl-row" : ""}`}>
           <div className="col-lg-7 col-md-12 col-sm-12 image-column">
-            <div className="image-box">
-              <div
-                className="image-shape"
-                style={{
-                  backgroundImage: "url(/assets/images/shape/shape-24.png)",
-                }}
-              />
-              <figure className="image image-1">
-                <img src="/assets/images/about-2.jpg" alt="about" />
-              </figure>
-              <figure className="image image-2">
-                <img src="/assets/images/about-1.jpg" alt="about" />
-              </figure>
-              <div className="image-content">
-                <h6>2013</h6>
-                <div className="icon-box">
-                  <i className="flaticon-diagonal-arrow" />
+            <div className="jadwa-about-media">
+              <div className="jadwa-about-glow" />
+              <div className="jadwa-about-grid">
+                <figure className="jadwa-about-image jadwa-about-image-main">
+                  <img src="/assets/images/about-2.jpg" alt="about" />
+                </figure>
+
+                <figure className="jadwa-about-image jadwa-about-image-float">
+                  <img src="/assets/images/about-1.jpg" alt="about" />
+                </figure>
+
+                <div className="jadwa-about-stat-card">
+                  <span className="jadwa-about-stat-year">Since 2013</span>
+                  <h3>
+                    1000<span>+</span>
+                  </h3>
+                  <p>{t("about.investor")}</p>
                 </div>
-                <h2>
-                  1000<span>+</span>
-                </h2>
-                <p>{t("about.investor")}</p>
               </div>
             </div>
           </div>
 
           <div className="col-lg-5 col-md-12 col-sm-12 content-column">
-            <div className="content-box">
-              <div className="sec-title">
-                <span className="sub-title">Jadwa Al-Yaqeen</span>
-                <h2>About us</h2>
+            <div className="jadwa-about-content">
+              <div className="jadwa-section-head">
+                <span className="jadwa-section-kicker">
+                  {lang === "ar" ? "جدوى اليقين" : "Jadwa Al Yaqeen"}
+                </span>
+
+                <h2 className="jadwa-section-title">
+                  {lang === "ar" ? "نبذة عن الشركة" : "About the Company"}
+                </h2>
+                <div className="jadwa-section-line" />
               </div>
 
-              <div className="text-box">
+              <div className="jadwa-about-text">
                 <p dangerouslySetInnerHTML={{ __html: content }} />
               </div>
 

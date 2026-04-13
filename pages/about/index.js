@@ -41,7 +41,7 @@ export default function About({ data = {}, homeData = {} }) {
   // helper: pick current lang, then fall back
   const pick = (obj) =>
     obj && typeof obj === "object"
-      ? (obj[lang] ?? obj.en ?? obj.ar ?? obj.tr ?? "")
+      ? obj[lang] ?? obj.en ?? obj.ar ?? obj.tr ?? ""
       : "";
 
   // Support both shapes:
@@ -87,7 +87,7 @@ export default function About({ data = {}, homeData = {} }) {
           year: "numeric",
           month: "long",
           day: "numeric",
-        },
+        }
       );
     } catch {
       return "";

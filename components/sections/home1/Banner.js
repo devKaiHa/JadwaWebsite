@@ -40,15 +40,14 @@ export default function Banner({ HomeSlides }) {
             <div className="custom-container">
               <div className="content-box">
                 <h2 dir={lang === "ar" ? "rtl" : "ltr"}>
-                  {slide?.title[lang]}
+                  {slide?.title?.[lang]}
                 </h2>
+
                 <div className="lower-box">
-                  {!isMobile && (
-                    <div className="icon-box">
-                      <i className="flaticon-conversation" />
-                    </div>
-                  )}
-                  <div className="text">{slide?.description[lang]}</div>
+                  <div className="text" dir={lang === "ar" ? "rtl" : "ltr"}>
+                    {slide?.description?.[lang]}
+                  </div>
+
                   {slide?.btnLink && (
                     <a
                       href="#"
@@ -56,7 +55,7 @@ export default function Banner({ HomeSlides }) {
                         e.preventDefault();
                         router.push(slide?.btnLink);
                       }}
-                      className="theme-btn btn-two"
+                      className="jadwa-banner-btn"
                     >
                       {t("see_more")}
                     </a>

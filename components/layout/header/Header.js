@@ -7,7 +7,11 @@ import { useEffect, useMemo, useState } from "react";
 import baseURL from "@/api/GlobalData";
 import { fetchJSON } from "@/GlobalHooks/GlobalHooks";
 
-const supportedLangs = ["en", "ar", "tr"];
+const languages = [
+  { value: "en", label: "English" },
+  { value: "ar", label: "العربية" },
+  { value: "tr", label: "Türkçe" },
+];
 
 const socialConfig = [
   { key: "facebook", icon: "fa-brands fa-facebook-f", label: "Facebook" },
@@ -87,7 +91,7 @@ export default function Header({ scroll, handleMobileMenu, sticky }) {
           ...item,
           href: footerData?.[item.key],
         })),
-    [footerData],
+    [footerData]
   );
 
   const handleAccept = () => {
@@ -106,34 +110,11 @@ export default function Header({ scroll, handleMobileMenu, sticky }) {
 
   return (
     <>
-      <header
-        className={`main-header header-style-three bg-transparent ${
-          scroll || sticky
-            ? "fixed-header animated slideInDown"
-            : "header-style-custom"
-        }`}
-      >
-        <div
-          className="header-top"
-          style={{
-            background: "#0d3b46",
-            borderRadius: scroll || sticky ? "0" : "10px 10px 0 0",
-          }}
-        >
-          <div className="outer-container">
-            <div
-              className="outer-box"
-              style={{
-                height: "20px",
-                display: "flex",
-                width: "100%",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "14px" }}
-              >
+      <header className={`jadwa-header ${scroll || sticky ? "is-sticky" : ""}`}>
+        <div className="outer-container">
+          <div className="jadwa-header-wrap">
+            <div className="jadwa-header-top">
+              <div className="jadwa-header-top-left">
                 {socialLinks.map((item) => (
                   <a
                     key={item.key}
@@ -141,58 +122,37 @@ export default function Header({ scroll, handleMobileMenu, sticky }) {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={item.label}
-                    style={{ color: "#fff", fontSize: "14px" }}
+                    className="jadwa-social-link"
                   >
                     <i className={item.icon} />
                   </a>
                 ))}
               </div>
 
-              <div
-                className="language-box"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  color: "#fff",
-                }}
-              >
-                <span style={{ fontSize: "13px", opacity: 0.85 }}>
+              <div className="jadwa-header-top-right">
+                {/* <span className="jadwa-language-label">
                   {t("language") === "language" ? "Language" : t("language")}
-                </span>
-                <div className="select-box">
+                </span> */}
+
+                <div className="jadwa-select-box">
                   <select
-                    className="selectmenu"
+                    className="jadwa-language-select"
                     value={activeLang}
                     onChange={(e) => handleOtherLang(e.target.value)}
-                    style={{
-                      background: "transparent",
-                      color: "#fff",
-                      border: "1px solid rgba(255,255,255,0.25)",
-                      borderRadius: "999px",
-                      padding: "6px 12px",
-                    }}
                   >
-                    {supportedLangs.map((lng) => (
-                      <option key={lng} value={lng}>
-                        {lng.toUpperCase()}
+                    {languages.map((lang) => (
+                      <option key={lang.value} value={lang.value}>
+                        {lang.label}
                       </option>
                     ))}
                   </select>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div
-          className="header-lower"
-          style={{ minHeight: "4.7em", borderRadius: "0 0 10px 10px" }}
-        >
-          <div className="outer-container">
-            <div className="outer-box">
-              <div className="menu-area">
-                <figure className="logo-box">
+            <div className="jadwa-header-lower">
+              <div className="jadwa-header-inner">
+                <div className="jadwa-logo-box">
                   <Link href="/">
                     <img
                       src={
@@ -201,17 +161,12 @@ export default function Header({ scroll, handleMobileMenu, sticky }) {
                           : "/assets/images/logos/jadwa-en-light.png"
                       }
                       alt="Jadwa"
+                      className="jadwa-logo"
                     />
                   </Link>
-                </figure>
-
-                <div className="mobile-nav-toggler" onClick={handleMobileMenu}>
-                  <i className="icon-bar" />
-                  <i className="icon-bar" />
-                  <i className="icon-bar" />
                 </div>
 
-                <nav className="main-menu navbar-expand-md navbar-light">
+                <nav className="jadwa-nav main-menu navbar-expand-md navbar-light">
                   <div
                     className="collapse navbar-collapse clearfix"
                     id="navbarSupportedContent"
@@ -219,6 +174,28 @@ export default function Header({ scroll, handleMobileMenu, sticky }) {
                     <Menu />
                   </div>
                 </nav>
+
+                <Link
+                  href="https://investment.jadwainvest.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="jadwa-invest-btn"
+                >
+                  {activeLang === "ar"
+                    ? "استثمر الآن"
+                    : activeLang === "tr"
+                    ? "Yatırım yap"
+                    : "Invest now"}
+                </Link>
+
+                <div
+                  className="mobile-nav-toggler jadwa-mobile-toggler"
+                  onClick={handleMobileMenu}
+                >
+                  <i className="icon-bar" />
+                  <i className="icon-bar" />
+                  <i className="icon-bar" />
+                </div>
               </div>
             </div>
           </div>

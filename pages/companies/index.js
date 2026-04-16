@@ -2,7 +2,7 @@
 import { getOtherData } from "@/api/getOtherData";
 import { imageURL } from "@/api/GlobalData";
 import Layout from "@/components/layout/Layout";
-import CompaniesGrid from "@/components/pages/comapnies/CompaniesGrid";
+import CompaniesGrid from "@/components/pages/Companies/CompaniesGrid";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -49,7 +49,9 @@ export default function Home({ data = {} }) {
 
   useEffect(() => {
     if (activeCompany) {
-      const element = document.getElementById(activeCompany.slug || activeCompany._id);
+      const element = document.getElementById(
+        activeCompany.slug || activeCompany._id
+      );
       element?.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }, [activeCompany]);
@@ -123,7 +125,9 @@ export default function Home({ data = {} }) {
               <br />
               <Link
                 style={{ color: "#272e39", textDecoration: "underline" }}
-                href={`/company-details/${activeCompany?.slug || activeCompany?._id}`}
+                href={`/company-details/${
+                  activeCompany?.slug || activeCompany?._id
+                }`}
               >
                 {t("read_more")}
               </Link>

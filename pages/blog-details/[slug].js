@@ -1,3 +1,5 @@
+"use client";
+
 import Layout from "@/components/layout/Layout";
 import Link from "next/link";
 import parse from "html-react-parser";
@@ -26,210 +28,221 @@ const getBlogImage = (blog) =>
 export default function BlogDetailsPage({ blog, relatedBlogs = [] }) {
   const { i18n, t } = useTranslation();
   const lang = i18n.language || "en";
+  const isRtl = lang === "ar";
 
   if (!blog) return null;
 
+  const blogTitle = blog?.title?.[lang] || blog?.title?.en || "";
+  const blogContent = blog?.content?.[lang] || blog?.content?.en || "";
+  const blogExcerpt = blog?.excerpt?.[lang] || blog?.excerpt?.en || "";
+
   return (
     <Layout breadcrumbTitle={t("blog.BlogDetails")}>
-      <section className="sidebar-page-container blog-details sec-pad">
+      <section className="jadwa-blog-details-page sec-pad">
         <div className="auto-container">
-          <div className="row clearfix">
-            <div className="col-lg-8 col-md-12 col-sm-12 content-side">
-              <div className="blog-details-content">
-                <div className="content-one">
-                  <div className="author-post">
-                    <ul className="clearfix">
-                      <li>
-                        <span>{t("On")}: </span>
-                        {formatDate(blog?.createdAt)}
-                      </li>
-                      {blog?.author?.name ? (
-                        <li>
-                          <span>{t("By")}: </span>
-                          {blog.author.name}
-                        </li>
+          <div className="jadwa-blog-details-hero">
+            <div className="jadwa-blog-details-hero-inner">
+              {blog?.category ? (
+                <Link
+                  href={`/blog-2?category=${blog.category._id}`}
+                  className="jadwa-blog-details-category"
+                >
+                  {getCategoryLabel(blog.category, lang)}
+                </Link>
+              ) : null}
+
+              <h1 className="jadwa-blog-details-title">{blogTitle}</h1>
+
+              <div className="jadwa-blog-details-meta">
+                <span>{formatDate(blog?.createdAt)}</span>
+
+                {(blog?.author?.name || blog?.author?.role?.[lang]) && (
+                  <>
+                    <span className="jadwa-blog-details-meta-dot" />
+                    <span>
+                      {blog?.author?.name || "Jadwa Investment"}
+                      {blog?.author?.role?.[lang] ? (
+                        <em className="jadwa-blog-details-author-role">
+                          {" "}
+                          · {blog?.author?.role?.[lang]}
+                        </em>
                       ) : null}
-                    </ul>
-                  </div>
-
-                  <h2>{blog?.title?.[lang] || blog?.title?.en}</h2>
-
-                  {blog?.category ? (
-                    <p style={{ color: "#0f5662", fontWeight: 600 }}>
-                      <Link href={`/blog-2?category=${blog.category._id}`}>
-                        {getCategoryLabel(blog.category, lang)}
-                      </Link>
-                    </p>
-                  ) : null}
-
-                  <img
-                    style={{ objectFit: "contain" }}
-                    src={getBlogImage(blog)}
-                    className="blog-detail-img"
-                    alt={blog?.title?.[lang] || blog?.title?.en || "Blog"}
-                  />
-
-                  <div className="text-box">
-                    {blog?.content?.[lang]
-                      ? parse(blog.content[lang])
-                      : parse(blog?.content?.en || "")}
-                  </div>
-                </div>
-
-                {relatedBlogs.length ? (
-                  <div className="content-one" style={{ marginTop: "60px" }}>
-                    <div className="sec-title mb-4">
-                      <span className="sub-title">
-                        {t("blog.RelatedBlogs") === "blog.RelatedBlogs"
-                          ? "More From The Blog"
-                          : t("blog.RelatedBlogs")}
-                      </span>
-                      <h2>
-                        {t("blog.RelatedArticles") === "blog.RelatedArticles"
-                          ? "Related Articles"
-                          : t("blog.RelatedArticles")}
-                      </h2>
-                    </div>
-
-                    <div className="row clearfix">
-                      {relatedBlogs.map((item) => (
-                        <div
-                          key={item?._id || item?.slug}
-                          className="col-lg-6 col-md-6 col-sm-12"
-                        >
-                          <div className="news-block-one">
-                            <div className="inner-box">
-                              <figure className="image-box">
-                                <Link
-                                  href={`/blog-details/${item?.slug || item?._id}`}
-                                >
-                                  <img
-                                    src={getBlogImage(item)}
-                                    alt={
-                                      item?.title?.[lang] ||
-                                      item?.title?.en ||
-                                      "Blog"
-                                    }
-                                    style={{
-                                      objectFit: "cover",
-                                      width: "100%",
-                                      height: "240px",
-                                    }}
-                                  />
-                                </Link>
-                              </figure>
-                              <div className="lower-content">
-                                <div className="post-date">
-                                  {formatDate(item?.createdAt)}
-                                </div>
-                                <h3>
-                                  <Link
-                                    href={`/blog-details/${item?.slug || item?._id}`}
-                                  >
-                                    {item?.title?.[lang] || item?.title?.en}
-                                  </Link>
-                                </h3>
-                                {item?.category ? (
-                                  <p
-                                    style={{
-                                      color: "#0f5662",
-                                      fontWeight: 600,
-                                    }}
-                                  >
-                                    {getCategoryLabel(item.category, lang)}
-                                  </p>
-                                ) : null}
-                                <div className="link">
-                                  <Link
-                                    href={`/blog-details/${item?.slug || item?._id}`}
-                                  >
-                                    {t("ExploreMore")}
-                                  </Link>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ) : null}
+                    </span>
+                  </>
+                )}
               </div>
+
+              {blogExcerpt ? (
+                <p className="jadwa-blog-details-excerpt">{blogExcerpt}</p>
+              ) : null}
             </div>
 
-            <div className="col-lg-4 col-md-12 col-sm-12 sidebar-side">
-              <div className="blog-sidebar">
-                {blog?.category ? (
-                  <div className="sidebar-widget tags-widget">
-                    <div className="widget-title">
-                      <h3>{t("category")}</h3>
-                    </div>
-                    <div className="widget-content">
-                      <ul className="tags-list clearfix">
-                        <li>
-                          <Link href={`/blog-2?category=${blog.category._id}`}>
-                            {getCategoryLabel(blog.category, lang)}
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                ) : null}
-
-                {relatedBlogs.length ? (
-                  <div className="sidebar-widget post-widget">
-                    <div className="widget-title">
-                      <h3>
-                        {t("blog.RelatedBlogs") === "blog.RelatedBlogs"
-                          ? "Related Blogs"
-                          : t("blog.RelatedBlogs")}
-                      </h3>
-                    </div>
-                    <div className="post-inner">
-                      {relatedBlogs.map((item) => (
-                        <div className="post" key={item?._id || item?.slug}>
-                          <figure className="post-thumb">
-                            <Link
-                              href={`/blog-details/${item?.slug || item?._id}`}
-                            >
-                              <img
-                                src={getBlogImage(item)}
-                                alt={
-                                  item?.title?.[lang] ||
-                                  item?.title?.en ||
-                                  "Blog"
-                                }
-                                style={{
-                                  objectFit: "cover",
-                                  width: "100%",
-                                  height: "90px",
-                                }}
-                              />
-                            </Link>
-                          </figure>
-                          <h5>
-                            <Link
-                              href={`/blog-details/${item?.slug || item?._id}`}
-                            >
-                              {item?.title?.[lang] || item?.title?.en}
-                            </Link>
-                          </h5>
-                          <span className="post-date">
-                            {formatDate(item?.createdAt)}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ) : null}
-              </div>
-
-              <ShareArticle
-                title={blog?.title?.[lang] || blog?.title?.en}
-                description={blog?.excerpt?.[lang] || blog?.excerpt?.en}
+            <div className="jadwa-blog-details-image-wrap">
+              <img
+                src={getBlogImage(blog)}
+                className="jadwa-blog-details-image"
+                alt={blogTitle || "Blog"}
               />
             </div>
           </div>
+
+          <div className="jadwa-blog-details-layout">
+            <div className="jadwa-blog-details-main">
+              <article className="jadwa-blog-details-article">
+                <div className="jadwa-blog-details-content">
+                  {parse(blogContent)}
+                </div>
+              </article>
+            </div>
+
+            <aside className="jadwa-blog-details-side">
+              <div className="jadwa-blog-details-side-inner">
+                {blog?.category ? (
+                  <div className="jadwa-blog-side-card">
+                    <div className="jadwa-blog-side-card-title">
+                      {t("category")}
+                    </div>
+
+                    <div className="jadwa-blog-side-tags">
+                      <Link href={`/blog-2?category=${blog.category._id}`}>
+                        {getCategoryLabel(blog.category, lang)}
+                      </Link>
+                    </div>
+                  </div>
+                ) : null}
+
+                <div className="jadwa-blog-side-card">
+                  <div className="jadwa-blog-side-card-title">
+                    {lang === "ar"
+                      ? "شارك المقال"
+                      : lang === "tr"
+                      ? "Yazıyı paylaş"
+                      : "Share Article"}
+                  </div>
+
+                  <ShareArticle title={blogTitle} description={blogExcerpt} />
+                </div>
+
+                {relatedBlogs.length ? (
+                  <div className="jadwa-blog-side-card">
+                    <div className="jadwa-blog-side-card-title">
+                      {t("blog.RelatedBlogs") === "blog.RelatedBlogs"
+                        ? "Related Reads"
+                        : t("blog.RelatedBlogs")}
+                    </div>
+
+                    <div className="jadwa-blog-side-list">
+                      {relatedBlogs.map((item) => (
+                        <Link
+                          key={item?._id || item?.slug}
+                          href={`/blog-details/${item?.slug || item?._id}`}
+                          className="jadwa-blog-side-post"
+                        >
+                          <div className="jadwa-blog-side-post-image-wrap">
+                            <img
+                              src={getBlogImage(item)}
+                              alt={
+                                item?.title?.[lang] || item?.title?.en || "Blog"
+                              }
+                              className="jadwa-blog-side-post-image"
+                            />
+                          </div>
+
+                          <div className="jadwa-blog-side-post-content">
+                            <h5>{item?.title?.[lang] || item?.title?.en}</h5>
+                            <span>{formatDate(item?.createdAt)}</span>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            </aside>
+          </div>
+
+          {relatedBlogs.length ? (
+            <div className="jadwa-blog-details-related">
+              <div className="jadwa-testimonials-head jadwa-blog-related-head">
+                <div className="jadwa-pill">
+                  <span className="jadwa-pill-dot" />
+                  <span>
+                    {t("blog.RelatedBlogs") === "blog.RelatedBlogs"
+                      ? "More From The Blog"
+                      : t("blog.RelatedBlogs")}
+                  </span>
+                </div>
+
+                <h2 className="jadwa-testimonials-title">
+                  {t("blog.RelatedArticles") === "blog.RelatedArticles"
+                    ? "Related Articles"
+                    : t("blog.RelatedArticles")}
+                </h2>
+              </div>
+
+              <div className="row clearfix">
+                {relatedBlogs.map((item) => (
+                  <div
+                    key={item?._id || item?.slug}
+                    className="col-lg-4 col-md-6 col-sm-12 mb-4"
+                  >
+                    <article className="jadwa-blog-card-v2">
+                      <Link
+                        href={`/blog-details/${item?.slug || item?._id}`}
+                        className="jadwa-blog-card-v2-image-link"
+                      >
+                        <img
+                          src={getBlogImage(item)}
+                          alt={item?.title?.[lang] || item?.title?.en || "Blog"}
+                          className="jadwa-blog-card-v2-image"
+                        />
+                      </Link>
+
+                      <div className="jadwa-blog-card-v2-content">
+                        <div className="jadwa-blog-card-v2-top">
+                          {item?.category ? (
+                            <span className="jadwa-blog-card-v2-category">
+                              {getCategoryLabel(item.category, lang)}
+                            </span>
+                          ) : null}
+
+                          <span className="jadwa-blog-card-v2-date">
+                            {formatDate(item?.createdAt)}
+                          </span>
+                        </div>
+
+                        <h3 className="jadwa-blog-card-v2-title">
+                          <Link
+                            href={`/blog-details/${item?.slug || item?._id}`}
+                          >
+                            {item?.title?.[lang] || item?.title?.en}
+                          </Link>
+                        </h3>
+
+                        <div className="jadwa-blog-card-v2-footer">
+                          <span className="jadwa-blog-card-v2-author">
+                            {item?.author?.name || "Jadwa Investment"}
+                          </span>
+
+                          <Link
+                            href={`/blog-details/${item?.slug || item?._id}`}
+                            className="jadwa-blog-card-v2-link"
+                          >
+                            <span>{t("ExploreMore")}</span>
+                            <i
+                              className={`fa-solid ${
+                                isRtl ? "fa-arrow-left" : "fa-arrow-right"
+                              }`}
+                            />
+                          </Link>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : null}
         </div>
       </section>
     </Layout>

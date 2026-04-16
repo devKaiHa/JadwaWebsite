@@ -32,8 +32,8 @@ export default function AboutUsSlider({ slides = [] }) {
                   <i
                     className={
                       slide?.type === "vision"
-                        ? "flaticon-target"
-                        : "flaticon-pie-chart"
+                        ? "fas fa-binoculars"
+                        : "fas fa-chart-line"
                     }
                   />
                 </div>

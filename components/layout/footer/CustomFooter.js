@@ -44,6 +44,8 @@ const defaultAddress = {
 const CustomFooter = () => {
   const { t, i18n } = useTranslation();
   const lang = i18n.language || "en";
+  const isRtl = lang === "ar";
+
   const [footerData, setFooterData] = useState(null);
   const [contactData, setContactData] = useState(null);
   const [funds, setFunds] = useState([]);
@@ -63,20 +65,20 @@ const CustomFooter = () => {
       setFooterData(
         results[0].status === "fulfilled"
           ? results[0].value?.data || null
-          : null,
+          : null
       );
       setContactData(
         results[1].status === "fulfilled"
           ? results[1].value?.data || null
-          : null,
+          : null
       );
       setFunds(
         results[2].status === "fulfilled"
           ? pickArray(results[2].value).slice(0, 3)
-          : [],
+          : []
       );
       setPolicies(
-        results[3].status === "fulfilled" ? pickArray(results[3].value) : [],
+        results[3].status === "fulfilled" ? pickArray(results[3].value) : []
       );
     });
 
@@ -90,7 +92,7 @@ const CustomFooter = () => {
       Array.isArray(footerData?.links)
         ? footerData.links.filter((item) => item?.isActive)
         : [],
-    [footerData],
+    [footerData]
   );
 
   const socialLinks = useMemo(
@@ -98,184 +100,107 @@ const CustomFooter = () => {
       socialConfig
         .filter((item) => footerData?.[item.key])
         .map((item) => ({ ...item, href: footerData[item.key] })),
-    [footerData],
+    [footerData]
   );
 
   const branches = Array.isArray(contactData?.branches)
     ? contactData.branches.filter((item) => item?.isActive !== false)
     : [];
+
   const mainAddress =
     localize(contactData?.address, lang) ||
     defaultAddress[lang] ||
     defaultAddress.en;
+
   const policyLinks = {
     privacy:
       policies.find((item) => item?.policyType === "privacy")?.slug || null,
     terms: policies.find((item) => item?.policyType === "terms")?.slug || null,
   };
+
   const copy = newsletterCopy[lang] || newsletterCopy.en;
   const currentYear = new Date().getFullYear();
 
   return (
-    <>
-      <section
-        className="footer-style-three"
-        style={{ background: "#0b2230", color: "#fff" }}
-      >
-        <div className="widget-section" style={{ padding: "78px 0 42px" }}>
-          <div className="auto-container">
-            <div className="row clearfix">
-              <div className="col-lg-3 col-md-6 col-sm-12 footer-column">
-                <div className="footer-widget logo-widget">
-                  <div className="footer-logo" style={{ marginBottom: "22px" }}>
-                    <Link href="/">
-                      <img
-                        style={{ height: "72px" }}
-                        src="/assets/images/logos/jadwa-en-light.png"
-                        alt="Jadwa"
-                      />
-                    </Link>
-                  </div>
-                  <p
-                    style={{ color: "rgba(255,255,255,0.78)", lineHeight: 1.9 }}
-                  >
-                    {localize(footerData?.description, lang) ||
-                      t("companySpecialization")}
-                  </p>
-                  <div
-                    style={{
-                      marginTop: "20px",
-                      display: "flex",
-                      gap: "12px",
-                      flexWrap: "wrap",
-                    }}
-                  >
-                    {socialLinks.map((item) => (
-                      <a
-                        key={item.key}
-                        href={item.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={item.label}
-                        style={{
-                          width: "40px",
-                          height: "40px",
-                          borderRadius: "999px",
-                          border: "1px solid rgba(255,255,255,0.12)",
-                          display: "inline-flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          color: "#fff",
-                        }}
-                      >
-                        <i className={item.icon} />
-                      </a>
+    <section className=" footer-premium">
+      <div className="footer-premium-pattern" />
+      <div className="widget-section footer-premium-main">
+        <div className="auto-container">
+          <div className="row ">
+            <div className="col-lg-3 col-md-6 col-sm-12 footer-column">
+              <div className="footer-widget logo-widget footer-premium-brand">
+                <div className="footer-logo footer-premium-logo">
+                  <Link href="/">
+                    <img
+                      className="footer-premium-logo-img"
+                      src="/assets/images/logos/jadwa-en-light.png"
+                      alt="Jadwa"
+                    />
+                  </Link>
+                </div>
+
+                <p className="footer-premium-desc">
+                  {localize(footerData?.description, lang) ||
+                    t("companySpecialization")}
+                </p>
+
+                <div className="footer-premium-socials">
+                  {socialLinks.map((item) => (
+                    <a
+                      key={item.key}
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={item.label}
+                      className="footer-premium-social-link"
+                    >
+                      <i className={item.icon} />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-2 col-md-6 col-sm-12 footer-column">
+              <div className="footer-widget links-widget footer-premium-widget">
+                <div className="widget-title footer-premium-widget-title">
+                  <h3>
+                    {t("quick_links") === "quick_links"
+                      ? "Quick Links"
+                      : t("quick_links")}
+                  </h3>
+                </div>
+                <div className="widget-content">
+                  <ul className="links-list clearfix footer-premium-links">
+                    {footerLinks.map((item, index) => (
+                      <li key={`${item?.link}-${index}`}>
+                        <Link href={item?.link || "#"}>{item?.title}</Link>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               </div>
+            </div>
 
-              <div className="col-lg-2 col-md-6 col-sm-12 footer-column">
-                <div className="footer-widget links-widget">
-                  <div className="widget-title">
-                    <h3 style={{ color: "#fff" }}>
-                      {t("quick_links") === "quick_links"
-                        ? "Quick Links"
-                        : t("quick_links")}
-                    </h3>
-                  </div>
-                  <div className="widget-content">
-                    <ul className="links-list clearfix">
-                      {footerLinks.map((item, index) => (
-                        <li key={`${item?.link}-${index}`}>
-                          <Link href={item?.link || "#"}>{item?.title}</Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+            <div className="col-lg-3 col-md-6 col-sm-12 footer-column">
+              <div className="footer-widget links-widget footer-premium-widget">
+                <div className="widget-title footer-premium-widget-title">
+                  <h3>
+                    {t("InvestmentFunds") === "InvestmentFunds"
+                      ? "Investment Funds"
+                      : t("InvestmentFunds")}
+                  </h3>
                 </div>
-              </div>
-
-              <div className="col-lg-3 col-md-6 col-sm-12 footer-column">
-                <div className="footer-widget links-widget">
-                  <div className="widget-title">
-                    <h3 style={{ color: "#fff" }}>
-                      {t("InvestmentFunds") === "InvestmentFunds"
-                        ? "Investment Funds"
-                        : t("InvestmentFunds")}
-                    </h3>
-                  </div>
-                  <div className="widget-content">
-                    <ul className="links-list clearfix">
-                      {funds.map((fund) => (
-                        <li key={fund?._id || fund?.slug}>
-                          <a
-                            href={fund?.fundLink || "/funds"}
-                            target={fund?.fundLink ? "_blank" : undefined}
-                            rel={fund?.fundLink ? "noreferrer" : undefined}
-                          >
-                            {localize(fund?.title, lang)}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-12 col-sm-12 footer-column">
-                <div className="footer-widget contact-widget" dir="ltr">
-                  <div className="widget-title">
-                    <h3 style={{ color: "#fff" }}>
-                      {t("contact_us") === "contact_us"
-                        ? "Contact"
-                        : t("contact_us")}
-                    </h3>
-                  </div>
-                  <ul>
-                    <li>
-                      <i className="fas fa-phone-alt"></i>
-                      <a
-                        href={`tel:${(contactData?.phones?.[0] || footerData?.phone || "").replace(/\s+/g, "")}`}
-                      >
-                        {contactData?.phones?.[0] ||
-                          footerData?.phone ||
-                          "+90 537 306 38 91"}
-                      </a>
-                    </li>
-                    <li>
-                      <i className="fas fa-envelope"></i>
-                      <a
-                        href={`mailto:${contactData?.emails?.[0] || footerData?.email || "info@jadwainvest.com"}`}
-                      >
-                        {contactData?.emails?.[0] ||
-                          footerData?.email ||
-                          "info@jadwainvest.com"}
-                      </a>
-                    </li>
-                    <li>
-                      <i className="fas fa-map-marker-alt"></i>
-                      <a
-                        href={
-                          contactData?.mapLink ||
-                          "https://maps.app.goo.gl/9GYrWv7hNnnmPyZf9"
-                        }
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {mainAddress}
-                      </a>
-                    </li>
-                    {branches.slice(0, 2).map((branch) => (
-                      <li key={branch?._id || branch?.name?.en}>
-                        <i className="fas fa-location-dot"></i>
+                <div className="widget-content">
+                  <ul className="links-list clearfix footer-premium-links">
+                    {funds.map((fund) => (
+                      <li key={fund?._id || fund?.slug}>
                         <a
-                          href={branch?.mapLink || contactData?.mapLink || "#"}
-                          target="_blank"
-                          rel="noreferrer"
+                          href={fund?.fundLink || "/funds"}
+                          target={fund?.fundLink ? "_blank" : undefined}
+                          rel={fund?.fundLink ? "noreferrer" : undefined}
                         >
-                          {localize(branch?.name, lang)}:{" "}
-                          {localize(branch?.address, lang)}
+                          {localize(fund?.title, lang)}
                         </a>
                       </li>
                     ))}
@@ -284,111 +209,194 @@ const CustomFooter = () => {
               </div>
             </div>
 
-            <div className="mt-4">
+            <div className="col-lg-4 col-md-12 col-sm-12 footer-column">
               <div
-                style={{
-                  borderTop: "1px solid rgba(255,255,255,0.08)",
-                  marginTop: "10px",
-                  paddingTop: "32px",
-                }}
+                className="footer-widget contact-widget footer-premium-widget footer-premium-contact"
+                dir="ltr"
               >
-                <div className="row clearfix align-items-center">
-                  <div className="col-lg-5 col-md-12 col-sm-12">
-                    <div className="footer-widget mb-3 mb-lg-0">
-                      <div className="widget-title">
-                        <h3 style={{ color: "#fff", marginBottom: "10px" }}>
-                          {copy.title}
-                        </h3>
-                      </div>
-                      <p
-                        style={{
-                          color: "rgba(255,255,255,0.75)",
-                          lineHeight: 1.8,
-                          marginBottom: 0,
-                        }}
-                      >
-                        {copy.text}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="col-lg-7 col-md-12 col-sm-12">
-                    <form onSubmit={(e) => e.preventDefault()}>
-                      <div
-                        style={{
-                          display: "flex",
-                          gap: "12px",
-                          flexWrap: "wrap",
-                        }}
-                      >
-                        <input
-                          type="email"
-                          placeholder={copy.email}
-                          style={{
-                            flex: "1 1 320px",
-                            minWidth: "260px",
-                            padding: "14px 16px",
-                            borderRadius: "12px",
-                            border: "1px solid rgba(255,255,255,0.16)",
-                            background: "rgba(255,255,255,0.04)",
-                            color: "#fff",
-                          }}
-                        />
-                        <button type="submit" className="theme-btn btn-two">
-                          {copy.button}
-                        </button>
-                      </div>
-                    </form>
-                  </div>
+                <div className="widget-title footer-premium-widget-title">
+                  <h3>
+                    {t("contact_us") === "contact_us"
+                      ? "Contact"
+                      : t("contact_us")}
+                  </h3>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div
-          className="footer-bottom"
-          style={{
-            borderTop: "1px solid rgba(255,255,255,0.08)",
-            background: "#081821",
-          }}
-        >
-          <div className="auto-container">
-            <div className="bottom-inner">
-              <div className="left-column">
-                <p>
-                  &copy; {currentYear}, {t("all_rights_reserved")}
-                </p>
-                <ul className="footer-nav clearfix">
+                <ul className="footer-premium-contact-list">
                   <li>
-                    <Link
-                      href={
-                        policyLinks.privacy
-                          ? `/policies/${policyLinks.privacy}`
-                          : "/policies"
-                      }
+                    <span className="footer-premium-contact-icon">
+                      <i className="fas fa-phone-alt"></i>
+                    </span>
+                    <a
+                      href={`tel:${(
+                        contactData?.phones?.[0] ||
+                        footerData?.phone ||
+                        ""
+                      ).replace(/\s+/g, "")}`}
                     >
-                      {t("privacy_policy")}
-                    </Link>
+                      {contactData?.phones?.[0] ||
+                        footerData?.phone ||
+                        "+90 537 306 38 91"}
+                    </a>
                   </li>
+
                   <li>
-                    <Link
-                      href={
-                        policyLinks.terms
-                          ? `/policies/${policyLinks.terms}`
-                          : "/policies"
-                      }
+                    <span className="footer-premium-contact-icon">
+                      <i className="fas fa-envelope"></i>
+                    </span>
+                    <a
+                      href={`mailto:${
+                        contactData?.emails?.[0] ||
+                        footerData?.email ||
+                        "info@jadwainvest.com"
+                      }`}
                     >
-                      {t("terms_conditions")}
-                    </Link>
+                      {contactData?.emails?.[0] ||
+                        footerData?.email ||
+                        "info@jadwainvest.com"}
+                    </a>
                   </li>
+
+                  <li>
+                    <span className="footer-premium-contact-icon">
+                      <i className="fas fa-map-marker-alt"></i>
+                    </span>
+                    <a
+                      href={
+                        contactData?.mapLink ||
+                        "https://maps.app.goo.gl/9GYrWv7hNnnmPyZf9"
+                      }
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {mainAddress}
+                    </a>
+                  </li>
+
+                  {branches.slice(0, 2).map((branch) => (
+                    <li key={branch?._id || branch?.name?.en}>
+                      <span className="footer-premium-contact-icon">
+                        <i className="fas fa-location-dot"></i>
+                      </span>
+                      <a
+                        href={branch?.mapLink || contactData?.mapLink || "#"}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {localize(branch?.name, lang)}:{" "}
+                        {localize(branch?.address, lang)}
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
           </div>
+
+          <div className="footer-premium-newsletter-wrap">
+            <div className="row clearfix align-items-center">
+              <div className="col-lg-5 col-md-12 col-sm-12">
+                <div className="footer-widget mb-3 mb-lg-0 footer-premium-widget">
+                  <div className="widget-title footer-premium-widget-title">
+                    <h3>{copy.title}</h3>
+                  </div>
+                  <p className="footer-premium-newsletter-text">{copy.text}</p>
+                </div>
+              </div>
+
+              <div className="col-lg-7 col-md-12 col-sm-12">
+                <form onSubmit={(e) => e.preventDefault()}>
+                  <div
+                    className={`footer-premium-newsletter-form ${
+                      isRtl ? "rtl" : ""
+                    }`}
+                  >
+                    <input
+                      type="email"
+                      placeholder={copy.email}
+                      className="footer-premium-input"
+                    />
+                    <button
+                      type="submit"
+                      className="theme-btn btn-two footer-premium-btn"
+                    >
+                      <span>{copy.button}</span>
+                      <i className="fas fa-paper-plane" />
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
-      </section>
-    </>
+      </div>
+
+      <div className="footer-premium-bottom">
+        <div className="auto-container">
+          <div className="footer-premium-bottom-inner">
+            <div className="footer-premium-bottom-left">
+              <div className="footer-premium-bottom-brand">
+                <Link href="/" className="footer-premium-mini-logo">
+                  <img src="/assets/jadwa.ico" alt="Jadwa" />
+                </Link>
+
+                <p>
+                  &copy; {currentYear}, {t("all_rights_reserved")}
+                </p>
+              </div>
+
+              <ul className=" clearfix footer-premium-bottom-nav">
+                <li>
+                  <Link
+                    href={
+                      policyLinks.privacy
+                        ? `/policies/${policyLinks.privacy}`
+                        : "/policies"
+                    }
+                  >
+                    {t("privacy_policy")}
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    href={
+                      policyLinks.terms
+                        ? `/policies/${policyLinks.terms}`
+                        : "/policies"
+                    }
+                  >
+                    {t("terms_conditions")}
+                  </Link>
+                </li>
+
+                <li className="footer-premium-credit-item">
+                  <a
+                    href="https://www.smartinb.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="footer-premium-credit"
+                    aria-label="Built by Smartinb"
+                  >
+                    <span className="footer-premium-credit-label">
+                      {lang === "ar"
+                        ? "تم التطوير بواسطة"
+                        : lang === "tr"
+                        ? "Gelistiren"
+                        : "Built by"}
+                    </span>
+                    <span className="footer-premium-credit-brand">
+                      <span className="footer-premium-credit-dot" />
+                      smartinb.com
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

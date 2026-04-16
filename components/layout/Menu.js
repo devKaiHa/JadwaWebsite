@@ -14,7 +14,7 @@ export default function Menu() {
     },
     {
       href: "/about",
-      label: { ar: "من نحن", en: "About", tr: "Hakkında" },
+      label: { ar: "من نحن", en: "About Us", tr: "Hakkımızda" },
     },
     {
       href: "/investments",
@@ -22,15 +22,24 @@ export default function Menu() {
     },
     {
       href: "/research",
-      label: { ar: "الأبحاث", en: "Research", tr: "Araştırma" },
+      label: {
+        ar: "التحليلات والبحوث",
+        en: "Analytics & Research",
+        tr: "Analiz ve Araştırma",
+      },
     },
     {
       href: "/blog-2",
-      label: { ar: "المدونة", en: "Blog", tr: "Blog" },
+      label: { ar: "الأخبار", en: "News", tr: "Haberler" },
     },
     {
+      href: "/careers",
+      label: { ar: "التوظيف", en: "Careers", tr: "Kariyer" },
+    },
+
+    {
       href: "/Contact-us",
-      label: { ar: "تواصل معنا", en: "Contact", tr: "İletişim" },
+      label: { ar: "تواصل معنا", en: "Contact Us", tr: "İletişim" },
     },
   ];
 
@@ -38,9 +47,7 @@ export default function Menu() {
     <ul className="navigation clearfix">
       {links.map(({ href, label }, idx) => (
         <li key={idx}>
-          <Link style={{ fontSize: "14px" }} href={href}>
-            {label[lang] || label.en}
-          </Link>
+          <Link href={href}>{label[lang] || label.en}</Link>
         </li>
       ))}
     </ul>

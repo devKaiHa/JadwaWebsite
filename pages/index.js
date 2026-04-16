@@ -12,6 +12,7 @@ import Working from "@/components/sections/home2/Working";
 import { getHomeData } from "@/api/getHomeData";
 import TestimonialSlider03 from "@/components/slider/TestimonialSlider03";
 import { getOtherData } from "@/api/getOtherData";
+import CompaniesBrief from "@/components/pages/AboutUs/CompaniesBrief";
 
 export async function getStaticProps() {
   try {
@@ -42,40 +43,31 @@ export default function Home({ data = {}, otherData = {} }) {
   const {
     banners = [],
     about = {},
-    services = [],
-    sectors = [],
     news = [],
-    projects = [],
     funds = [],
     statistics = [],
     partners = [],
-    values = [],
-    companies = [],
   } = data;
 
-  const { testimonials = [] } = otherData;
-  console.log("testimonials", testimonials);
+  const { testimonials = [], companies = [] } = otherData;
 
   return (
     <div className="homePage">
       <Layout>
         <Banner HomeSlides={banners} />
-        <About aboutUs={about} />
+        <About aboutUs={about} ishomePage={true} />
         <Statistics statistics={statistics} />
         <Working funds={funds} />
-        {/* <Services services={services} /> */}
-
-        {/* <Sectors values={values} /> */}
-
-        {/* <Industries sectors={sectors} /> */}
 
         <TestimonialSlider03 testimonials={testimonials} />
 
+        <CompaniesBrief companies={companies} />
+
         <News news={news} />
 
-        <Project projects={projects} companies={companies} />
+        {/* <Project projects={projects} companies={companies} /> */}
 
-        <Partners partners={partners} />
+        {/* <Partners partners={partners} /> */}
       </Layout>
     </div>
   );

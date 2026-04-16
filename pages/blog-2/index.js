@@ -8,8 +8,17 @@ import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
 import { getAllBlogs, getAllCategories } from "@/api/getOtherData";
 import { imageURL } from "@/api/GlobalData";
+import { Swiper, SwiperSlide } from "swiper/react";
+import {
+  Navigation,
+  Pagination as SwiperPagination,
+  Autoplay,
+} from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
-const BLOGS_PER_PAGE = 5;
+const BLOGS_PER_PAGE = 9;
 
 const getCategoryLabel = (category, lang) =>
   category?.name?.[lang] ||
@@ -26,6 +35,7 @@ const getBlogImage = (blog) =>
 export default function BlogPage({ initialBlogs, initialCategories }) {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language || "en";
+  const isRtl = currentLang === "ar";
   const router = useRouter();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -37,7 +47,7 @@ export default function BlogPage({ initialBlogs, initialCategories }) {
 
   const categories = useMemo(
     () => initialCategories?.data || [],
-    [initialCategories],
+    [initialCategories]
   );
 
   useEffect(() => {
@@ -95,7 +105,7 @@ export default function BlogPage({ initialBlogs, initialCategories }) {
           query: nextQuery,
         },
         undefined,
-        { shallow: true },
+        { shallow: true }
       );
     }
   }, [router, router.isReady, currentPage, categoryId, keyword]);
@@ -114,13 +124,9 @@ export default function BlogPage({ initialBlogs, initialCategories }) {
           keyword,
         });
 
-        if (active) {
-          setBlogs(data);
-        }
+        if (active) setBlogs(data);
       } finally {
-        if (active) {
-          setIsLoading(false);
-        }
+        if (active) setIsLoading(false);
       }
     }
 
@@ -133,6 +139,10 @@ export default function BlogPage({ initialBlogs, initialCategories }) {
 
   const totalPages = blogs?.pagination?.totalPages ?? 0;
   const totalItems = blogs?.pagination?.totalItems ?? blogs?.data?.length ?? 0;
+  const blogItems = blogs?.data || [];
+
+  const featuredBlogs = blogItems.slice(0, 4);
+  const gridBlogs = blogItems.slice(4);
 
   const handleCategoryChange = (nextCategoryId = "") => {
     setCategoryId(nextCategoryId);
@@ -144,206 +154,305 @@ export default function BlogPage({ initialBlogs, initialCategories }) {
       breadcrumbTitle={t("blog.Blogs")}
       image="/assets/images/background/blogs.png"
     >
-      <section className="sidebar-page-container blog-list-one sec-pad">
+      <section className="jadwa-blog-page sec-pad">
         <div className="auto-container">
-          <div className="row clearfix">
-            <div className="col-lg-4 col-md-12 col-sm-12 sidebar-side">
-              <div className="blog-sidebar">
-                <div className="sidebar-widget search-widget">
-                  <div className="search-inner">
-                    <form
-                      className="p-0"
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        setKeyword(searchInput.trim());
-                        setCurrentPage(1);
-                      }}
-                    >
-                      <div className="form-group">
-                        <input
-                          type="search"
-                          className="input w-100 pe-1"
-                          placeholder="Search by title, author, or tags"
-                          value={searchInput}
-                          onChange={(e) => setSearchInput(e.target.value)}
-                          onKeyDown={(e) => {
-                            if (e.key === "Enter") {
-                              e.preventDefault();
-                              setKeyword(searchInput.trim());
-                              setCurrentPage(1);
-                            }
-                          }}
-                        />
-                      </div>
-                    </form>
-                  </div>
-                </div>
-
-                <div className="sidebar-widget category-widget">
-                  <div className="widget-title">
-                    <h3>{t("Categories")}</h3>
-                  </div>
-                  <div className="widget-content">
-                    <ul className="category-list clearfix">
-                      <li
-                        onClick={() => handleCategoryChange("")}
-                        style={{ cursor: "pointer" }}
-                        className={!categoryId ? "current" : ""}
-                      >
-                        <a>{t("All")}</a>
-                      </li>
-                      {categories.length > 0 ? (
-                        categories.map((item) => (
-                          <li
-                            key={item._id}
-                            onClick={() => handleCategoryChange(item._id)}
-                            style={{ cursor: "pointer" }}
-                            className={categoryId === item._id ? "current" : ""}
-                          >
-                            <a>{getCategoryLabel(item, currentLang)}</a>
-                          </li>
-                        ))
-                      ) : (
-                        <p>{t("noCategories")}</p>
-                      )}
-                    </ul>
-                  </div>
-                </div>
-              </div>
+          <div className="jadwa-testimonials-head jadwa-blog-page-head">
+            <div className="jadwa-pill">
+              <span className="jadwa-pill-dot" />
+              <span>
+                {currentLang === "ar"
+                  ? "المدونة"
+                  : currentLang === "tr"
+                  ? "Blog"
+                  : "Resources"}
+              </span>
             </div>
 
-            <div className="col-lg-8 col-md-12 col-sm-12 content-side">
-              <div className="blog-list-content">
-                {isLoading ? (
-                  <p>
-                    {t("loading") === "loading" ? "Loading..." : t("loading")}
-                  </p>
-                ) : null}
+            <h2 className="jadwa-testimonials-title">
+              {currentLang === "ar"
+                ? "تصفح مقالاتنا ورؤيتنا"
+                : currentLang === "tr"
+                ? "Yazılarımızı ve içgörülerimizi keşfedin"
+                : "Browse Our Resources"}
+            </h2>
 
-                {!isLoading && blogs?.data?.length > 0
-                  ? blogs.data.map((blog) => (
-                      <div
-                        className="news-block-two"
-                        key={blog?._id || blog?.slug}
+            <p className="jadwa-testimonials-subtitle">
+              {currentLang === "ar"
+                ? "تحليلات ومقالات ورؤى تساعدك على متابعة الأسواق والفرص والقرارات الاستثمارية."
+                : currentLang === "tr"
+                ? "Piyasalar, fırsatlar ve yatırım kararları hakkında analizler, makaleler ve içgörüler."
+                : "Insights, articles, and market perspectives to help you follow opportunities and make informed decisions."}
+            </p>
+          </div>
+
+          {!!featuredBlogs.length && (
+            <div className="jadwa-blog-hero-wrap">
+              <Swiper
+                key={i18n.dir()}
+                dir={i18n.dir()}
+                modules={[Navigation, SwiperPagination, Autoplay]}
+                slidesPerView={1}
+                spaceBetween={18}
+                loop={featuredBlogs.length > 1}
+                speed={700}
+                autoplay={{
+                  delay: 5000,
+                  disableOnInteraction: false,
+                }}
+                navigation={{
+                  nextEl: ".jadwa-blog-hero-next",
+                  prevEl: ".jadwa-blog-hero-prev",
+                }}
+                pagination={{
+                  el: ".jadwa-blog-hero-pagination",
+                  clickable: true,
+                }}
+                className="jadwa-blog-hero-swiper"
+              >
+                {featuredBlogs.map((blog) => (
+                  <SwiperSlide key={blog?._id || blog?.slug}>
+                    <article className="jadwa-blog-hero-card">
+                      <div className="jadwa-blog-hero-image-wrap">
+                        <img
+                          src={getBlogImage(blog)}
+                          alt={
+                            blog?.title?.[currentLang] ||
+                            blog?.title?.en ||
+                            "Blog"
+                          }
+                          className="jadwa-blog-hero-image"
+                        />
+                        <div className="jadwa-blog-hero-overlay" />
+                      </div>
+
+                      <div className="jadwa-blog-hero-content">
+                        {blog?.category ? (
+                          <span className="jadwa-blog-hero-category">
+                            {getCategoryLabel(blog.category, currentLang)}
+                          </span>
+                        ) : null}
+
+                        <h3 className="jadwa-blog-hero-title">
+                          <Link
+                            href={`/blog-details/${blog?.slug || blog?._id}`}
+                          >
+                            {truncateText(
+                              blog?.title?.[currentLang] || blog?.title?.en,
+                              70
+                            ) || "There is no title"}
+                          </Link>
+                        </h3>
+
+                        <p className="jadwa-blog-hero-excerpt">
+                          {truncateText(
+                            blog?.content?.[currentLang] ||
+                              blog?.content?.en ||
+                              "",
+                            130
+                          )}
+                        </p>
+
+                        <div className="jadwa-blog-hero-meta">
+                          <span>
+                            {blog?.author?.name || "Jadwa Investment"}
+                          </span>
+                          <span className="jadwa-blog-meta-dot" />
+                          <span>{formatDate(blog?.createdAt)}</span>
+                        </div>
+
+                        <Link
+                          href={`/blog-details/${blog?.slug || blog?._id}`}
+                          className="jadwa-blog-hero-link"
+                        >
+                          <span>{t("ExploreMore")}</span>
+                          <i
+                            className={`fa-solid ${
+                              isRtl ? "fa-arrow-left" : "fa-arrow-right"
+                            }`}
+                          />
+                        </Link>
+                      </div>
+                    </article>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              <button
+                className="jadwa-blog-hero-nav jadwa-blog-hero-prev"
+                type="button"
+              >
+                <i className="fa-solid fa-arrow-left" />
+              </button>
+
+              <button
+                className="jadwa-blog-hero-nav jadwa-blog-hero-next"
+                type="button"
+              >
+                <i className="fa-solid fa-arrow-right" />
+              </button>
+
+              <div className="jadwa-blog-hero-pagination" />
+            </div>
+          )}
+
+          <div className="jadwa-blog-toolbar">
+            <div className="jadwa-blog-categories">
+              <button
+                type="button"
+                onClick={() => handleCategoryChange("")}
+                className={`jadwa-blog-category-pill ${
+                  !categoryId ? "active" : ""
+                }`}
+              >
+                {t("All")}
+              </button>
+
+              {categories.map((item) => (
+                <button
+                  key={item._id}
+                  type="button"
+                  onClick={() => handleCategoryChange(item._id)}
+                  className={`jadwa-blog-category-pill ${
+                    categoryId === item._id ? "active" : ""
+                  }`}
+                >
+                  {getCategoryLabel(item, currentLang)}
+                </button>
+              ))}
+            </div>
+
+            <form
+              className="jadwa-blog-search"
+              onSubmit={(e) => {
+                e.preventDefault();
+                setKeyword(searchInput.trim());
+                setCurrentPage(1);
+              }}
+            >
+              <input
+                type="search"
+                placeholder={
+                  currentLang === "ar"
+                    ? "ابحث في المقالات..."
+                    : currentLang === "tr"
+                    ? "Yazılarda ara..."
+                    : "Search blog..."
+                }
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
+              <button
+                type="submit"
+                aria-label="Search"
+                className="jadwa-blog-search-btn"
+              >
+                <i className="fa-solid fa-magnifying-glass" />
+              </button>
+            </form>
+          </div>
+
+          <div className="jadwa-blog-grid-wrap">
+            {isLoading ? (
+              <p className="jadwa-blog-empty-state">
+                {t("loading") === "loading" ? "Loading..." : t("loading")}
+              </p>
+            ) : null}
+
+            {!isLoading && gridBlogs.length > 0 ? (
+              <div className="row clearfix">
+                {gridBlogs.map((blog) => (
+                  <div
+                    key={blog?._id || blog?.slug}
+                    className="col-lg-4 col-md-6 col-sm-12 mb-4"
+                  >
+                    <article className="jadwa-blog-card-v2">
+                      <Link
+                        href={`/blog-details/${blog?.slug || blog?._id}`}
+                        className="jadwa-blog-card-v2-image-link"
                       >
-                        <div className="inner-box">
-                          <div className="image-box">
-                            <figure className="image">
-                              <Link
-                                href={`/blog-details/${blog?.slug || blog?._id}`}
-                              >
-                                <img
-                                  style={{
-                                    objectFit: "cover",
-                                    borderRadius: "10px",
-                                  }}
-                                  src={getBlogImage(blog)}
-                                  alt={
-                                    blog?.title?.[currentLang] ||
-                                    blog?.title?.en ||
-                                    "Blog"
-                                  }
-                                />
-                              </Link>
-                            </figure>
-                          </div>
-                          <div className="content-box">
-                            <ul className="post-info clearfix">
-                              <li>
-                                <span>{t("On")}</span>
-                                {formatDate(blog?.createdAt)}
-                              </li>
-                              <li>
-                                <span>{t("By")}</span>{" "}
-                                <Link
-                                  href={`/blog-details/${blog?.slug || blog?._id}`}
-                                >
-                                  {blog?.author?.name || "Jadwa investment"}{" "}
-                                  <span
-                                    className="text-muted"
-                                    style={{ fontSize: "14px" }}
-                                  >
-                                    (
-                                    {blog?.author?.role?.[currentLang] ||
-                                      "Blogger"}
-                                    )
-                                  </span>
-                                </Link>
-                              </li>
-                            </ul>
-                            <h3 className="h-auto">
-                              <Link
-                                href={`/blog-details/${blog?.slug || blog?._id}`}
-                              >
-                                {truncateText(
-                                  blog?.title?.[currentLang] || blog?.title?.en,
-                                  30,
-                                ) || "There is no title"}
-                              </Link>
-                            </h3>
+                        <img
+                          src={getBlogImage(blog)}
+                          alt={
+                            blog?.title?.[currentLang] ||
+                            blog?.title?.en ||
+                            "Blog"
+                          }
+                          className="jadwa-blog-card-v2-image"
+                        />
+                      </Link>
 
-                            {blog?.category ? (
-                              <p
-                                className="mb-2 h-auto"
-                                style={{ color: "#0f5662", fontWeight: 600 }}
-                              >
-                                {getCategoryLabel(blog.category, currentLang)}
-                              </p>
-                            ) : null}
+                      <div className="jadwa-blog-card-v2-content">
+                        <div className="jadwa-blog-card-v2-top">
+                          {blog?.category ? (
+                            <span className="jadwa-blog-card-v2-category">
+                              {getCategoryLabel(blog.category, currentLang)}
+                            </span>
+                          ) : null}
 
-                            {blog?.content?.[currentLang] ||
-                            blog?.content?.en ? (
-                              <span
-                                className="h-auto"
-                                dangerouslySetInnerHTML={{
-                                  __html: truncateText(
-                                    blog?.content?.[currentLang] ||
-                                      blog?.content?.en,
-                                    100,
-                                  ),
-                                }}
-                              />
-                            ) : (
-                              <p>There is no content.</p>
-                            )}
+                          <span className="jadwa-blog-card-v2-date">
+                            {formatDate(blog?.createdAt)}
+                          </span>
+                        </div>
 
-                            <div className="link">
-                              <Link
-                                href={`/blog-details/${blog?.slug || blog?._id}`}
-                              >
-                                <span>{t("ExploreMore")}</span>
-                              </Link>
-                            </div>
-                            <div className="share-box">
-                              <Link
-                                href={`/blog-details/${blog?.slug || blog?._id}`}
-                              >
-                                <i className="flaticon-share" />
-                              </Link>
-                            </div>
-                          </div>
+                        <h3 className="jadwa-blog-card-v2-title">
+                          <Link
+                            href={`/blog-details/${blog?.slug || blog?._id}`}
+                          >
+                            {truncateText(
+                              blog?.title?.[currentLang] || blog?.title?.en,
+                              52
+                            ) || "There is no title"}
+                          </Link>
+                        </h3>
+
+                        <p className="jadwa-blog-card-v2-excerpt">
+                          {truncateText(
+                            blog?.content?.[currentLang] ||
+                              blog?.content?.en ||
+                              "",
+                            90
+                          )}
+                        </p>
+
+                        <div className="jadwa-blog-card-v2-footer">
+                          <span className="jadwa-blog-card-v2-author">
+                            {blog?.author?.name || "Jadwa Investment"}
+                          </span>
+
+                          <Link
+                            href={`/blog-details/${blog?.slug || blog?._id}`}
+                            className="jadwa-blog-card-v2-link"
+                          >
+                            <span>{t("ExploreMore")}</span>
+                            <i
+                              className={`fa-solid ${
+                                isRtl ? "fa-arrow-left" : "fa-arrow-right"
+                              }`}
+                            />
+                          </Link>
                         </div>
                       </div>
-                    ))
-                  : null}
-
-                {!isLoading && !blogs?.data?.length ? (
-                  <p>
-                    {keyword || categoryId
-                      ? "No blogs match the current filters."
-                      : "There are no blogs available yet."}
-                  </p>
-                ) : null}
-
-                {!isLoading && totalItems > 0 ? (
-                  <Pagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    setCurrentPage={setCurrentPage}
-                  />
-                ) : null}
+                    </article>
+                  </div>
+                ))}
               </div>
-            </div>
+            ) : null}
+
+            {!isLoading && !blogItems.length ? (
+              <p className="jadwa-blog-empty-state">
+                {keyword || categoryId
+                  ? "No blogs match the current filters."
+                  : "There are no blogs available yet."}
+              </p>
+            ) : null}
+
+            {!isLoading && totalItems > 0 ? (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                setCurrentPage={setCurrentPage}
+              />
+            ) : null}
           </div>
         </div>
       </section>

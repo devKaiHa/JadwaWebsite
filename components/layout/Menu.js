@@ -33,7 +33,7 @@ export default function Menu() {
       label: { ar: "الأخبار", en: "News", tr: "Haberler" },
     },
     {
-      href: "/careers",
+      href: "/comingsoon",
       label: { ar: "التوظيف", en: "Careers", tr: "Kariyer" },
     },
 

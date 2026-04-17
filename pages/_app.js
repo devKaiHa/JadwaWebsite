@@ -10,6 +10,8 @@ import "../pages/Contact-us/contact-us.css";
 import "../pages/investments/investment.css";
 import "../pages/fund-details/fund_details.css";
 import "../pages/company-details/company-details.css";
+import "../pages/policies/policies.css";
+import "../pages/comingsoon/coming-soon.css";
 import "./utils.css";
 
 function MyApp({ Component, pageProps }) {

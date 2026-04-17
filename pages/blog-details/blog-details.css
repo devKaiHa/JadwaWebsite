@@ -356,5 +356,6 @@
 
   .jadwa-blog-details-related {
     margin-top: 42px;
+    display: none;
   }
 }

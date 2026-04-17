@@ -84,83 +84,88 @@ export default function CompanyHero({ company }) {
                   </div>
 
                   <div className="company-hero-actions-wrap">
-                    <div className="company-hero-action-bar">
-                      {websiteHref ? (
-                        <a
-                          href={websiteHref}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="company-hero-action-btn company-hero-action-btn-primary"
-                        >
-                          <i className="fa-solid fa-globe" />
-                          <span>
-                            {t("openWebsite") === "openWebsite"
-                              ? "Visit website"
-                              : t("openWebsite")}
-                          </span>
-                        </a>
-                      ) : null}
+                    <div className="company-hero-action-split">
+                      <div className="company-hero-action-group company-hero-action-group-main">
+                        {websiteHref ? (
+                          <a
+                            href={websiteHref}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="company-hero-action-btn company-hero-action-btn-primary"
+                          >
+                            <i className="fa-solid fa-globe" />
+                            <span>
+                              {t("openWebsite") === "openWebsite"
+                                ? "Visit website"
+                                : t("openWebsite")}
+                            </span>
+                          </a>
+                        ) : null}
 
-                      {company.email ? (
-                        <a
-                          href={`mailto:${company.email}`}
-                          className="company-hero-action-btn company-hero-action-btn-secondary"
-                        >
-                          <i className="fa-regular fa-envelope" />
-                          <span>
-                            {t("emailCompany") === "emailCompany"
-                              ? "Email company"
-                              : t("emailCompany")}
-                          </span>
-                        </a>
-                      ) : null}
+                        {company.email ? (
+                          <a
+                            href={`mailto:${company.email}`}
+                            className="company-hero-action-btn company-hero-action-btn-secondary"
+                          >
+                            <i className="fa-regular fa-envelope" />
+                            <span>
+                              {t("emailCompany") === "emailCompany"
+                                ? "Email company"
+                                : t("emailCompany")}
+                            </span>
+                          </a>
+                        ) : null}
+                      </div>
 
-                      {countryName ? (
-                        <div className="company-hero-action-meta">
-                          <span className="company-hero-action-meta-label">
-                            {t("country") === "country"
-                              ? "Country"
-                              : t("country")}
-                          </span>
-                          <strong className="company-hero-action-meta-value">
-                            {countryName}
-                          </strong>
-                        </div>
-                      ) : null}
+                      <div className="company-hero-action-group company-hero-action-group-side">
+                        {countryName ? (
+                          <div className="company-hero-action-meta">
+                            <span className="company-hero-action-meta-label">
+                              {t("country") === "country"
+                                ? "Country"
+                                : t("country")}
+                            </span>
+                            <strong className="company-hero-action-meta-value">
+                              {countryName}
+                            </strong>
+                          </div>
+                        ) : null}
 
-                      {!!Object.entries(company.social_links || {}).filter(
-                        ([, value]) => Boolean(value)
-                      ).length && (
-                        <div className="company-hero-socials">
-                          {Object.entries(company.social_links || {})
-                            .filter(([, value]) => Boolean(value))
-                            .map(([key, value]) => {
-                              const iconMap = {
-                                facebook: "fa-brands fa-facebook-f",
-                                instagram: "fa-brands fa-instagram",
-                                linkedin: "fa-brands fa-linkedin-in",
-                                xTwitter: "fa-brands fa-x-twitter",
-                              };
+                        {!!Object.entries(company.social_links || {}).filter(
+                          ([, value]) => Boolean(value)
+                        ).length && (
+                          <div className="company-hero-socials">
+                            {Object.entries(company.social_links || {})
+                              .filter(([, value]) => Boolean(value))
+                              .map(([key, value]) => {
+                                const iconMap = {
+                                  facebook: "fa-brands fa-facebook-f",
+                                  instagram: "fa-brands fa-instagram",
+                                  linkedin: "fa-brands fa-linkedin-in",
+                                  xTwitter: "fa-brands fa-x-twitter",
+                                };
 
-                              return (
-                                <a
-                                  key={key}
-                                  href={value}
-                                  target="_blank"
-                                  rel="noreferrer"
-                                  className="company-hero-social-link"
-                                  aria-label={key}
-                                >
-                                  <i
-                                    className={
-                                      iconMap[key] || "fa-solid fa-share-nodes"
-                                    }
-                                  />
-                                </a>
-                              );
-                            })}
-                        </div>
-                      )}
+                                return (
+                                  <a
+                                    key={key}
+                                    href={value}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="company-hero-social-link"
+                                    aria-label={key}
+                                  >
+                                    <i
+                                      className={
+                                        iconMap[key] ||
+                                        "fa-solid fa-share-nodes"
+                                      }
+                                    />
+                                  </a>
+                                );
+                              })}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>

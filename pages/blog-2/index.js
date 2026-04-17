@@ -184,7 +184,61 @@ export default function BlogPage({ initialBlogs, initialCategories }) {
                 : "Insights, articles, and market perspectives to help you follow opportunities and make informed decisions."}
             </p>
           </div>
+          <div className="jadwa-blog-toolbar">
+            <div className="jadwa-blog-categories">
+              <button
+                type="button"
+                onClick={() => handleCategoryChange("")}
+                className={`jadwa-blog-category-pill ${
+                  !categoryId ? "active" : ""
+                }`}
+              >
+                {t("All")}
+              </button>
 
+              {categories.map((item) => (
+                <button
+                  key={item._id}
+                  type="button"
+                  onClick={() => handleCategoryChange(item._id)}
+                  className={`jadwa-blog-category-pill ${
+                    categoryId === item._id ? "active" : ""
+                  }`}
+                >
+                  {getCategoryLabel(item, currentLang)}
+                </button>
+              ))}
+            </div>
+
+            <form
+              className="jadwa-blog-search"
+              onSubmit={(e) => {
+                e.preventDefault();
+                setKeyword(searchInput.trim());
+                setCurrentPage(1);
+              }}
+            >
+              <input
+                type="search"
+                placeholder={
+                  currentLang === "ar"
+                    ? "ابحث في المقالات..."
+                    : currentLang === "tr"
+                    ? "Yazılarda ara..."
+                    : "Search blog..."
+                }
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
+              <button
+                type="submit"
+                aria-label="Search"
+                className="jadwa-blog-search-btn"
+              >
+                <i className="fa-solid fa-magnifying-glass" />
+              </button>
+            </form>
+          </div>
           {!!featuredBlogs.length && (
             <div className="jadwa-blog-hero-wrap">
               <Swiper
@@ -294,62 +348,6 @@ export default function BlogPage({ initialBlogs, initialCategories }) {
               <div className="jadwa-blog-hero-pagination" />
             </div>
           )}
-
-          <div className="jadwa-blog-toolbar">
-            <div className="jadwa-blog-categories">
-              <button
-                type="button"
-                onClick={() => handleCategoryChange("")}
-                className={`jadwa-blog-category-pill ${
-                  !categoryId ? "active" : ""
-                }`}
-              >
-                {t("All")}
-              </button>
-
-              {categories.map((item) => (
-                <button
-                  key={item._id}
-                  type="button"
-                  onClick={() => handleCategoryChange(item._id)}
-                  className={`jadwa-blog-category-pill ${
-                    categoryId === item._id ? "active" : ""
-                  }`}
-                >
-                  {getCategoryLabel(item, currentLang)}
-                </button>
-              ))}
-            </div>
-
-            <form
-              className="jadwa-blog-search"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setKeyword(searchInput.trim());
-                setCurrentPage(1);
-              }}
-            >
-              <input
-                type="search"
-                placeholder={
-                  currentLang === "ar"
-                    ? "ابحث في المقالات..."
-                    : currentLang === "tr"
-                    ? "Yazılarda ara..."
-                    : "Search blog..."
-                }
-                value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
-              />
-              <button
-                type="submit"
-                aria-label="Search"
-                className="jadwa-blog-search-btn"
-              >
-                <i className="fa-solid fa-magnifying-glass" />
-              </button>
-            </form>
-          </div>
 
           <div className="jadwa-blog-grid-wrap">
             {isLoading ? (

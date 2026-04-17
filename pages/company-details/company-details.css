@@ -30,8 +30,8 @@
 }
 
 /* =========================================
-     COMPANY HERO
-  ========================================= */
+   COMPANY HERO
+========================================= */
 .company-hero-section {
   position: relative;
   padding: 0 0 36px;
@@ -191,13 +191,19 @@
   align-items: flex-end;
   gap: 12px;
   flex: 0 0 auto;
+  width: min(100%, 470px);
 }
 
-.company-hero-action-bar {
+.company-hero-action-split {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(150px, auto);
+  gap: 12px;
+  width: 100%;
+}
+
+.company-hero-action-group {
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 12px;
   padding: 12px 14px;
   border-radius: 22px;
@@ -207,9 +213,19 @@
     0 10px 24px rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+  min-width: 0;
+}
+
+.company-hero-action-group-main {
+  justify-content: center;
+}
+
+.company-hero-action-group-side {
+  justify-content: space-between;
 }
 
 .company-hero-action-btn {
+  width: 100%;
   min-height: 46px;
   padding: 0 16px;
   border-radius: 14px;
@@ -256,9 +272,9 @@
 }
 
 .company-hero-action-meta {
-  min-height: 46px;
-  padding: 8px 14px;
-  border-radius: 14px;
+  min-height: 78px;
+  padding: 12px 14px;
+  border-radius: 16px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
@@ -287,6 +303,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .company-hero-social-link {
@@ -307,49 +324,6 @@
   background: rgba(255, 255, 255, 0.12);
   color: var(--secondary-light);
   border-color: rgba(185, 167, 122, 0.2);
-}
-
-html[dir="rtl"] .company-hero-actions-wrap {
-  align-items: flex-start;
-}
-
-html[dir="rtl"] .company-hero-action-bar {
-  justify-content: flex-start;
-}
-
-@media (max-width: 1199px) {
-  .company-hero-actions-wrap {
-    align-items: flex-start;
-  }
-
-  .company-hero-action-bar {
-    justify-content: flex-start;
-  }
-}
-
-@media (max-width: 767px) {
-  .company-hero-action-bar {
-    width: 100%;
-    padding: 12px;
-    border-radius: 18px;
-    gap: 10px;
-  }
-
-  .company-hero-action-btn {
-    min-height: 42px;
-    padding: 0 14px;
-    font-size: 12px;
-  }
-
-  .company-hero-action-meta {
-    min-height: 42px;
-    padding: 7px 12px;
-  }
-
-  .company-hero-social-link {
-    width: 38px;
-    height: 38px;
-  }
 }
 
 .company-hero-overview {
@@ -427,7 +401,11 @@ html[dir="rtl"] .company-hero-actions-wrap {
   align-items: flex-start;
 }
 
-html[dir="rtl"] .company-hero-actions {
+html[dir="rtl"] .company-hero-action-group {
+  text-align: right;
+}
+
+html[dir="rtl"] .company-hero-socials {
   justify-content: flex-start;
 }
 
@@ -456,10 +434,12 @@ html[dir="rtl"] .company-hero-actions {
 
   .company-hero-actions-wrap {
     align-items: flex-start;
+    width: 100%;
+    max-width: 760px;
   }
 
-  .company-hero-actions {
-    justify-content: flex-start;
+  .company-hero-action-split {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -485,10 +465,6 @@ html[dir="rtl"] .company-hero-actions {
       rgba(3, 39, 35, 0.56) 18%,
       rgba(3, 39, 35, 0.9) 100%
     );
-  }
-
-  .company-hero-title {
-    font-size: 44px;
   }
 
   .company-hero-subtitle {
@@ -526,13 +502,15 @@ html[dir="rtl"] .company-hero-actions {
 
   .company-hero-brand {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: 16px;
+    flex: 1 1 100%;
   }
 
-  html[dir="rtl"] .company-hero-brand {
-    flex-direction: column;
-    align-items: flex-start;
+  .company-hero-copy {
+    max-width: 100%;
+    text-align: center;
   }
 
   .company-hero-logo-shell {
@@ -543,38 +521,63 @@ html[dir="rtl"] .company-hero-actions {
   }
 
   .company-hero-title {
-    font-size: 32px;
+    padding-top: 0;
+    font-size: 28px;
     line-height: 1.02;
     margin-bottom: 10px;
+    max-width: 100%;
   }
 
   .company-hero-subtitle {
     font-size: 15px;
+    max-width: 100%;
   }
 
-  .company-hero-actions {
+  .company-hero-actions-wrap {
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .company-hero-action-split {
+    grid-template-columns: 1fr;
     gap: 10px;
   }
 
-  .company-hero-actions .theme-btn {
-    min-width: 148px;
-    height: 48px;
-    font-size: 13px;
+  .company-hero-action-group {
+    padding: 12px;
+    border-radius: 18px;
+    flex-direction: row;
   }
 
-  .company-hero-secondary-link {
-    font-size: 13px;
-    min-height: 42px;
+  .company-hero-action-btn {
+    min-height: 44px;
+    padding: 0 14px;
+    font-size: 12px;
   }
 
-  .company-hero-country {
-    width: 100%;
-    max-width: 220px;
+  .company-hero-action-meta {
+    min-height: auto;
+    padding: 10px 12px;
+    text-align: center;
+  }
+
+  .company-hero-socials {
+    justify-content: center;
+  }
+
+  .company-hero-social-link {
+    width: 38px;
+    height: 38px;
   }
 
   .company-hero-overview {
     font-size: 14px;
     line-height: 1.75;
+    text-align: center;
+  }
+
+  .company-hero-overview p {
+    font-size: 18px;
   }
 
   .company-hero-stats-box {
@@ -600,7 +603,6 @@ html[dir="rtl"] .company-hero-actions {
     font-size: 15px;
   }
 }
-
 /* =========================================
      COMPANY MAIN CONTENT
   ========================================= */
@@ -891,10 +893,6 @@ html[dir="rtl"] .company-hero-actions {
      RESPONSIVE
   ========================================= */
 @media (max-width: 1199px) {
-  .company-hero-title {
-    font-size: clamp(36px, 4.8vw, 58px);
-  }
-
   .company-hero-facts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     max-width: 760px;
@@ -936,23 +934,11 @@ html[dir="rtl"] .company-hero-actions {
     gap: 22px;
   }
 
-  .company-hero-brand {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
   .company-hero-logo-shell {
     width: 92px;
     height: 92px;
     border-radius: 22px;
     flex: 0 0 92px;
-  }
-
-  .company-hero-title {
-    font-size: 32px;
-    line-height: 1.02;
-    margin-bottom: 10px;
   }
 
   .company-hero-subtitle {

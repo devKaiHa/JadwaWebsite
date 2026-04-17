@@ -4,14 +4,14 @@ import Link from "next/link";
 import Menu from "../Menu";
 import { useTranslation } from "react-i18next";
 import { useEffect, useMemo, useState } from "react";
-import baseURL from "@/api/GlobalData";
-import { fetchJSON } from "@/GlobalHooks/GlobalHooks";
 
 const languages = [
   { value: "en", label: "English" },
   { value: "ar", label: "العربية" },
   { value: "tr", label: "Türkçe" },
 ];
+
+const supportedLangs = ["en", "ar", "tr"];
 
 const socialConfig = [
   { key: "facebook", icon: "fa-brands fa-facebook-f", label: "Facebook" },
@@ -20,33 +20,22 @@ const socialConfig = [
   { key: "linkedin", icon: "fa-brands fa-linkedin-in", label: "LinkedIn" },
 ];
 
-export default function Header({ scroll, handleMobileMenu, sticky }) {
-  const { t, i18n } = useTranslation();
+export default function Header({
+  scroll,
+  handleMobileMenu,
+  sticky,
+  footerData,
+}) {
+  const { i18n } = useTranslation();
 
   const [showModal, setShowModal] = useState(false);
   const [suggestedLang, setSuggestedLang] = useState("en");
   const [activeLang, setActiveLang] = useState("en");
   const [userLocation, setUserLocation] = useState("");
-  const [footerData, setFooterData] = useState(null);
-
-  useEffect(() => {
-    let mounted = true;
-
-    fetchJSON(`${baseURL}footer`)
-      .then((payload) => {
-        if (mounted) setFooterData(payload?.data || null);
-      })
-      .catch(() => {
-        if (mounted) setFooterData(null);
-      });
-
-    return () => {
-      mounted = false;
-    };
-  }, []);
 
   useEffect(() => {
     const match = document.cookie.match(/site_lang=(\w+)/);
+
     if (match) {
       setActiveLang(match[1]);
       return;
@@ -55,18 +44,20 @@ export default function Header({ scroll, handleMobileMenu, sticky }) {
     fetch("https://ipapi.co/json/")
       .then((res) => res.json())
       .then((data) => {
-        let userLang = data.languages
+        let userLang = data?.languages
           ? data.languages.split(",")[0].slice(0, 2)
           : "en";
+
         if (!supportedLangs.includes(userLang)) userLang = "en";
 
         setSuggestedLang(userLang);
         setActiveLang(userLang);
         setShowModal(true);
 
-        const location = `${data.city || "Unknown City"}, ${
-          data.region || "Unknown Region"
-        }, ${data.country_name || "Unknown Country"}`;
+        const location = `${data?.city || "Unknown City"}, ${
+          data?.region || "Unknown Region"
+        }, ${data?.country_name || "Unknown Country"}`;
+
         setUserLocation(location);
       })
       .catch(() => {
@@ -89,23 +80,23 @@ export default function Header({ scroll, handleMobileMenu, sticky }) {
         .filter((item) => footerData?.[item.key])
         .map((item) => ({
           ...item,
-          href: footerData?.[item.key],
+          href: footerData[item.key],
         })),
     [footerData]
   );
 
-  const handleAccept = () => {
-    setActiveLang(suggestedLang);
-    document.cookie = `site_lang=${suggestedLang}; path=/; max-age=${
-      30 * 24 * 60 * 60
-    }`;
-    setShowModal(false);
-  };
-
-  const handleOtherLang = (lng) => {
+  const saveLanguage = (lng) => {
     setActiveLang(lng);
     document.cookie = `site_lang=${lng}; path=/; max-age=${30 * 24 * 60 * 60}`;
     setShowModal(false);
+  };
+
+  const handleAccept = () => {
+    saveLanguage(suggestedLang);
+  };
+
+  const handleOtherLang = (lng) => {
+    saveLanguage(lng);
   };
 
   return (
@@ -130,10 +121,6 @@ export default function Header({ scroll, handleMobileMenu, sticky }) {
               </div>
 
               <div className="jadwa-header-top-right">
-                {/* <span className="jadwa-language-label">
-                  {t("language") === "language" ? "Language" : t("language")}
-                </span> */}
-
                 <div className="jadwa-select-box">
                   <select
                     className="jadwa-language-select"
@@ -156,7 +143,7 @@ export default function Header({ scroll, handleMobileMenu, sticky }) {
                   <Link href="/">
                     <img
                       src={
-                        i18n.language === "ar"
+                        activeLang === "ar"
                           ? "/assets/images/logos/jadwa-ar-light.png"
                           : "/assets/images/logos/jadwa-en-light.png"
                       }
@@ -215,12 +202,14 @@ export default function Header({ scroll, handleMobileMenu, sticky }) {
               <p className="language-modal-subtext">
                 Or choose another language from the options below:
               </p>
+
               <div className="language-options">
                 {supportedLangs
                   .filter((lng) => lng !== suggestedLang)
                   .map((lng) => (
                     <button
                       key={lng}
+                      type="button"
                       onClick={() => handleOtherLang(lng)}
                       className="language-option-btn"
                     >
@@ -230,7 +219,11 @@ export default function Header({ scroll, handleMobileMenu, sticky }) {
               </div>
             </div>
 
-            <button onClick={handleAccept} className="theme-btn btn-two">
+            <button
+              type="button"
+              onClick={handleAccept}
+              className="theme-btn btn-two"
+            >
               Accept
             </button>
           </div>

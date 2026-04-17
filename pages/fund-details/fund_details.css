@@ -55,18 +55,8 @@
 .fund-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-      90deg,
-      rgba(1, 13, 11, 0.88) 0%,
-      rgba(3, 39, 35, 0.9) 36%,
-      rgba(3, 39, 35, 0.8) 62%,
-      rgba(3, 39, 35, 0.9) 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.03) 0%,
-      rgba(0, 0, 0, 0.18) 100%
-    );
+  background: var(--primary);
+  opacity: 0.9;
 }
 
 .fund-hero-content {
@@ -81,7 +71,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 34px;
+  gap: 24px;
 }
 .fund-hero-top {
   display: flex;
@@ -246,31 +236,7 @@ html[dir="rtl"] .fund-hero-launch {
   text-align: right;
 }
 
-@media (max-width: 1199px) {
-  .fund-hero-card,
-  .fund-hero-content {
-    min-height: 600px;
-  }
-
-  .fund-hero-main {
-    grid-template-columns: 1fr;
-    align-items: start;
-  }
-
-  .fund-hero-metrics {
-    max-width: 720px;
-  }
-
-  .fund-hero-title {
-    font-size: clamp(36px, 5vw, 60px);
-  }
-}
-
 @media (max-width: 991px) {
-  .fund-hero-section {
-    padding: 70px 0 30px;
-  }
-
   .fund-hero-card,
   .fund-hero-content {
     min-height: 560px;
@@ -278,15 +244,6 @@ html[dir="rtl"] .fund-hero-launch {
 
   .fund-hero-content {
     padding: 24px 24px 24px;
-  }
-
-  .fund-hero-overlay {
-    background: linear-gradient(
-      180deg,
-      rgba(3, 39, 35, 0.58) 0%,
-      rgba(3, 39, 35, 0.56) 20%,
-      rgba(3, 39, 35, 0.86) 100%
-    );
   }
 
   .fund-hero-subtitle {
@@ -300,9 +257,16 @@ html[dir="rtl"] .fund-hero-launch {
 }
 
 @media (max-width: 767px) {
+  .fund-hero-main {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .fund-hero-title {
+    font-size: clamp(36px, 5vw, 60px);
+  }
   .fund-hero-card {
     min-height: auto;
-    border-radius: 24px;
   }
 
   .fund-hero-content {
@@ -311,7 +275,7 @@ html[dir="rtl"] .fund-hero-launch {
   }
 
   .fund-hero-top {
-    margin-bottom: 80px;
+    margin-top: 80px;
   }
 
   .fund-hero-title {
@@ -338,7 +302,6 @@ html[dir="rtl"] .fund-hero-launch {
   }
 
   .fund-hero-metrics {
-    grid-template-columns: 1fr;
     gap: 10px;
   }
 

@@ -6,30 +6,31 @@ import baseURL from "@/api/GlobalData";
 
 export default function PolicyDetailsPage({ policy }) {
   const { i18n } = useTranslation();
-  const lang = i18n.language || "en";
+  const lang = i18n?.language || "en";
+  const isAr = lang === "ar";
 
   if (!policy) return null;
 
+  const title = policy?.title?.[lang] || policy?.title?.en || "";
+  const summary = policy?.summary?.[lang] || policy?.summary?.en || "";
+  const content = policy?.content?.[lang] || policy?.content?.en || "";
+  const type = policy?.policyType || (isAr ? "سياسة" : "Policy");
+
   return (
-    <Layout breadcrumbTitle={policy?.title?.[lang] || policy?.title?.en}>
-      <section className="about-style-two sec-pad">
+    <Layout breadcrumbTitle={title}>
+      <section className="policy-details-section sec-pad">
         <div className="auto-container">
-          <div className="sec-title">
-            <span className="sub-title">
-              {policy?.policyType || "policy"}
-            </span>
-            <h2>{policy?.title?.[lang] || policy?.title?.en}</h2>
-          </div>
-          {policy?.summary?.[lang] || policy?.summary?.en ? (
-            <div className="text-box mb-4">
-              <p>{policy?.summary?.[lang] || policy?.summary?.en}</p>
+          <div className="policy-details-wrapper">
+            <div className="policy-details-header centred">
+              <span className="policy-details-badge">{type}</span>
+              <h1>{title}</h1>
+              {summary ? (
+                <p className="policy-details-summary">{summary}</p>
+              ) : null}
             </div>
-          ) : null}
-          <div className="content-box">
-            <div className="text-box">
-              {policy?.content?.[lang]
-                ? parse(policy.content[lang])
-                : parse(policy?.content?.en || "")}
+
+            <div className="policy-details-body">
+              <div className="policy-details-content">{parse(content)}</div>
             </div>
           </div>
         </div>
@@ -62,7 +63,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   try {
     const payload = await fetchJSON(
-      `${baseURL}policies/public/slug/${params.slug}`,
+      `${baseURL}policies/public/slug/${params.slug}`
     );
 
     return {

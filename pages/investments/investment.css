@@ -263,22 +263,73 @@ html[dir="rtl"] .investments-search i {
   transition: var(--transition);
 }
 
-.investment-preview-card-footer a:hover {
-  color: var(--secondary-dark);
-  transform: translateX(2px);
+.investment-preview-card-footer {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(11, 106, 103, 0.08);
 }
 
-html[dir="rtl"] .investment-preview-card-footer a:hover {
-  transform: translateX(-2px);
+.investment-preview-card-more {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 16px;
+  border: 1px solid rgba(11, 106, 103, 0.1);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f8fbfa 0%, #f1f6f4 100%);
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(11, 47, 43, 0.04);
 }
 
-.investments-empty {
-  padding: 28px 0 6px;
-  color: var(--text-muted-dark);
-  font-size: 15px;
-  text-align: center;
+.investment-preview-card-more:hover {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--primary-dark) 100%
+  );
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(11, 90, 79, 0.18);
 }
 
+.investment-preview-card-more-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(11, 106, 103, 0.08);
+  font-size: 11px;
+  transition: all 0.3s ease;
+}
+
+.investment-preview-card-more:hover .investment-preview-card-more-icon {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateX(3px);
+}
+
+html[dir="rtl"]
+  .investment-preview-card-more:hover
+  .investment-preview-card-more-icon {
+  transform: translateX(-3px);
+}
+
+@media (max-width: 767px) {
+  .investment-preview-card-more {
+    min-height: 42px;
+    padding: 0 14px;
+    font-size: 13px;
+  }
+}
 /* =========================================
      BUTTON ALIGNMENT
   ========================================= */

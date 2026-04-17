@@ -2,9 +2,9 @@ import NewsSlider from "@/components/slider/NewsSlider";
 import { useTranslation } from "react-i18next";
 
 export default function News({ news }) {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const currentLang = i18n.language || "en";
-  const isRtl = currentLang === "ar";
+
   return (
     <>
       {/* news-style-two */}

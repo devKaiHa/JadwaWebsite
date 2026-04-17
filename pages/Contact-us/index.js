@@ -9,7 +9,6 @@ export default function ContactUsPage() {
     <Layout
       breadcrumbTitle={t("contact_us") || "Contact"}
       image="/assets/images/background/partners.png"
-      sticky={true}
     >
       <ContactForm />
     </Layout>

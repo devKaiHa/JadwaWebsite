@@ -326,7 +326,7 @@ html[dir="rtl"] .jadwa-values-next i {
   .jadwa-values-slide {
     min-height: auto;
     padding: 22px 18px 20px;
-    border-radius: 22px;
+    border-radius: 0px;
   }
 
   .jadwa-values-slide-top {
@@ -772,7 +772,7 @@ html[dir="rtl"] .jadwa-values-next i {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(340px, 1.95fr);
   align-items: stretch;
-  max-height: 580px;
+  max-height: 680px;
 }
 
 .jadwa-founder-content {
@@ -1009,7 +1009,7 @@ html[dir="rtl"] .jadwa-founder-next i {
 
 @media (max-width: 767px) {
   .jadwa-founder-slide {
-    border-radius: 24px;
+    border-radius: 0px;
   }
 
   .jadwa-founder-content {
@@ -1296,7 +1296,6 @@ html[dir="rtl"] .jadwa-team-badge {
 
 .jadwa-mini-team-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(15, 28, 21, 0.11);
   border-color: rgba(185, 167, 122, 0.2);
 }
 

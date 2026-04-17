@@ -22,7 +22,7 @@ const PAGE_COPY = {
         title: "Funds built for structured growth",
         description:
           "Review our available funds, their sector focus, and the investment profile behind each opportunity.",
-        cta: "View all funds",
+        cta: "See more",
         empty: "No funds are available right now.",
       },
       companies: {
@@ -31,7 +31,7 @@ const PAGE_COPY = {
         title: "Companies within our portfolio",
         description:
           "Discover the companies we support and the industries they operate in.",
-        cta: "View all companies",
+        cta: "See more",
         empty: "No companies are available right now.",
       },
       projects: {
@@ -40,7 +40,7 @@ const PAGE_COPY = {
         title: "Projects with real market presence",
         description:
           "Browse selected projects and open the published project links when available.",
-        cta: "View all projects",
+        cta: "See more",
         empty: "No projects are available right now.",
       },
     },
@@ -58,7 +58,7 @@ const PAGE_COPY = {
         title: "Yapilandirilmis buyume icin fonlar",
         description:
           "Mevcut fonlari, sektor odaklarini ve her firsatin yatirim profilini inceleyin.",
-        cta: "Tum fonlari gor",
+        cta: "daha goster",
         empty: "Su anda kullanilabilir fon bulunmuyor.",
       },
       companies: {
@@ -67,7 +67,7 @@ const PAGE_COPY = {
         title: "Portfoyumuzdeki sirketler",
         description:
           "Destekledigimiz sirketleri ve faaliyet gosterdikleri sektorleri kesfedin.",
-        cta: "Tum sirketleri gor",
+        cta: "daha goster",
         empty: "Su anda kullanilabilir sirket bulunmuyor.",
       },
       projects: {
@@ -76,7 +76,7 @@ const PAGE_COPY = {
         title: "Piyasada yer alan projeler",
         description:
           "Secili projeleri inceleyin ve varsa yayinlanmis proje baglantilarini acin.",
-        cta: "Tum projeleri gor",
+        cta: "daha goster",
         empty: "Su anda kullanilabilir proje bulunmuyor.",
       },
     },
@@ -94,7 +94,7 @@ const PAGE_COPY = {
         title: "صناديق مصممة للنمو المنظم",
         description:
           "اطلع على الصناديق المتاحة وتركيزها القطاعي وملف كل فرصة استثمارية.",
-        cta: "عرض كل الصناديق",
+        cta: "عرض المزيد ",
         empty: "لا توجد صناديق متاحة حالياً.",
       },
       companies: {
@@ -102,7 +102,7 @@ const PAGE_COPY = {
         label: "الشركات",
         title: "شركات ضمن محفظتنا",
         description: "تعرّف على الشركات التي ندعمها والقطاعات التي تعمل فيها.",
-        cta: "عرض كل الشركات",
+        cta: "عرض المزيد ",
         empty: "لا توجد شركات متاحة حالياً.",
       },
       projects: {
@@ -111,7 +111,7 @@ const PAGE_COPY = {
         title: "مشاريع ذات حضور في السوق",
         description:
           "تصفح المشاريع المختارة وافتح روابط المشاريع المنشورة عند توفرها.",
-        cta: "عرض كل المشاريع",
+        cta: "عرض المزيد ",
         empty: "لا توجد مشاريع متاحة حالياً.",
       },
     },
@@ -223,6 +223,7 @@ const SECTION_CONFIG = {
     },
   },
 };
+
 function InvestmentCard({
   item,
   title,
@@ -251,16 +252,20 @@ function InvestmentCard({
             onClick={() => onCardClick(item, router)}
           >
             {title}
-            <i className="fa-solid fa-arrow-up-right-from-square" />
           </h3>
 
           <p className="investment-preview-card-text flex-grow-1">{text}</p>
 
-          {/* <div className="investment-preview-card-footer">
-            <Link href={itemHref || sectionHref}>
+          <div className="investment-preview-card-footer">
+            <button
+              type="button"
+              className="investment-preview-card-more"
+              onClick={() => onCardClick(item, router)}
+            >
               <span>{actionLabel}</span>
-            </Link>
-          </div> */}
+              <i className="fa-solid fa-arrow-right investment-preview-card-more-icon" />
+            </button>
+          </div>
         </div>
       </article>
     </div>

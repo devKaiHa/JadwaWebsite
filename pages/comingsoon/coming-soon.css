@@ -1,0 +1,259 @@
+.coming-soon-page {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 100px 0;
+  background: radial-gradient(
+      circle at top right,
+      rgba(185, 167, 122, 0.08),
+      transparent 22%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(11, 90, 79, 0.08),
+      transparent 24%
+    ),
+    linear-gradient(180deg, #f7f8f7 0%, #f1f4f2 100%);
+}
+
+.coming-soon-bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.coming-soon-bg-shape-one {
+  width: 340px;
+  height: 340px;
+  top: -120px;
+  right: -100px;
+  background: radial-gradient(
+    circle,
+    rgba(11, 90, 79, 0.12) 0%,
+    rgba(11, 90, 79, 0.05) 48%,
+    transparent 72%
+  );
+}
+
+.coming-soon-bg-shape-two {
+  width: 380px;
+  height: 380px;
+  bottom: -140px;
+  left: -120px;
+  background: radial-gradient(
+    circle,
+    rgba(185, 167, 122, 0.14) 0%,
+    rgba(185, 167, 122, 0.05) 44%,
+    transparent 74%
+  );
+}
+
+.coming-soon-wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 58px 42px;
+  border-radius: 34px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(11, 90, 79, 0.08);
+  box-shadow: 0 20px 60px rgba(11, 37, 34, 0.08),
+    0 8px 24px rgba(11, 37, 34, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+}
+
+.coming-soon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 0 18px;
+  margin-bottom: 22px;
+  border-radius: 999px;
+  background: rgba(11, 90, 79, 0.06);
+  border: 1px solid rgba(11, 90, 79, 0.08);
+  color: var(--primary, #0b5a4f);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.coming-soon-badge-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2bb673;
+  box-shadow: 0 0 0 6px rgba(43, 182, 115, 0.12);
+}
+
+.coming-soon-title {
+  margin: 0 auto 18px;
+  max-width: 760px;
+  color: #0c3b36;
+  font-size: clamp(34px, 5vw, 64px);
+  line-height: 1.06;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.coming-soon-text {
+  max-width: 680px;
+  margin: 0 auto;
+  color: #667085;
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.coming-soon-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 34px;
+}
+
+.coming-soon-btn {
+  min-height: 52px;
+  padding: 0 22px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.coming-soon-btn-primary {
+  color: #ffffff;
+  background: linear-gradient(135deg, #0b5a4f 0%, #127266 100%);
+  box-shadow: 0 14px 28px rgba(11, 90, 79, 0.18);
+}
+
+.coming-soon-btn-primary:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(11, 90, 79, 0.22);
+}
+
+.coming-soon-btn-secondary {
+  color: #0b5a4f;
+  background: rgba(11, 90, 79, 0.06);
+  border: 1px solid rgba(11, 90, 79, 0.1);
+}
+
+.coming-soon-btn-secondary:hover {
+  color: #0b5a4f;
+  background: rgba(11, 90, 79, 0.1);
+  transform: translateY(-2px);
+}
+
+.coming-soon-meta {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.coming-soon-meta-card {
+  padding: 20px 18px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #fafcfa 0%, #f5f7f6 100%);
+  border: 1px solid rgba(11, 90, 79, 0.08);
+}
+
+.coming-soon-meta-label {
+  display: block;
+  margin-bottom: 10px;
+  color: #7b8492;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.coming-soon-meta-value {
+  display: block;
+  color: #0c3b36;
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+@media (max-width: 991px) {
+  .coming-soon-page {
+    padding: 80px 0;
+  }
+
+  .coming-soon-wrap {
+    padding: 46px 30px;
+    border-radius: 28px;
+  }
+
+  .coming-soon-meta {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .coming-soon-page {
+    min-height: auto;
+    padding: 70px 0;
+  }
+
+  .coming-soon-wrap {
+    padding: 38px 20px;
+    border-radius: 22px;
+  }
+
+  .coming-soon-badge {
+    min-height: 38px;
+    padding: 0 14px;
+    margin-bottom: 18px;
+    font-size: 12px;
+  }
+
+  .coming-soon-title {
+    font-size: clamp(28px, 8vw, 42px);
+    line-height: 1.12;
+    margin-bottom: 14px;
+  }
+
+  .coming-soon-text {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .coming-soon-actions {
+    margin-top: 28px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .coming-soon-btn {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .coming-soon-meta {
+    margin-top: 28px;
+    gap: 12px;
+  }
+
+  .coming-soon-meta-card {
+    padding: 18px 16px;
+    border-radius: 18px;
+  }
+
+  .coming-soon-meta-value {
+    font-size: 16px;
+  }
+}

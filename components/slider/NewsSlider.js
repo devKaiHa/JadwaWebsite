@@ -5,9 +5,19 @@ import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { formatDate } from "@/GlobalHooks/GlobalHooks";
 import { imageURL } from "@/api/GlobalData";
+
 import BlogImg from "../../public/assets/images/news/news-1.jpg";
 import BlogImgSmall from "../../public/assets/images/news/post-3.jpg";
 
+/**
+ * Resolve blog image source with graceful fallback.
+ * Priority:
+ * 1) photo
+ * 2) image
+ * 3) thumbnailImage[0]
+ * 4) thumbnailImage
+ * 5) fallback static image
+ */
 function getBlogImage(blog, fallback) {
   const image =
     blog?.photo ||
@@ -18,25 +28,37 @@ function getBlogImage(blog, fallback) {
 
   if (!image) return fallback?.src || "";
 
+  // Already full URL
   if (typeof image === "string" && image.startsWith("http")) return image;
 
+  // Stored file name/path from backend
   return `${imageURL}blogs/${image}`;
 }
 
+/**
+ * Strip HTML and limit visible words.
+ */
 function trimWords(text = "", count = 10) {
   const clean = text
     .replace(/<[^>]*>/g, " ")
     .replace(/\s+/g, " ")
     .trim();
+
   const words = clean.split(" ").filter(Boolean);
+
   return words.length > count ? `${words.slice(0, count).join(" ")}...` : clean;
 }
 
 export default function NewsSlider({ news = [] }) {
   const { t, i18n } = useTranslation();
+
   const currentLang = i18n.language || "en";
   const isRtl = currentLang === "ar";
 
+  /**
+   * Build category filter options dynamically from incoming news.
+   * "All" is always injected as the first option.
+   */
   const categories = useMemo(() => {
     const map = new Map();
 
@@ -63,20 +85,37 @@ export default function NewsSlider({ news = [] }) {
     ];
   }, [news, currentLang]);
 
+  /**
+   * Active selected category.
+   */
   const [activeCategory, setActiveCategory] = useState("all");
 
+  /**
+   * Filter news list based on selected category.
+   */
   const filteredNews = useMemo(() => {
     if (activeCategory === "all") return news;
     return news.filter((item) => item?.category?.slug === activeCategory);
   }, [news, activeCategory]);
 
+  /**
+   * Desktop structure:
+   * - first post is featured
+   * - next 2 posts are side cards
+   *
+   * Mobile structure:
+   * - show up to 4 compact row cards
+   */
   const featuredPost = filteredNews?.[0];
-  const smallPosts = filteredNews?.slice(1, 4) || [];
+  const smallPosts = filteredNews?.slice(1, 3) || [];
+  const mobilePosts = filteredNews?.slice(0, 4) || [];
 
+  // No data, no section
   if (!news?.length) return null;
 
   return (
     <div className={`jadwa-blog-showcase ${isRtl ? "rtl" : "ltr"}`}>
+      {/* Top filters + desktop CTA */}
       <div className="jadwa-blog-filters-wrap">
         <div className="jadwa-blog-filters">
           {categories.map((item) => (
@@ -105,112 +144,177 @@ export default function NewsSlider({ news = [] }) {
       </div>
 
       {!!filteredNews.length && (
-        <div className="jadwa-blog-layout">
-          {featuredPost && (
-            <article className="jadwa-blog-featured-card">
-              <div className="jadwa-blog-featured-content">
-                <div className="jadwa-blog-featured-top">
-                  <span className="jadwa-blog-category">
-                    {featuredPost?.category?.name?.[currentLang] ??
-                      featuredPost?.category?.name?.en ??
-                      t("General")}
-                  </span>
+        <>
+          {/* =========================
+              Desktop Layout
+              ========================= */}
+          <div className="jadwa-blog-layout">
+            {featuredPost && (
+              <article className="jadwa-blog-featured-card">
+                <div className="jadwa-blog-featured-content">
+                  <div className="jadwa-blog-featured-top">
+                    <span className="jadwa-blog-category">
+                      {featuredPost?.category?.name?.[currentLang] ??
+                        featuredPost?.category?.name?.en ??
+                        t("General")}
+                    </span>
 
-                  <span className="jadwa-blog-meta-author">
-                    {featuredPost?.author?.name || "Jadwa"}
-                  </span>
-                </div>
-
-                <h3 className="jadwa-blog-featured-title">
-                  <Link
-                    href={`/blog-details/${
-                      featuredPost?.slug || featuredPost?._id
-                    }`}
-                  >
-                    {trimWords(
-                      featuredPost?.title?.[currentLang] ||
-                        featuredPost?.title?.en ||
-                        "No title available",
-                      9
-                    )}
-                  </Link>
-                </h3>
-
-                <p className="jadwa-blog-featured-excerpt">
-                  {trimWords(
-                    featuredPost?.excerpt?.[currentLang] ||
-                      featuredPost?.excerpt?.en ||
-                      featuredPost?.content?.[currentLang] ||
-                      featuredPost?.content?.en ||
-                      "",
-                    26
-                  )}
-                </p>
-
-                <div className="jadwa-blog-featured-footer">
-                  <div className="jadwa-blog-meta">
-                    <span>{formatDate(featuredPost?.createdAt)}</span>
+                    <span className="jadwa-blog-meta-author">
+                      {featuredPost?.author?.name || "Jadwa"}
+                    </span>
                   </div>
 
-                  <Link
-                    href={`/blog-details/${
-                      featuredPost?.slug || featuredPost?._id
-                    }`}
-                    className="jadwa-blog-readmore"
-                  >
-                    <span>{t("ExploreMore")}</span>
-                    <i
-                      className={`fa-solid ${
-                        isRtl ? "fa-arrow-left" : "fa-arrow-right"
+                  <h3 className="jadwa-blog-featured-title">
+                    <Link
+                      href={`/blog-details/${
+                        featuredPost?.slug || featuredPost?._id
                       }`}
+                    >
+                      {trimWords(
+                        featuredPost?.title?.[currentLang] ||
+                          featuredPost?.title?.en ||
+                          "No title available",
+                        9
+                      )}
+                    </Link>
+                  </h3>
+
+                  <p className="jadwa-blog-featured-excerpt">
+                    {trimWords(
+                      featuredPost?.excerpt?.[currentLang] ||
+                        featuredPost?.excerpt?.en ||
+                        featuredPost?.content?.[currentLang] ||
+                        featuredPost?.content?.en ||
+                        "",
+                      26
+                    )}
+                  </p>
+
+                  <div className="jadwa-blog-featured-footer">
+                    <div className="jadwa-blog-meta">
+                      <span>{formatDate(featuredPost?.createdAt)}</span>
+                    </div>
+
+                    <Link
+                      href={`/blog-details/${
+                        featuredPost?.slug || featuredPost?._id
+                      }`}
+                      className="jadwa-blog-readmore"
+                    >
+                      <span>{t("ExploreMore")}</span>
+                      <i
+                        className={`fa-solid ${
+                          isRtl ? "fa-arrow-left" : "fa-arrow-right"
+                        }`}
+                      />
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="jadwa-blog-featured-image-wrap">
+                  <img
+                    src={getBlogImage(featuredPost, BlogImg)}
+                    alt={
+                      featuredPost?.title?.[currentLang] ||
+                      featuredPost?.title?.en ||
+                      "Blog"
+                    }
+                    className="jadwa-blog-featured-image"
+                  />
+                </div>
+              </article>
+            )}
+
+            <div className="jadwa-blog-grid">
+              {smallPosts.map((blog) => (
+                <article key={blog?._id} className="jadwa-blog-card">
+                  <Link
+                    href={`/blog-details/${blog?.slug || blog?._id}`}
+                    className="jadwa-blog-card-image-link"
+                  >
+                    <img
+                      src={getBlogImage(blog, BlogImgSmall)}
+                      alt={
+                        blog?.title?.[currentLang] || blog?.title?.en || "Blog"
+                      }
+                      className="jadwa-blog-card-image"
                     />
                   </Link>
-                </div>
-              </div>
 
-              <div className="jadwa-blog-featured-image-wrap">
-                <img
-                  src={getBlogImage(featuredPost, BlogImg)}
-                  alt={
-                    featuredPost?.title?.[currentLang] ||
-                    featuredPost?.title?.en ||
-                    "Blog"
-                  }
-                  className="jadwa-blog-featured-image"
-                />
-              </div>
-            </article>
-          )}
+                  <div className="jadwa-blog-card-body">
+                    <div className="jadwa-blog-card-top">
+                      <span className="jadwa-blog-category small">
+                        {blog?.category?.name?.[currentLang] ||
+                          blog?.category?.name?.en ||
+                          t("General")}
+                      </span>
 
-          <div className="jadwa-blog-grid">
-            {smallPosts.map((blog) => (
-              <article key={blog?._id} className="jadwa-blog-card">
+                      <span className="jadwa-blog-date">
+                        {formatDate(blog?.createdAt)}
+                      </span>
+                    </div>
+
+                    <h4 className="jadwa-blog-card-title">
+                      <Link href={`/blog-details/${blog?.slug || blog?._id}`}>
+                        {trimWords(
+                          blog?.title?.[currentLang] ||
+                            blog?.title?.en ||
+                            "No title available",
+                          8
+                        )}
+                      </Link>
+                    </h4>
+
+                    <p className="jadwa-blog-card-excerpt">
+                      {trimWords(
+                        blog?.excerpt?.[currentLang] ||
+                          blog?.excerpt?.en ||
+                          blog?.content?.[currentLang] ||
+                          blog?.content?.en ||
+                          "",
+                        14
+                      )}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          {/* =========================
+              Mobile Layout
+              Compact vertical list
+              ========================= */}
+          <div className="jadwa-blog-mobile-list">
+            {mobilePosts.map((blog) => (
+              <article key={blog?._id} className="jadwa-blog-mobile-row-card">
                 <Link
                   href={`/blog-details/${blog?.slug || blog?._id}`}
-                  className="jadwa-blog-card-image-link"
+                  className="jadwa-blog-mobile-row-image-link"
                 >
                   <img
                     src={getBlogImage(blog, BlogImgSmall)}
                     alt={
                       blog?.title?.[currentLang] || blog?.title?.en || "Blog"
                     }
-                    className="jadwa-blog-card-image"
+                    className="jadwa-blog-mobile-row-image"
                   />
                 </Link>
 
-                <div className="jadwa-blog-card-body">
-                  <div className="jadwa-blog-card-top">
+                <div className="jadwa-blog-mobile-row-body">
+                  <div className="jadwa-blog-mobile-row-top">
                     <span className="jadwa-blog-category small">
                       {blog?.category?.name?.[currentLang] ||
                         blog?.category?.name?.en ||
                         t("General")}
                     </span>
+
                     <span className="jadwa-blog-date">
                       {formatDate(blog?.createdAt)}
                     </span>
                   </div>
 
-                  <h4 className="jadwa-blog-card-title">
+                  <h4 className="jadwa-blog-mobile-row-title">
                     <Link href={`/blog-details/${blog?.slug || blog?._id}`}>
                       {trimWords(
                         blog?.title?.[currentLang] ||
@@ -221,23 +325,35 @@ export default function NewsSlider({ news = [] }) {
                     </Link>
                   </h4>
 
-                  <p className="jadwa-blog-card-excerpt">
+                  <p className="jadwa-blog-mobile-row-excerpt">
                     {trimWords(
                       blog?.excerpt?.[currentLang] ||
                         blog?.excerpt?.en ||
                         blog?.content?.[currentLang] ||
                         blog?.content?.en ||
                         "",
-                      14
+                      10
                     )}
                   </p>
                 </div>
               </article>
             ))}
+
+            {/* Mobile CTA below cards */}
+            <div className="jadwa-blog-mobile-bottom-btn">
+              <Link href="/blog-2" className="jadwa-blog-all-btn">
+                {currentLang === "ar"
+                  ? "جميع المقالات"
+                  : currentLang === "tr"
+                  ? "Tüm Yazılar"
+                  : "Read All Posts"}
+              </Link>
+            </div>
           </div>
-        </div>
+        </>
       )}
 
+      {/* Empty state after filtering */}
       {!filteredNews.length && (
         <div className="jadwa-blog-empty">
           {currentLang === "ar"

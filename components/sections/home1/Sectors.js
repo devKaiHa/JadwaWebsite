@@ -54,7 +54,7 @@ export default function Sectors({ values = [] }) {
   }
 
   return (
-    <section className="jadwa-values-section sec-pad">
+    <section className="jadwa-values-section ">
       {/* <div className="auto-container"> */}
       <div className="jadwa-values-stage">
         <Swiper

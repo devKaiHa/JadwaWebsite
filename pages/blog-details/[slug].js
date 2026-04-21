@@ -73,7 +73,10 @@ export default function BlogDetailsPage({ blog, relatedBlogs = [] }) {
               </div>
 
               {blogExcerpt ? (
-                <p className="jadwa-blog-details-excerpt">{blogExcerpt}</p>
+                <p
+                  className="jadwa-blog-details-excerpt"
+                  dangerouslySetInnerHTML={{ __html: blogExcerpt }}
+                />
               ) : null}
             </div>
 
@@ -116,8 +119,8 @@ export default function BlogDetailsPage({ blog, relatedBlogs = [] }) {
                     {lang === "ar"
                       ? "شارك المقال"
                       : lang === "tr"
-                      ? "Yazıyı paylaş"
-                      : "Share Article"}
+                        ? "Yazıyı paylaş"
+                        : "Share Article"}
                   </div>
 
                   <ShareArticle title={blogTitle} description={blogExcerpt} />

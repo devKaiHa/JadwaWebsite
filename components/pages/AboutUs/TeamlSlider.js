@@ -83,7 +83,10 @@ export default function TeamSlider({ team = [] }) {
 
                   <div className="jadwa-mini-team-position">{position}</div>
 
-                  <p className="jadwa-mini-team-bio">{truncateText(bio, 78)}</p>
+                  <p
+                    className="jadwa-mini-team-bio"
+                    dangerouslySetInnerHTML={{ __html: truncateText(bio, 78) }}
+                  />
                 </div>
               </article>
             </SwiperSlide>

@@ -65,20 +65,20 @@ const CustomFooter = () => {
       setFooterData(
         results[0].status === "fulfilled"
           ? results[0].value?.data || null
-          : null
+          : null,
       );
       setContactData(
         results[1].status === "fulfilled"
           ? results[1].value?.data || null
-          : null
+          : null,
       );
       setFunds(
         results[2].status === "fulfilled"
           ? pickArray(results[2].value).slice(0, 3)
-          : []
+          : [],
       );
       setPolicies(
-        results[3].status === "fulfilled" ? pickArray(results[3].value) : []
+        results[3].status === "fulfilled" ? pickArray(results[3].value) : [],
       );
     });
 
@@ -92,7 +92,7 @@ const CustomFooter = () => {
       Array.isArray(footerData?.links)
         ? footerData.links.filter((item) => item?.isActive)
         : [],
-    [footerData]
+    [footerData],
   );
 
   const socialLinks = useMemo(
@@ -100,7 +100,7 @@ const CustomFooter = () => {
       socialConfig
         .filter((item) => footerData?.[item.key])
         .map((item) => ({ ...item, href: footerData[item.key] })),
-    [footerData]
+    [footerData],
   );
 
   const branches = Array.isArray(contactData?.branches)
@@ -133,7 +133,11 @@ const CustomFooter = () => {
                   <Link href="/">
                     <img
                       className="footer-premium-logo-img"
-                      src="/assets/images/logos/jadwa-en-light.png"
+                      src={
+                        isRtl
+                          ? "/assets/images/logos/jadwa-ar-light.png"
+                          : "/assets/images/logos/jadwa-en-light.png"
+                      }
                       alt="Jadwa"
                     />
                   </Link>
@@ -288,6 +292,28 @@ const CustomFooter = () => {
                       </a>
                     </li>
                   ))}
+
+                  {footerData?.workDays && (
+                    <li>
+                      <span className="footer-premium-contact-icon">
+                        <i className="fas fa-calendar-alt"></i>
+                      </span>
+                      <span style={{ color: "rgba(255,255,255,0.72)" }}>
+                        {footerData?.workDays || "Monday - Friday"}
+                      </span>
+                    </li>
+                  )}
+
+                  {footerData?.workingHours && (
+                    <li>
+                      <span className="footer-premium-contact-icon">
+                        <i className="fas fa-clock"></i>
+                      </span>
+                      <span style={{ color: "rgba(255,255,255,0.72)" }}>
+                        {footerData?.workingHours || "09:00 - 17:00"}
+                      </span>
+                    </li>
+                  )}
                 </ul>
               </div>
             </div>
@@ -346,19 +372,21 @@ const CustomFooter = () => {
               </div>
 
               <ul className=" clearfix footer-premium-bottom-nav">
-                <li>
-                  <Link
-                    href={
-                      policyLinks.privacy
-                        ? `/policies/${policyLinks.privacy}`
-                        : "/policies"
-                    }
-                  >
-                    {t("privacy_policy")}
-                  </Link>
-                </li>
+                {policies?.map((item) => {
+                  return (
+                    <li key={item?._id}>
+                      <Link
+                        href={
+                          item?.slug ? `/policies/${item?.slug}` : "/policies"
+                        }
+                      >
+                        {item?.title[lang]}
+                      </Link>
+                    </li>
+                  );
+                })}
 
-                <li>
+                {/* <li>
                   <Link
                     href={
                       policyLinks.terms
@@ -368,7 +396,7 @@ const CustomFooter = () => {
                   >
                     {t("terms_conditions")}
                   </Link>
-                </li>
+                </li> */}
 
                 <li className="footer-premium-credit-item">
                   <a
@@ -382,8 +410,8 @@ const CustomFooter = () => {
                       {lang === "ar"
                         ? "تم التطوير بواسطة"
                         : lang === "tr"
-                        ? "Gelistiren"
-                        : "Built by"}
+                          ? "Gelistiren"
+                          : "Built by"}
                     </span>
                     <span className="footer-premium-credit-brand">
                       <span className="footer-premium-credit-dot" />

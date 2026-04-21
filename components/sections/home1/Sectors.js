@@ -39,10 +39,6 @@ export default function Sectors({ values = [] }) {
   const getText = (field) =>
     field?.[lang] || field?.en || field?.ar || field?.tr || "";
 
-  console.log("values raw:", values);
-  console.log("values is array:", Array.isArray(values));
-  console.log("items after filter/sort:", items);
-
   if (!items.length) {
     return (
       <section className="jadwa-values-section sec-pad">
@@ -54,16 +50,15 @@ export default function Sectors({ values = [] }) {
   }
 
   return (
-    <section className="jadwa-values-section ">
-      {/* <div className="auto-container"> */}
+    <section className="jadwa-values-section">
       <div className="jadwa-values-stage">
         <Swiper
           key={i18n.dir()}
           dir={i18n.dir()}
           modules={[Navigation, Pagination, Autoplay]}
-          slidesPerView={1.28}
+          slidesPerView={3.1}
           centeredSlides
-          spaceBetween={24}
+          spaceBetween={40}
           loop={items.length > 1}
           speed={700}
           observer
@@ -120,8 +115,8 @@ export default function Sectors({ values = [] }) {
                         {lang === "ar"
                           ? "قيمة أساسية"
                           : lang === "tr"
-                          ? "Temel Değer"
-                          : "Core Value"}
+                            ? "Temel Değer"
+                            : "Core Value"}
                       </span>
                     </div>
 
@@ -145,7 +140,6 @@ export default function Sectors({ values = [] }) {
 
         <div className="jadwa-values-pagination" />
       </div>
-      {/* </div> */}
     </section>
   );
 }

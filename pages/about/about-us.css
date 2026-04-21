@@ -85,7 +85,9 @@
   height: auto;
   opacity: 0.52;
   transform: scale(0.94);
-  transition: transform 0.55s ease, opacity 0.55s ease;
+  transition:
+    transform 0.55s ease,
+    opacity 0.55s ease;
 }
 
 .jadwa-values-swiper .swiper-slide-active {
@@ -95,7 +97,7 @@
 
 .jadwa-values-slide {
   position: relative;
-  height: 520px;
+  height: 420px;
   border-radius: 54px;
   overflow: hidden;
   padding: 36px 40px 34px;
@@ -112,7 +114,8 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at top right,
       rgba(185, 167, 122, 0.12),
       transparent 22%
@@ -129,10 +132,8 @@
   position: absolute;
   inset: 0;
   opacity: 0.16;
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.05) 1px,
-      transparent 1px
-    ),
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 30px 30px;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.4));
@@ -397,8 +398,12 @@ html[dir="rtl"] .jadwa-values-next i {
   isolation: isolate;
   cursor: pointer;
   flex: 1;
-  transition: flex 0.2s cubic-bezier(0.22, 1, 0.36, 1), background 0.45s ease,
-    box-shadow 0.45s ease, border-color 0.45s ease, transform 0.45s ease,
+  transition:
+    flex 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.45s ease,
+    box-shadow 0.45s ease,
+    border-color 0.45s ease,
+    transform 0.45s ease,
     opacity 0.35s ease;
 }
 
@@ -450,15 +455,15 @@ html[dir="rtl"] .jadwa-values-next i {
   inset: 0;
   z-index: 0;
   background-size: 28px 28px;
-  transition: opacity 0.35s ease, background-image 0.35s ease;
+  transition:
+    opacity 0.35s ease,
+    background-image 0.35s ease;
 }
 
 .about-value-dynamic-card.is-active .about-value-pattern {
   opacity: 0.16;
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.08) 1px,
-      transparent 1px
-    ),
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
   mask-image: linear-gradient(
     180deg,
@@ -470,7 +475,8 @@ html[dir="rtl"] .jadwa-values-next i {
 
 .about-value-dynamic-card.is-inactive .about-value-pattern {
   opacity: 0.42;
-  background-image: linear-gradient(rgba(5, 66, 57, 0.055) 1px, transparent 1px),
+  background-image:
+    linear-gradient(rgba(5, 66, 57, 0.055) 1px, transparent 1px),
     linear-gradient(90deg, rgba(5, 66, 57, 0.055) 1px, transparent 1px);
   mask-image: linear-gradient(
     180deg,
@@ -495,8 +501,12 @@ html[dir="rtl"] .jadwa-values-next i {
   align-items: center;
   justify-content: center;
   font-size: 23px;
-  transition: margin-bottom 0.35s ease, background 0.35s ease, color 0.35s ease,
-    border-color 0.35s ease, transform 0.35s ease;
+  transition:
+    margin-bottom 0.35s ease,
+    background 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s ease;
 }
 
 .about-value-dynamic-card.is-active .about-value-icon {
@@ -529,7 +539,10 @@ html[dir="rtl"] .jadwa-values-next i {
 /* pill */
 .about-info-pill {
   margin-bottom: 13px;
-  transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease;
 }
 
 .about-info-pill-dark {
@@ -554,8 +567,12 @@ html[dir="rtl"] .jadwa-values-next i {
 
 /* title */
 .about-value-title {
-  transition: color 0.35s ease, font-size 0.35s ease, margin-bottom 0.35s ease,
-    line-height 0.35s ease, letter-spacing 0.35s ease;
+  transition:
+    color 0.35s ease,
+    font-size 0.35s ease,
+    margin-bottom 0.35s ease,
+    line-height 0.35s ease,
+    letter-spacing 0.35s ease;
 }
 
 .about-value-dynamic-card.is-active {
@@ -583,16 +600,15 @@ html[dir="rtl"] .jadwa-values-next i {
 
 .about-value-dynamic-card.is-active .about-value-pattern {
   opacity: 0.16;
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.08) 1px,
-      transparent 1px
-    ),
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
 }
 
 .about-value-dynamic-card.is-inactive .about-value-pattern {
   opacity: 0.42;
-  background-image: linear-gradient(rgba(5, 66, 57, 0.055) 1px, transparent 1px),
+  background-image:
+    linear-gradient(rgba(5, 66, 57, 0.055) 1px, transparent 1px),
     linear-gradient(90deg, rgba(5, 66, 57, 0.055) 1px, transparent 1px);
 }
 
@@ -601,7 +617,9 @@ html[dir="rtl"] .jadwa-values-next i {
   inset: 0;
   z-index: 0;
   background-size: 28px 28px;
-  transition: opacity 0.45s ease, background-image 0.45s ease;
+  transition:
+    opacity 0.45s ease,
+    background-image 0.45s ease;
 }
 
 .about-value-dynamic-card .about-value-icon,
@@ -626,8 +644,12 @@ html[dir="rtl"] .jadwa-values-next i {
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #7fe0b2;
   font-size: 24px;
-  transition: margin-bottom 0.4s ease, background 0.4s ease, color 0.4s ease,
-    border-color 0.4s ease, transform 0.4s ease;
+  transition:
+    margin-bottom 0.4s ease,
+    background 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease,
+    transform 0.4s ease;
 }
 
 .about-value-dynamic-card.is-inactive .about-value-icon {
@@ -646,8 +668,12 @@ html[dir="rtl"] .jadwa-values-next i {
   border: 1px solid rgba(5, 66, 57, 0.08);
   color: var(--primary);
   font-size: 24px;
-  transition: margin-bottom 0.4s ease, background 0.4s ease, color 0.4s ease,
-    border-color 0.4s ease, transform 0.4s ease;
+  transition:
+    margin-bottom 0.4s ease,
+    background 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease,
+    transform 0.4s ease;
 }
 
 .about-value-dynamic-card.is-active .about-value-title {
@@ -659,7 +685,10 @@ html[dir="rtl"] .jadwa-values-next i {
   color: #7fe0b2;
   letter-spacing: -0.035em;
   max-width: 520px;
-  transition: font-size 0.4s ease, line-height 0.4s ease, color 0.4s ease,
+  transition:
+    font-size 0.4s ease,
+    line-height 0.4s ease,
+    color 0.4s ease,
     letter-spacing 0.4s ease;
 }
 
@@ -670,7 +699,10 @@ html[dir="rtl"] .jadwa-values-next i {
   color: var(--primary);
   letter-spacing: -0.02em;
   font-weight: 700;
-  transition: font-size 0.4s ease, line-height 0.4s ease, color 0.4s ease,
+  transition:
+    font-size 0.4s ease,
+    line-height 0.4s ease,
+    color 0.4s ease,
     letter-spacing 0.4s ease;
 }
 
@@ -680,7 +712,10 @@ html[dir="rtl"] .jadwa-values-next i {
   font-size: 14px;
   line-height: 1.9;
   opacity: 1;
-  transition: color 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+  transition:
+    color 0.4s ease,
+    opacity 0.4s ease,
+    transform 0.4s ease;
 }
 
 .about-value-dynamic-card.is-inactive .about-value-text p {
@@ -689,7 +724,10 @@ html[dir="rtl"] .jadwa-values-next i {
   font-size: 14px;
   line-height: 1.8;
   opacity: 0.92;
-  transition: color 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+  transition:
+    color 0.4s ease,
+    opacity 0.4s ease,
+    transform 0.4s ease;
 }
 
 .about-value-dynamic-card:hover .about-value-icon {
@@ -757,10 +795,8 @@ html[dir="rtl"] .jadwa-values-next i {
   inset: 0;
   opacity: 0.16;
   pointer-events: none;
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.05) 1px,
-      transparent 1px
-    ),
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 28px 28px;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.42));
@@ -772,15 +808,14 @@ html[dir="rtl"] .jadwa-values-next i {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(340px, 1.95fr);
   align-items: stretch;
-  max-height: 680px;
+  max-height: 500px;
 }
 
 .jadwa-founder-content {
   position: relative;
-  padding: 52px 46px;
+  padding: 20% 46px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .jadwa-founder-pill {
@@ -808,7 +843,7 @@ html[dir="rtl"] .jadwa-founder-counter {
   margin: 0 0 14px;
   max-width: 560px;
   font-family: var(--urbanist);
-  font-size: clamp(38px, 5vw, 76px);
+  font-size: clamp(38px, 5vw, 55px);
   line-height: 0.95;
   font-weight: 700;
   letter-spacing: -0.04em;
@@ -883,7 +918,8 @@ html[dir="rtl"] .jadwa-founder-link:hover {
 .jadwa-founder-image-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
+  background:
+    linear-gradient(
       90deg,
       rgba(3, 39, 35, 0.18) 0%,
       rgba(3, 39, 35, 0.04) 40%,
@@ -1290,7 +1326,9 @@ html[dir="rtl"] .jadwa-team-badge {
   overflow: hidden;
   background: linear-gradient(180deg, #ffffff 0%, #fbfcfc 100%);
   border: 1px solid rgba(5, 66, 57, 0.08);
-  transition: transform 0.35s ease, box-shadow 0.35s ease,
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
     border-color 0.35s ease;
 }
 

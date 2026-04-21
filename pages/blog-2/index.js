@@ -47,7 +47,7 @@ export default function BlogPage({ initialBlogs, initialCategories }) {
 
   const categories = useMemo(
     () => initialCategories?.data || [],
-    [initialCategories]
+    [initialCategories],
   );
 
   useEffect(() => {
@@ -105,7 +105,7 @@ export default function BlogPage({ initialBlogs, initialCategories }) {
           query: nextQuery,
         },
         undefined,
-        { shallow: true }
+        { shallow: true },
       );
     }
   }, [router, router.isReady, currentPage, categoryId, keyword]);
@@ -163,8 +163,8 @@ export default function BlogPage({ initialBlogs, initialCategories }) {
                 {currentLang === "ar"
                   ? "المدونة"
                   : currentLang === "tr"
-                  ? "Blog"
-                  : "Resources"}
+                    ? "Blog"
+                    : "Resources"}
               </span>
             </div>
 
@@ -172,16 +172,16 @@ export default function BlogPage({ initialBlogs, initialCategories }) {
               {currentLang === "ar"
                 ? "تصفح مقالاتنا ورؤيتنا"
                 : currentLang === "tr"
-                ? "Yazılarımızı ve içgörülerimizi keşfedin"
-                : "Browse Our Resources"}
+                  ? "Yazılarımızı ve içgörülerimizi keşfedin"
+                  : "Browse Our Resources"}
             </h2>
 
             <p className="jadwa-testimonials-subtitle">
               {currentLang === "ar"
                 ? "تحليلات ومقالات ورؤى تساعدك على متابعة الأسواق والفرص والقرارات الاستثمارية."
                 : currentLang === "tr"
-                ? "Piyasalar, fırsatlar ve yatırım kararları hakkında analizler, makaleler ve içgörüler."
-                : "Insights, articles, and market perspectives to help you follow opportunities and make informed decisions."}
+                  ? "Piyasalar, fırsatlar ve yatırım kararları hakkında analizler, makaleler ve içgörüler."
+                  : "Insights, articles, and market perspectives to help you follow opportunities and make informed decisions."}
             </p>
           </div>
           <div className="jadwa-blog-toolbar">
@@ -224,8 +224,8 @@ export default function BlogPage({ initialBlogs, initialCategories }) {
                   currentLang === "ar"
                     ? "ابحث في المقالات..."
                     : currentLang === "tr"
-                    ? "Yazılarda ara..."
-                    : "Search blog..."
+                      ? "Yazılarda ara..."
+                      : "Search blog..."
                 }
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
@@ -292,18 +292,20 @@ export default function BlogPage({ initialBlogs, initialCategories }) {
                           >
                             {truncateText(
                               blog?.title?.[currentLang] || blog?.title?.en,
-                              70
+                              70,
                             ) || "There is no title"}
                           </Link>
                         </h3>
 
                         <p className="jadwa-blog-hero-excerpt">
                           {truncateText(
-                            blog?.content?.[currentLang] ||
-                              blog?.content?.en ||
+                            blog?.excerpt?.[currentLang] ||
+                              blog?.excerpt?.en ||
                               "",
-                            130
-                          )}
+                            130,
+                          )
+                            .replace("<p>", "")
+                            .replace("</p>", "")}
                         </p>
 
                         <div className="jadwa-blog-hero-meta">
@@ -398,7 +400,7 @@ export default function BlogPage({ initialBlogs, initialCategories }) {
                           >
                             {truncateText(
                               blog?.title?.[currentLang] || blog?.title?.en,
-                              52
+                              52,
                             ) || "There is no title"}
                           </Link>
                         </h3>
@@ -408,7 +410,7 @@ export default function BlogPage({ initialBlogs, initialCategories }) {
                             blog?.content?.[currentLang] ||
                               blog?.content?.en ||
                               "",
-                            90
+                            90,
                           )}
                         </p>
 

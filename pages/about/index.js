@@ -10,7 +10,6 @@ import CompaniesBrief from "@/components/pages/AboutUs/CompaniesBrief";
 import TestimonialSlider03 from "@/components/slider/TestimonialSlider03";
 import Sectors from "@/components/sections/home1/Sectors";
 import { getHomeData } from "@/api/getHomeData";
-import { imageURL } from "@/api/GlobalData";
 import { useState } from "react";
 
 export async function getStaticProps() {
@@ -45,7 +44,7 @@ export default function About({ data = {}, homeData = {} }) {
 
   const pick = (obj) =>
     obj && typeof obj === "object"
-      ? obj[lang] ?? obj.en ?? obj.ar ?? obj.tr ?? ""
+      ? (obj[lang] ?? obj.en ?? obj.ar ?? obj.tr ?? "")
       : "";
   const localizedText = (field, currentLang) =>
     field?.[currentLang] || field?.en || "";
@@ -102,22 +101,6 @@ export default function About({ data = {}, homeData = {} }) {
 
   if (!hasAny) return null;
 
-  const formatDate = (date, locale = "en") => {
-    if (!date) return "";
-    try {
-      return new Date(date).toLocaleDateString(
-        locale === "ar" ? "ar" : locale === "tr" ? "tr-TR" : "en-US",
-        {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        }
-      );
-    } catch {
-      return "";
-    }
-  };
-
   const hasAboutBlocks =
     businessApproach ||
     whyUs ||
@@ -155,8 +138,8 @@ export default function About({ data = {}, homeData = {} }) {
                       {lang === "ar"
                         ? "نقدّم نهجًا استثماريًا قائمًا على الانضباط والحوكمة والرؤية طويلة المدى."
                         : lang === "tr"
-                        ? "Disiplin, yönetişim ve uzun vadeli bakış açısına dayalı bir yatırım yaklaşımı sunuyoruz."
-                        : "We bring together disciplined strategy, strong governance, and a long-term investment perspective."}
+                          ? "Disiplin, yönetişim ve uzun vadeli bakış açısına dayalı bir yatırım yaklaşımı sunuyoruz."
+                          : "We bring together disciplined strategy, strong governance, and a long-term investment perspective."}
                     </p>
                   </div>
 

@@ -82,7 +82,7 @@ export default function Header({
           ...item,
           href: footerData[item.key],
         })),
-    [footerData]
+    [footerData],
   );
 
   const saveLanguage = (lng) => {
@@ -171,8 +171,8 @@ export default function Header({
                   {activeLang === "ar"
                     ? "استثمر الآن"
                     : activeLang === "tr"
-                    ? "Yatırım yap"
-                    : "Invest now"}
+                      ? "Yatırım yap"
+                      : "Invest now"}
                 </Link>
 
                 <div

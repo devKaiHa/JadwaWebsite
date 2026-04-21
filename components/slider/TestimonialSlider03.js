@@ -53,8 +53,8 @@ export default function TestimonialsShowcase({ testimonials = [] }) {
                 {lang === "ar"
                   ? "الشهادات"
                   : lang === "tr"
-                  ? "Yorumlar"
-                  : "Partners"}
+                    ? "Yorumlar"
+                    : "Partners"}
               </span>
             </div>
 
@@ -62,16 +62,16 @@ export default function TestimonialsShowcase({ testimonials = [] }) {
               {lang === "ar"
                 ? "موثوق به من الفرق الطموحة"
                 : lang === "tr"
-                ? "Hırslı ekipler tarafından güveniliyor"
-                : "Trusted by ambitious teams"}
+                  ? "Hırslı ekipler tarafından güveniliyor"
+                  : "Trusted by ambitious teams"}
             </h2>
 
             <p className="jadwa-testimonials-subtitle">
               {lang === "ar"
                 ? "يستخدمه مؤسسون يهتمون بالسرعة والوضوح وثقة المستثمرين"
                 : lang === "tr"
-                ? "Hız, netlik ve yatırımcı güvenine önem veren ekipler tarafından kullanılır"
-                : "Used by founders who care about speed, clarity, and investor confidence"}
+                  ? "Hız, netlik ve yatırımcı güvenine önem veren ekipler tarafından kullanılır"
+                  : "Used by founders who care about speed, clarity, and investor confidence"}
             </p>
           </div>
 
@@ -85,6 +85,7 @@ export default function TestimonialsShowcase({ testimonials = [] }) {
                     spaceBetween={16}
                     slidesPerView={1}
                     pagination={{ clickable: true }}
+                    loop={true}
                     autoplay={{
                       delay: 4500,
                       disableOnInteraction: false,
@@ -106,7 +107,7 @@ export default function TestimonialsShowcase({ testimonials = [] }) {
                             {Array.from({
                               length: Math.max(
                                 1,
-                                Math.min(Number(item?.rating || 5), 5)
+                                Math.min(Number(item?.rating || 5), 5),
                               ),
                             }).map((_, i) => (
                               <i key={i} className="fa-solid fa-star" />
@@ -169,8 +170,8 @@ export default function TestimonialsShowcase({ testimonials = [] }) {
                     {lang === "ar"
                       ? "شريك موثوق"
                       : lang === "tr"
-                      ? "Güvenilir ortak"
-                      : "SaaS Founders Helped"}
+                        ? "Güvenilir ortak"
+                        : "SaaS Founders Helped"}
                   </p>
                 </div>
 
@@ -180,8 +181,8 @@ export default function TestimonialsShowcase({ testimonials = [] }) {
                     {lang === "ar"
                       ? "قيمة مستهدفة"
                       : lang === "tr"
-                      ? "Hedeflenen değer"
-                      : "Tons CO₂ tracked"}
+                        ? "Hedeflenen değer"
+                        : "Tons CO₂ tracked"}
                   </p>
                 </div>
 
@@ -191,8 +192,8 @@ export default function TestimonialsShowcase({ testimonials = [] }) {
                     {lang === "ar"
                       ? "كفاءة أعلى"
                       : lang === "tr"
-                      ? "Daha hızlı iş akışı"
-                      : "Faster ESG workflows"}
+                        ? "Daha hızlı iş akışı"
+                        : "Faster ESG workflows"}
                   </p>
                 </div>
               </div>

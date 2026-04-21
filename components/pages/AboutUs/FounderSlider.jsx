@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -27,7 +26,7 @@ export default function FounderSlider({ founders = [] }) {
         key={i18n.dir()}
         dir={i18n.dir()}
         modules={[Navigation, Pagination, Autoplay]}
-        slidesPerView={1}
+        slidesPerView={items.length > 1 ? 2 : 1}
         spaceBetween={24}
         loop={items.length > 1}
         speed={700}
@@ -74,10 +73,10 @@ export default function FounderSlider({ founders = [] }) {
                       <span className="jadwa-pill-dot" />
                       <span>
                         {lang === "ar"
-                          ? "المؤسس"
+                          ? "مؤسس"
                           : lang === "tr"
-                          ? "Kurucu"
-                          : "Founder"}
+                            ? "Kurucu"
+                            : "Founder"}
                       </span>
                     </div>
 
@@ -90,7 +89,11 @@ export default function FounderSlider({ founders = [] }) {
                     <div className="jadwa-founder-position">{position}</div>
 
                     <div className="jadwa-founder-bio">
-                      <p>{truncateText(bio, 260)}</p>
+                      <p
+                        dangerouslySetInnerHTML={{
+                          __html: truncateText(bio, 260),
+                        }}
+                      />
                     </div>
 
                     {/* {member?.slug ? (

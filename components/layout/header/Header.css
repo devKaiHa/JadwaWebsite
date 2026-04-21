@@ -8,7 +8,10 @@
   transform: translateX(-50%);
   width: 97%;
   z-index: 999;
-  transition: top 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  transition:
+    top 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
 }
 
 .jadwa-header.is-sticky {
@@ -26,7 +29,9 @@
   box-shadow: var(--header-shadow);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  transition: border-radius 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    border-radius 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .jadwa-header.is-sticky .jadwa-header-wrap {
@@ -203,7 +208,10 @@
   display: inline-flex;
   align-items: center;
   min-height: 86px;
-  transition: color 0.35s ease, transform 0.35s ease, opacity 0.35s ease;
+  transition:
+    color 0.35s ease,
+    transform 0.35s ease,
+    opacity 0.35s ease;
   will-change: transform;
 }
 
@@ -226,7 +234,9 @@
   opacity: 0;
   font-weight: 400;
   color: var(--secondary);
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
 }
 
 .jadwa-nav .navigation > li > a:hover::before,
@@ -248,7 +258,7 @@
   padding: 0 20px;
   border-radius: 10px;
   background: linear-gradient(135deg, var(--secondary-dark), var(--secondary));
-  color: var(--primary-dark) !important;
+  color: #fff /*var(--primary-dark) !important*/;
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
@@ -328,7 +338,8 @@
   top: 0;
   bottom: 0;
   width: min(92vw, 380px);
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at top left,
       rgba(185, 167, 122, 0.12),
       transparent 28%

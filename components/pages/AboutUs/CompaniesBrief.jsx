@@ -19,7 +19,7 @@ export default function CompaniesBrief({ companies = [] }) {
 
   const visibleCompanies = [...companies]
     .filter(
-      (company) => company?.companyName?.en || company?.companyName?.[lang]
+      (company) => company?.companyName?.en || company?.companyName?.[lang],
     )
     .sort((a, b) => (a?.order || 0) - (b?.order || 0))
     .slice(0, 3);
@@ -176,14 +176,14 @@ export default function CompaniesBrief({ companies = [] }) {
           <h2 className="jadwa-testimonials-title">
             {fallbackLabel(
               "about.ourCompaniesBrief",
-              "A Brief Look At Our Companies"
+              "A Brief Look At Our Companies",
             )}
           </h2>
 
           <p className="jadwa-testimonials-subtitle">
             {fallbackLabel(
               "companies.description",
-              "A curated view of selected companies within our ecosystem."
+              "A curated view of selected companies within our ecosystem.",
             )}
           </p>
         </div>

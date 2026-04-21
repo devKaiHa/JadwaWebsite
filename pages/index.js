@@ -1,13 +1,13 @@
 import Layout from "@/components/layout/Layout";
 import Banner from "@/components/sections/home1/Banner";
 import About from "@/components/sections/home3/About";
-import Sectors from "@/components/sections/home1/Sectors";
+// import Sectors from "@/components/sections/home1/Sectors";
 import Statistics from "@/components/sections/home3/Statistics";
-import Services from "@/components/sections/home3/Services";
+// import Services from "@/components/sections/home3/Services";
 import News from "@/components/sections/home2/News";
-import Project from "@/components/sections/home1/Project";
-import Industries from "@/components/sections/home1/Industries";
-import Partners from "@/components/sections/home2/Partners";
+// import Project from "@/components/sections/home1/Project";
+// import Industries from "@/components/sections/home1/Industries";
+// import Partners from "@/components/sections/home2/Partners";
 import Working from "@/components/sections/home2/Working";
 import { getHomeData } from "@/api/getHomeData";
 import TestimonialSlider03 from "@/components/slider/TestimonialSlider03";
@@ -46,7 +46,7 @@ export default function Home({ data = {}, otherData = {} }) {
     news = [],
     funds = [],
     statistics = [],
-    partners = [],
+    // partners = [],
   } = data;
 
   const { testimonials = [], companies = [] } = otherData;

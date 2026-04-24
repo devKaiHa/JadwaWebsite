@@ -6,32 +6,15 @@ import { useState } from "react";
 import { imageURL } from "@/api/GlobalData";
 
 export default function ProjectsPage({ projects = [] }) {
-  const { i18n } = useTranslation();
-  const lang = i18n.language || "en";
+  const { t } = useTranslation();
 
   return (
-    <Layout
-      breadcrumbTitle={
-        lang === "ar" ? "المشاريع" : lang === "tr" ? "Projeler" : "Projects"
-      }
-    >
+    <Layout breadcrumbTitle={t("projectsPage.breadcrumb")}>
       <section className="news-style-two sec-pad">
         <div className="auto-container">
           <div className="sec-title">
-            <span className="sub-title">
-              {lang === "ar"
-                ? "مشاريعنا"
-                : lang === "tr"
-                  ? "Projelerimiz"
-                  : "Our Projects"}
-            </span>
-            <h2>
-              {lang === "ar"
-                ? "المشاريع المنشورة"
-                : lang === "tr"
-                  ? "Yayinlanan projeler"
-                  : "Published projects"}
-            </h2>
+            <span className="sub-title">{t("projectsPage.subtitle")}</span>
+            <h2>{t("projectsPage.title")}</h2>
           </div>
           <div className="row clearfix">
             {projects.map((project) => {
@@ -49,12 +32,12 @@ export default function ProjectsPage({ projects = [] }) {
                               `${imageURL}projects/${project?.image}` ||
                               "/assets/images/news/news-1.jpg"
                             }
-                            alt={project?.title?.[lang] || project?.title?.en}
+                            alt={project?.title?.en}
                             style={{ height: "250px", objectFit: "cover" }}
                           />
                         </figure>
                       </div>
-                      <ProjectBrief project={project} lang={lang} />
+                      <ProjectBrief project={project} />
                     </div>
                   </div>
                 </div>
@@ -67,12 +50,13 @@ export default function ProjectsPage({ projects = [] }) {
   );
 }
 
-const ProjectBrief = ({ project, lang }) => {
+const ProjectBrief = ({ project }) => {
   const [expanded, setExpanded] = useState(false);
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language || "en";
 
   const brief = project?.brief?.[lang] || project?.brief?.en || "";
-
-  const shortText = brief.slice(0, 120); // adjust length
+  const shortText = brief.slice(0, 120);
 
   return (
     <div className="lower-box">
@@ -87,17 +71,7 @@ const ProjectBrief = ({ project, lang }) => {
             onClick={() => setExpanded(!expanded)}
             className="cursor-pointer text-primary ms-2"
           >
-            {expanded
-              ? lang === "ar"
-                ? "عرض أقل"
-                : lang === "tr"
-                  ? "Daha az"
-                  : "See less"
-              : lang === "ar"
-                ? "عرض المزيد"
-                : lang === "tr"
-                  ? "Daha fazla"
-                  : "See more"}
+            {expanded ? t("projectsPage.seeLess") : t("projectsPage.seeMore")}
           </span>
         )}
       </p>
@@ -105,13 +79,7 @@ const ProjectBrief = ({ project, lang }) => {
       {project?.projectLink && (
         <div className="link">
           <Link href={project.projectLink} target="_blank">
-            <span>
-              {lang === "ar"
-                ? "فتح المشروع"
-                : lang === "tr"
-                  ? "Projeyi Aç"
-                  : "Open Project"}
-            </span>
+            <span>{t("projectsPage.openProject")}</span>
           </Link>
         </div>
       )}

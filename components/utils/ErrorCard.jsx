@@ -1,25 +1,25 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const ErrorCard = () => {
+  const { t } = useTranslation();
+
   return (
-    <div class="card error-card" role="alert" aria-live="assertive">
-      <div class="error-emoji" aria-hidden="true">
-        ⚠️
+    <div className="card error-card" role="alert" aria-live="assertive">
+      <div className="error-emoji" aria-hidden="true">
+        !
       </div>
 
-      <div class="card-body">
-        <h4 class="error-title">Something went wrong</h4>
-        <p class="error-text">
-          We couldn't load the company details. Please check your connection and
-          try again.
-        </p>
+      <div className="card-body">
+        <h4 className="error-title">{t("errorCard.title")}</h4>
+        <p className="error-text">{t("errorCard.description")}</p>
 
-        <div class="error-actions">
-          <button id="retryBtn" class="btn btn-primary">
-            Retry
+        <div className="error-actions">
+          <button id="retryBtn" className="btn btn-primary">
+            {t("contactPage.retry")}
           </button>
-          <button id="contactBtn" class="btn btn-ghost">
-            Contact support
+          <button id="contactBtn" className="btn btn-ghost">
+            {t("errorCard.contactSupport")}
           </button>
         </div>
       </div>

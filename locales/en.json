@@ -1,13 +1,13 @@
 {
   "about": {
-    "about-us": "about us",
-    "investor": "investor",
+    "about-us": "About Us",
+    "investor": "Investor",
     "theFounders": "The Founders",
     "ourTeam": "Our Team",
-    "moreAboutUs": "More about us",
+    "moreAboutUs": "More About Us",
     "section": "Section",
-    "businessApproach": "Business approach",
-    "whyUs": "Why us",
+    "businessApproach": "Business Approach",
+    "whyUs": "Why Us",
     "governance": "Governance",
     "recognition": "Recognition",
     "prizes": "Prizes",
@@ -18,13 +18,16 @@
     "testimonials": "Testimonials"
   },
   "services": {
-    "title": "services",
-    "subtitle": "We Can offer everything",
-    "subtitle2": "The services we provide"
+    "litreal": "Services",
+    "title": "Services",
+    "subtitle": "We Can Offer Everything",
+    "subtitle2": "The Services We Provide"
   },
   "blog": {
     "Blogs": "Blogs",
-    "BlogDetails": "Blog Details"
+    "BlogDetails": "Blog Details",
+    "RelatedArticles": "Related Articles",
+    "RelatedBlogs": "Related Blogs"
   },
   "values": {
     "title": "Our Values",
@@ -39,8 +42,8 @@
     "subtitle": "Recent News From"
   },
   "companies": {
-    "title": "our companies",
-    "subtitle": "our companies"
+    "title": "Our Companies",
+    "subtitle": "Our Companies"
   },
   "partners": {
     "title": "Our Partners",
@@ -67,39 +70,40 @@
   "more_about": "More About",
   "years": "Years",
   "turkish_citizinchip": "Turkish Citizenship",
-  "experience_in": "Experience in",
-  "our_mission": "OUR MISSION",
-  "our_vision": "OUR VISION",
+  "experience_in": "Experience In",
+  "our_mission": "Our Mission",
+  "our_vision": "Our Vision",
   "strategic_goals": "Strategic Goals",
   "our_strategic_goals": "Our Strategic Goals",
   "goal": "Goal",
-  "more": "more",
-  "read_more": "Read more",
+  "more": "More",
+  "read_more": "Read More",
   "Services": "Services",
   "Phenomenal Consulting Solutions": "Phenomenal Consulting Solutions",
-  "Jadwa_most_important_services": "Jadwa most important services ",
+  "Jadwa_most_important_services": "Jadwa's Most Important Services",
   "ourTeam": "Our Team",
   "teamMember": "Team Member",
   "JadwaExpertTeam": "Founders of Jadwa Company",
   "fundBenefits": "Fund Benefits",
+  "arFundBenefits": "Fund Benefits",
   "InvestmentFunds": "Investment Funds",
   "EnterKeyword": "Enter Keyword",
   "Categories": "Categories",
-  "noCategories": "There Is No Categories",
+  "noCategories": "There Are No Categories",
   "Popular Tags": "Popular Tags",
   "ExploreMore": "Explore More",
   "By": "By",
   "On": "On",
   "NextPage": "Next Page",
-  "PrevPage": "Prev Page",
+  "PrevPage": "Previous Page",
   "Read All Posts": "Read All Blogs",
-  "Breadcrumbhome": "home",
-  "investGatepartners": "partners",
-  "investGateOurpartners": "our partners",
+  "Breadcrumbhome": "Home",
+  "investGatepartners": "Partners",
+  "investGateOurpartners": "Our Partners",
   "English": "English",
   "Arabic": "Arabic",
   "Turkish": "Turkish",
-  "see_more": "see more",
+  "see_more": "See More",
   "General": "General",
   "Category": "Category",
   "category": "Category",
@@ -110,18 +114,226 @@
     "Billion": "Billion",
     "Billion_p": "Client assets under advisement.",
     "Locations": "Locations",
-    "Locations_p": "Service with professional firm",
+    "Locations_p": "Service with a professional firm",
     "Years": "Years",
-    "Years_p": "Experience in consulting field"
+    "Years_p": "Experience in the consulting field"
   },
   "All": "All",
   "portfolio": "Portfolio",
   "investCompFunds": "Investment Companies & Funds",
   "leadership": "Leadership",
-  "meetOur": "Meet our",
+  "meetOur": "Meet Our",
   "headquarters": "Headquarters",
   "education": "Education",
   "profExp": "Professional Experience",
   "boardMember": "Board Member",
-  "bio": "Biography"
+  "bio": "Biography",
+  "about_us": "About Us",
+  "associated_companies": "Associated Companies",
+  "case_studies": "Case Studies",
+  "company": "Company",
+  "companyProfile": "Company Profile",
+  "contact_us": "Contact Us",
+  "country": "Country",
+  "email": "Email",
+  "emailCompany": "Company Email",
+  "error": "Something went wrong.",
+  "essentials": "Essentials",
+  "exploreCompany": "Explore Company",
+  "facebook": "Facebook",
+  "free_quote": "Free Quote",
+  "get_in_touch": "Get In Touch",
+  "hesitate_help": "Do not hesitate to reach out if you need any help.",
+  "home": "Home",
+  "how_it_works": "How It Works",
+  "insights": "Insights",
+  "instagram": "Instagram",
+  "instagram_post": "Instagram Posts",
+  "investmentFunds": "Investment Funds",
+  "join_with_us": "Join With Us",
+  "learnFunds": "Learn More About Funds",
+  "loading": "Loading...",
+  "moreLink": "See More",
+  "moreText": "Want to learn more about our funds?",
+  "noData": "No data available.",
+  "openWebsite": "Open Website",
+  "ourCompanies": "Our Companies",
+  "overview": "Overview",
+  "partnerships": "Partnerships",
+  "phone": "Phone",
+  "professionals": "Professionals",
+  "quick_links": "Quick Links",
+  "relatedFunds": "Related Funds",
+  "talk_to_us": "Talk To Us",
+  "testimonials": "Testimonials",
+  "title": "Title",
+  "twitter": "X",
+  "we_are_here_to_listen": "We Are Here To Listen",
+  "website": "Website",
+  "why_choose": "Why Choose Us",
+  "header": {
+    "investNow": "Invest now",
+    "languagePreference": "Language Preference",
+    "locationDetected": "Based on your location, we detected your site in {{location}}. The suggested language is {{language}}.",
+    "chooseAnotherLanguage": "Or choose another language from the options below:",
+    "accept": "Accept",
+    "unknownCity": "Unknown City",
+    "unknownRegion": "Unknown Region",
+    "unknownCountry": "Unknown Country",
+    "unknownLocation": "Unknown Location"
+  },
+  "menu": {
+    "home": "Home",
+    "aboutUs": "About Us",
+    "investments": "Investments",
+    "analyticsResearch": "Analytics & Research",
+    "news": "News",
+    "careers": "Careers",
+    "contactUs": "Contact Us"
+  },
+  "mobileMenu": {
+    "close": "Close menu"
+  },
+  "footer": {
+    "mondayFriday": "Monday - Friday",
+    "builtBy": "Built by",
+    "newsletter": {
+      "title": "Newsletter",
+      "text": "Stay tuned for market updates, insights, and new opportunities.",
+      "email": "Your email address",
+      "button": "Subscribe"
+    }
+  },
+  "homeAbout": {
+    "kicker": "Jadwa Al Yaqeen",
+    "title": "About us",
+    "since": "Since 2013",
+    "learnMore": "Learn More"
+  },
+  "homeFunds": {
+    "kicker": "Investment Funds",
+    "title": "Funds Available In The Data",
+    "description": "Explore a curated selection of investment funds designed for long-term growth.",
+    "investmentVolume": "Investment Volume",
+    "targetIrr": "Target IRR"
+  },
+  "homeNews": {
+    "kicker": "Insights",
+    "title": "Insights and perspectives from Jadwa",
+    "description": "Explore the latest articles, analysis, and updates around investments, sectors, and opportunities."
+  },
+  "homeTestimonials": {
+    "kicker": "Testimonials",
+    "title": "Trusted by ambitious teams",
+    "description": "Used by founders who care about speed, clarity, and investor confidence",
+    "client": "Client",
+    "statOne": "Trusted partners",
+    "statTwo": "Targeted value",
+    "statThree": "Faster workflows"
+  },
+  "companiesBrief": {
+    "title": "A Brief Look At Our Companies",
+    "description": "A curated view of selected companies within our ecosystem.",
+    "websiteAria": "company website"
+  },
+  "contactPage": {
+    "infoKicker": "Contact Information",
+    "infoTitle": "We'd Love to Hear From You",
+    "infoDescription": "If you have any questions, partnership ideas, or investment inquiries, our team is ready to help.",
+    "address": "Address",
+    "openMap": "Open Map",
+    "whatsApp": "WhatsApp",
+    "formKicker": "Send Message",
+    "formTitle": "Contact Us",
+    "subject": "Subject",
+    "requestType": "Request Type",
+    "sendMessage": "Send Message",
+    "sending": "Sending...",
+    "retry": "Retry",
+    "branchesKicker": "Branches",
+    "branchesTitle": "Our Offices & Branches",
+    "branchesDescription": "Reach our teams through multiple locations based on your needs.",
+    "map": "Map",
+    "requestTypes": {
+      "investment-inquiry": "Investment Inquiry",
+      "partnership": "Partnership",
+      "media": "Media",
+      "support": "Support"
+    },
+    "validation": {
+      "name": "Please enter your name.",
+      "email": "Please enter your email address.",
+      "message": "Please enter your message.",
+      "submitError": "We couldn't send your message. Please try again."
+    },
+    "error": {
+      "title": "Unable to load contact details",
+      "description": "Please try again in a moment."
+    },
+    "success": {
+      "messageSent": "Message sent successfully.",
+      "title": "Thanks, we got your message",
+      "description": "Our team will review your message and get back to you as soon as possible.",
+      "continue": "Continue"
+    }
+  },
+  "policiesPage": {
+    "breadcrumb": "Policies",
+    "subtitle": "Legal Pages",
+    "title": "Site Policies",
+    "description": "Review the legal and operational policies that govern the use of our website and services.",
+    "emptyTitle": "No policies available",
+    "emptyDescription": "Legal and site policies will appear here soon.",
+    "defaultType": "Policy"
+  },
+  "projectsPage": {
+    "breadcrumb": "Projects",
+    "subtitle": "Our Projects",
+    "title": "Published projects",
+    "seeLess": "See less",
+    "seeMore": "See more",
+    "openProject": "Open Project"
+  },
+  "researchPage": {
+    "breadcrumb": "Research",
+    "subtitle": "Research & Insights",
+    "title": "Published Research"
+  },
+  "linkedin": "LinkedIn",
+  "shareArticle": {
+    "title": "Share this article",
+    "description": "Send it to someone who may find it useful.",
+    "share": "Share",
+    "copyLink": "Copy link",
+    "copied": "Copied"
+  },
+  "companyContact": {
+    "eyebrow": "Contact us",
+    "title": "Contact & Offices",
+    "description": "Contact channels and office information for the company.",
+    "offices": "Offices"
+  },
+  "companyOverview": {
+    "noData": "No additional details are available yet."
+  },
+  "errorCard": {
+    "title": "Something went wrong",
+    "description": "We could not load the company details. Please check your connection and try again.",
+    "contactSupport": "Contact support"
+  },
+  "loadingCard": {
+    "company": "Loading company"
+  },
+  "comingSoon": {
+    "launchingSoon": "Launching Soon",
+    "title": "A New Digital Experience Is On The Way",
+    "text": "We are preparing a refined experience that reflects our standards, values, and long-term vision. This page will be available soon with more details, insights, and updates.",
+    "backHome": "Back to home",
+    "status": "Status",
+    "preparation": "In preparation",
+    "experience": "Experience",
+    "corporatePremium": "Corporate & Premium",
+    "availability": "Availability",
+    "soon": "Coming soon"
+  }
 }

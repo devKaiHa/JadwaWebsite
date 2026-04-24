@@ -5,30 +5,20 @@ import { fetchJSON, pickArray } from "@/GlobalHooks/GlobalHooks";
 import baseURL from "@/api/GlobalData";
 
 export default function PoliciesPage({ policies = [] }) {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const lang = i18n?.language || "en";
   const isAr = lang === "ar";
 
-  const pageTitle = isAr ? "السياسات" : "Policies";
-  const subTitle = isAr ? "السياسات القانونية" : "Legal Pages";
-  const heading = isAr ? "سياسات الموقع" : "Site Policies";
-  const emptyTitle = isAr ? "لا توجد سياسات حالياً" : "No policies available";
-  const emptyText = isAr
-    ? "سيتم إضافة السياسات القانونية هنا قريباً."
-    : "Legal and site policies will appear here soon.";
-  const readMoreText = isAr ? "اقرأ المزيد" : "Read More";
-  const introText = isAr
-    ? "تعرف على السياسات القانونية والتنظيمية التي تحكم استخدام الموقع والخدمات."
-    : "Review the legal and operational policies that govern the use of our website and services.";
-
   return (
-    <Layout breadcrumbTitle={pageTitle}>
+    <Layout breadcrumbTitle={t("policiesPage.breadcrumb")}>
       <section className="policies-page-section sec-pad">
         <div className="auto-container">
           <div className="policies-page-heading centred">
-            <span className="policies-page-subtitle">{subTitle}</span>
-            <h2>{heading}</h2>
-            <p>{introText}</p>
+            <span className="policies-page-subtitle">
+              {t("policiesPage.subtitle")}
+            </span>
+            <h2>{t("policiesPage.title")}</h2>
+            <p>{t("policiesPage.description")}</p>
           </div>
 
           {policies?.length ? (
@@ -37,7 +27,7 @@ export default function PoliciesPage({ policies = [] }) {
                 const title = policy?.title?.[lang] || policy?.title?.en || "-";
                 const summary =
                   policy?.summary?.[lang] || policy?.summary?.en || "";
-                const type = policy?.policyType || "Policy";
+                const type = policy?.policyType || t("policiesPage.defaultType");
 
                 return (
                   <div
@@ -65,7 +55,7 @@ export default function PoliciesPage({ policies = [] }) {
                             href={`/policies/${policy?.slug}`}
                             className="policy-card-link"
                           >
-                            <span>{readMoreText}</span>
+                            <span>{t("read_more")}</span>
                             <i
                               className={`fas ${
                                 isAr ? "fa-arrow-left" : "fa-arrow-right"
@@ -82,8 +72,8 @@ export default function PoliciesPage({ policies = [] }) {
           ) : (
             <div className="policies-empty-state">
               <div className="policies-empty-state-inner">
-                <h3>{emptyTitle}</h3>
-                <p>{emptyText}</p>
+                <h3>{t("policiesPage.emptyTitle")}</h3>
+                <p>{t("policiesPage.emptyDescription")}</p>
               </div>
             </div>
           )}

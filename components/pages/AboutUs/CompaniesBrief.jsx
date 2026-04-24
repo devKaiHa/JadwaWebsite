@@ -145,7 +145,9 @@ export default function CompaniesBrief({ companies = [] }) {
                 target="_blank"
                 rel="noreferrer"
                 className="companies-brief-website"
-                aria-label={`${companyName} website`}
+                aria-label={t("companiesBrief.websiteAria", {
+                  company: companyName,
+                })}
               >
                 <span className="companies-brief-website-icon">
                   <i className="fas fa-globe-americas" />
@@ -174,15 +176,12 @@ export default function CompaniesBrief({ companies = [] }) {
           </div>
 
           <h2 className="jadwa-testimonials-title">
-            {fallbackLabel(
-              "about.ourCompaniesBrief",
-              "A Brief Look At Our Companies",
-            )}
+            {fallbackLabel("companiesBrief.title", "A Brief Look At Our Companies")}
           </h2>
 
           <p className="jadwa-testimonials-subtitle">
             {fallbackLabel(
-              "companies.description",
+              "companiesBrief.description",
               "A curated view of selected companies within our ecosystem.",
             )}
           </p>

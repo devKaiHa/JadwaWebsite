@@ -5,12 +5,6 @@ import Menu from "../Menu";
 import { useTranslation } from "react-i18next";
 import { useEffect, useMemo, useState } from "react";
 
-const languages = [
-  { value: "en", label: "English" },
-  { value: "ar", label: "العربية" },
-  { value: "tr", label: "Türkçe" },
-];
-
 const supportedLangs = ["en", "ar", "tr"];
 
 const socialConfig = [
@@ -26,12 +20,20 @@ export default function Header({
   sticky,
   footerData,
 }) {
-  const { i18n } = useTranslation();
-
+  const { i18n, t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
   const [suggestedLang, setSuggestedLang] = useState("en");
   const [activeLang, setActiveLang] = useState("en");
   const [userLocation, setUserLocation] = useState("");
+
+  const languages = useMemo(
+    () => [
+      { value: "en", label: t("English") },
+      { value: "ar", label: t("Arabic") },
+      { value: "tr", label: t("Turkish") },
+    ],
+    [t],
+  );
 
   useEffect(() => {
     const match = document.cookie.match(/site_lang=(\w+)/);
@@ -54,9 +56,9 @@ export default function Header({
         setActiveLang(userLang);
         setShowModal(true);
 
-        const location = `${data?.city || "Unknown City"}, ${
-          data?.region || "Unknown Region"
-        }, ${data?.country_name || "Unknown Country"}`;
+        const location = `${data?.city || t("header.unknownCity")}, ${
+          data?.region || t("header.unknownRegion")
+        }, ${data?.country_name || t("header.unknownCountry")}`;
 
         setUserLocation(location);
       })
@@ -64,9 +66,9 @@ export default function Header({
         setSuggestedLang("en");
         setActiveLang("en");
         setShowModal(true);
-        setUserLocation("Unknown Location");
+        setUserLocation(t("header.unknownLocation"));
       });
-  }, []);
+  }, [t]);
 
   useEffect(() => {
     i18n.changeLanguage(activeLang);
@@ -168,11 +170,7 @@ export default function Header({
                   rel="noreferrer"
                   className="jadwa-invest-btn"
                 >
-                  {activeLang === "ar"
-                    ? "استثمر الآن"
-                    : activeLang === "tr"
-                      ? "Yatırım yap"
-                      : "Invest now"}
+                  {t("header.investNow")}
                 </Link>
 
                 <div
@@ -193,14 +191,19 @@ export default function Header({
         <div className="language-modal-overlay">
           <div className="language-modal">
             <div className="language-modal-content">
-              <h2 className="language-modal-title">Language Preference</h2>
+              <h2 className="language-modal-title">
+                {t("header.languagePreference")}
+              </h2>
               <p className="language-modal-text">
-                Based on your location, we detected your site in{" "}
-                <b>{userLocation}</b>. The suggested language is{" "}
-                <b>{suggestedLang.toUpperCase()}</b>.
+                {t("header.locationDetected", {
+                  location: userLocation,
+                  language:
+                    languages.find((item) => item.value === suggestedLang)
+                      ?.label || suggestedLang.toUpperCase(),
+                })}
               </p>
               <p className="language-modal-subtext">
-                Or choose another language from the options below:
+                {t("header.chooseAnotherLanguage")}
               </p>
 
               <div className="language-options">
@@ -213,7 +216,7 @@ export default function Header({
                       onClick={() => handleOtherLang(lng)}
                       className="language-option-btn"
                     >
-                      {lng.toUpperCase()}
+                      {languages.find((item) => item.value === lng)?.label || lng}
                     </button>
                   ))}
               </div>
@@ -224,7 +227,7 @@ export default function Header({
               onClick={handleAccept}
               className="theme-btn btn-two"
             >
-              Accept
+              {t("header.accept")}
             </button>
           </div>
         </div>

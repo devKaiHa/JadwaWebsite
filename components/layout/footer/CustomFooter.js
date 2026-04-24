@@ -14,30 +14,9 @@ const socialConfig = [
 const localize = (value, lang) =>
   value?.[lang] || value?.en || value?.ar || value?.tr || "";
 
-const newsletterCopy = {
-  en: {
-    title: "Newsletter",
-    text: "Stay tuned for market updates, insights, and new opportunities.",
-    email: "Your email address",
-    button: "Subscribe",
-  },
-  ar: {
-    title: "النشرة البريدية",
-    text: "ابقَ على اطلاع بآخر التحديثات والرؤى والفرص الاستثمارية.",
-    email: "بريدك الإلكتروني",
-    button: "اشترك",
-  },
-  tr: {
-    title: "Bulten",
-    text: "Piyasa guncellemeleri, analizler ve yeni firsatlar icin takipte kalin.",
-    email: "E-posta adresiniz",
-    button: "Abone Ol",
-  },
-};
-
 const defaultAddress = {
   en: "Mahmutbey Mah. Haci Bostan Cad. No.22, Bagcilar - Istanbul",
-  ar: "محلة محمود بيه، شارع حاجي بستان، رقم 22، باغجلار - إسطنبول",
+  ar: "حي محمود بيه، شارع حاجي بستان، رقم 22، باغجلار - إسطنبول",
   tr: "Mahmutbey Mah. Haci Bostan Cad. No.22, Bağcılar - İstanbul",
 };
 
@@ -112,13 +91,6 @@ const CustomFooter = () => {
     defaultAddress[lang] ||
     defaultAddress.en;
 
-  const policyLinks = {
-    privacy:
-      policies.find((item) => item?.policyType === "privacy")?.slug || null,
-    terms: policies.find((item) => item?.policyType === "terms")?.slug || null,
-  };
-
-  const copy = newsletterCopy[lang] || newsletterCopy.en;
   const currentYear = new Date().getFullYear();
 
   return (
@@ -168,11 +140,7 @@ const CustomFooter = () => {
             <div className="col-lg-2 col-md-6 col-sm-12 footer-column">
               <div className="footer-widget links-widget footer-premium-widget">
                 <div className="widget-title footer-premium-widget-title">
-                  <h3>
-                    {t("quick_links") === "quick_links"
-                      ? "Quick Links"
-                      : t("quick_links")}
-                  </h3>
+                  <h3>{t("quick_links")}</h3>
                 </div>
                 <div className="widget-content">
                   <ul className="links-list clearfix footer-premium-links">
@@ -189,11 +157,7 @@ const CustomFooter = () => {
             <div className="col-lg-3 col-md-6 col-sm-12 footer-column">
               <div className="footer-widget links-widget footer-premium-widget">
                 <div className="widget-title footer-premium-widget-title">
-                  <h3>
-                    {t("InvestmentFunds") === "InvestmentFunds"
-                      ? "Investment Funds"
-                      : t("InvestmentFunds")}
-                  </h3>
+                  <h3>{t("InvestmentFunds")}</h3>
                 </div>
                 <div className="widget-content">
                   <ul className="links-list clearfix footer-premium-links">
@@ -219,11 +183,7 @@ const CustomFooter = () => {
                 dir="ltr"
               >
                 <div className="widget-title footer-premium-widget-title">
-                  <h3>
-                    {t("contact_us") === "contact_us"
-                      ? "Contact"
-                      : t("contact_us")}
-                  </h3>
+                  <h3>{t("contact_us")}</h3>
                 </div>
 
                 <ul className="footer-premium-contact-list">
@@ -299,7 +259,7 @@ const CustomFooter = () => {
                         <i className="fas fa-calendar-alt"></i>
                       </span>
                       <span style={{ color: "rgba(255,255,255,0.72)" }}>
-                        {footerData?.workDays || "Monday - Friday"}
+                        {footerData?.workDays || t("footer.mondayFriday")}
                       </span>
                     </li>
                   )}
@@ -324,9 +284,11 @@ const CustomFooter = () => {
               <div className="col-lg-5 col-md-12 col-sm-12">
                 <div className="footer-widget mb-3 mb-lg-0 footer-premium-widget">
                   <div className="widget-title footer-premium-widget-title">
-                    <h3>{copy.title}</h3>
+                    <h3>{t("footer.newsletter.title")}</h3>
                   </div>
-                  <p className="footer-premium-newsletter-text">{copy.text}</p>
+                  <p className="footer-premium-newsletter-text">
+                    {t("footer.newsletter.text")}
+                  </p>
                 </div>
               </div>
 
@@ -339,14 +301,14 @@ const CustomFooter = () => {
                   >
                     <input
                       type="email"
-                      placeholder={copy.email}
+                      placeholder={t("footer.newsletter.email")}
                       className="footer-premium-input"
                     />
                     <button
                       type="submit"
                       className="theme-btn btn-two footer-premium-btn"
                     >
-                      <span>{copy.button}</span>
+                      <span>{t("footer.newsletter.button")}</span>
                       <i className="fas fa-paper-plane" />
                     </button>
                   </div>
@@ -386,18 +348,6 @@ const CustomFooter = () => {
                   );
                 })}
 
-                {/* <li>
-                  <Link
-                    href={
-                      policyLinks.terms
-                        ? `/policies/${policyLinks.terms}`
-                        : "/policies"
-                    }
-                  >
-                    {t("terms_conditions")}
-                  </Link>
-                </li> */}
-
                 <li className="footer-premium-credit-item">
                   <a
                     href="https://www.smartinb.com"
@@ -407,11 +357,7 @@ const CustomFooter = () => {
                     aria-label="Built by Smartinb"
                   >
                     <span className="footer-premium-credit-label">
-                      {lang === "ar"
-                        ? "تم التطوير بواسطة"
-                        : lang === "tr"
-                          ? "Gelistiren"
-                          : "Built by"}
+                      {t("footer.builtBy")}
                     </span>
                     <span className="footer-premium-credit-brand">
                       <span className="footer-premium-credit-dot" />

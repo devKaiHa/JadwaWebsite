@@ -1,24 +1,25 @@
 {
   "about": {
-    "about-us": "about us",
+    "about-us": "Hakkımızda",
     "investor": "Yatırımcı",
     "theFounders": "Kurucular",
     "ourTeam": "Ekibimiz",
-    "moreAboutUs": "Daha fazla hakkımızda",
+    "moreAboutUs": "Hakkımızda Daha Fazla",
     "section": "Bölüm",
-    "businessApproach": "İş yaklaşımı",
-    "whyUs": "Neden biz?",
+    "businessApproach": "İş Yaklaşımı",
+    "whyUs": "Neden Biz?",
     "governance": "Yönetişim",
-    "recognition": "Tanıma",
+    "recognition": "Tanınırlık",
     "prizes": "Ödüller",
-    "provider": "Sağlayan",
+    "provider": "Sağlayıcı",
     "date": "Tarih",
     "credentials": "Belgeler",
     "certificates": "Sertifikalar",
-    "testimonials": "Referanslar"
+    "testimonials": "Yorumlar"
   },
   "services": {
-    "title": "hizmetler",
+    "litreal": "Hizmetler",
+    "title": "Hizmetler",
     "subtitle": "Her şeyi sunabiliriz",
     "subtitle2": "Sunduğumuz hizmetler"
   },
@@ -28,45 +29,45 @@
   },
   "blog": {
     "Blogs": "Bloglar",
-    "BlogDetails": "Blog Ayrıntıları"
+    "BlogDetails": "Blog Detayları",
+    "RelatedArticles": "İlgili Makaleler",
+    "RelatedBlogs": "İlgili Bloglar"
   },
   "investmentSectors": {
     "title": "Yatırım Sektörleri",
     "subtitle": "Farklı sektörlerde çeşitli fırsatlar"
   },
   "newsRoom": {
-    "title": "Blog Gönderisi",
+    "title": "Blog Yazısı",
     "subtitle": "Son Haberler"
   },
   "companies": {
-    "title": "şirketlerimiz",
-    "subtitle": "Şirketlerimiz  "
+    "title": "Şirketlerimiz",
+    "subtitle": "Şirketlerimiz"
   },
   "partners": {
     "title": "Ortaklarımız",
     "subtitle": "Stratejik Ortaklar"
   },
-
   "contact": {
     "title": "Bizimle İletişime Geçin",
     "description": "Herhangi bir sorunuz veya sorununuz varsa, formu doldurarak bizimle iletişime geçebilirsiniz.",
     "address": "MAHMUTBEY MAH.HACI BOSTAN CAD.NO.22 \nBAĞCILAR - İSTANBUL",
     "socialTitle": "Bize Ulaşın:",
     "formTitle": "Bizimle İletişime Geçin",
-    "followUs": "Bizi takip edin",
+    "followUs": "Bizi Takip Edin",
     "name": "İsim",
     "email": "E-posta",
     "phone": "Telefon",
     "message": "Mesaj",
     "submit": "Gönder"
   },
-
-  "companySpecialization": "Yatırım yönetimi ve anonim şirketlerin kuruluşunda uzmanlaşmış bir şirket",
+  "companySpecialization": "Yatırım yönetimi ve anonim şirketlerin kurulmasında uzmanlaşmış bir şirket",
   "all_rights_reserved": "Tüm hakları saklıdır",
   "terms_conditions": "Şartlar ve Koşullar",
   "privacy_policy": "Gizlilik Politikası",
   "investor_rights": "Yatırımcı Hakları",
-  "more_about": "Hakkında Daha Fazla",
+  "more_about": "Daha Fazla Bilgi",
   "years": "Yıl",
   "turkish_citizinchip": "Türk Vatandaşlığı",
   "experience_in": "Deneyim",
@@ -75,45 +76,45 @@
   "strategic_goals": "Stratejik Hedefler",
   "our_strategic_goals": "Stratejik Hedeflerimiz",
   "goal": "Hedef",
-  "more": "daha fazla",
-  "read_more": "Devamı oku",
+  "more": "Daha Fazla",
+  "read_more": "Devamını Oku",
   "Services": "Hizmetler",
   "Phenomenal Consulting Solutions": "Olağanüstü Danışmanlık Çözümleri",
-  "Jadwa_most_important_services": "Jadwa Şirketi'nin en önemli hizmetleri",
+  "Jadwa_most_important_services": "Jadwa Şirketinin En Önemli Hizmetleri",
   "ourTeam": "Ekibimiz",
   "teamMember": "Ekip Üyesi",
-  "JadwaExpertTeam": "Jadwa Şirketi'nin Kurucuları",
-  "fundBenefits": "Fonun Avantajları",
+  "JadwaExpertTeam": "Jadwa Şirketinin Kurucuları",
+  "fundBenefits": "Fon Avantajları",
+  "arFundBenefits": "Fon Avantajları",
   "InvestmentFunds": "Yatırım Fonları",
-  "EnterKeyword": "Anahtar Kelimeyi Girin ",
+  "EnterKeyword": "Anahtar Kelimeyi Girin",
   "Categories": "Kategoriler",
   "noCategories": "Kategori Yok",
-
   "Popular Tags": "Popüler Etiketler",
-  "ExploreMore": "KeşfetDaha Fazla",
-  "By": "İle",
-  "On": "Açık",
+  "ExploreMore": "Daha Fazla Keşfet",
+  "By": "Tarafından",
+  "On": "Tarihinde",
   "NextPage": "Sonraki Sayfa",
   "PrevPage": "Önceki Sayfa",
-  "Read All Posts": "Tüm makaleleri okuyun",
+  "Read All Posts": "Tüm Yazıları Oku",
   "Breadcrumbhome": "Ana Sayfa",
-  "investGatepartners": "ortaklar",
-  "investGateOurpartners": "ortaklarımız",
+  "investGatepartners": "Ortaklar",
+  "investGateOurpartners": "Ortaklarımız",
   "English": "İngilizce",
   "Arabic": "Arapça",
   "Turkish": "Türkçe",
-  "see_more": "daha fazlasını gör",
+  "see_more": "Daha Fazlasını Gör",
   "General": "Genel",
   "Category": "Kategori",
   "category": "Kategori",
-  "noTitle": "Başlık yok",
+  "noTitle": "Başlık Yok",
   "Company_Overview": "Fon Genel Bakışı",
   "funfact": {
-    "title": "Rakamlar kendi başına konuşuyor",
+    "title": "Rakamlar kendileri için konuşur",
     "Billion": "Milyar",
     "Billion_p": "Danışmanlık altındaki müşteri varlıkları.",
     "Locations": "Konumlar",
-    "Locations_p": "Profesyonel firma ile hizmet",
+    "Locations_p": "Profesyonel firmayla hizmet",
     "Years": "Yıl",
     "Years_p": "Danışmanlık alanında deneyim"
   },
@@ -121,10 +122,218 @@
   "portfolio": "Portföy",
   "investCompFunds": "Yatırım Şirketleri ve Fonlar",
   "leadership": "Liderlik",
-  "meetOur": "ile Tanışın",
+  "meetOur": "Tanışın",
   "headquarters": "Genel Merkez",
   "education": "Eğitim",
   "profExp": "Profesyonel Deneyim",
   "boardMember": "Yönetim Kurulu Üyesi",
-  "bio": "Biyografi"
+  "bio": "Biyografi",
+  "about_us": "Hakkımızda",
+  "associated_companies": "İlişkili Şirketler",
+  "case_studies": "Vaka Çalışmaları",
+  "company": "Şirket",
+  "companyProfile": "Şirket Profili",
+  "contact_us": "Bize Ulaşın",
+  "country": "Ülke",
+  "email": "E-posta",
+  "emailCompany": "Şirket E-postası",
+  "error": "Bir şeyler ters gitti.",
+  "essentials": "Temel Bağlantılar",
+  "exploreCompany": "Şirketi İncele",
+  "facebook": "Facebook",
+  "free_quote": "Ücretsiz Teklif",
+  "get_in_touch": "İletişime Geçin",
+  "hesitate_help": "Yardıma ihtiyacınız varsa bizimle iletişime geçmekten çekinmeyin.",
+  "home": "Ana Sayfa",
+  "how_it_works": "Nasıl Çalışır",
+  "insights": "İçgörüler",
+  "instagram": "Instagram",
+  "instagram_post": "Instagram Gönderileri",
+  "investmentFunds": "Yatırım Fonları",
+  "join_with_us": "Bize Katılın",
+  "learnFunds": "Fonları İnceleyin",
+  "loading": "Yükleniyor...",
+  "moreLink": "Daha Fazla Gör",
+  "moreText": "Fonlarımız hakkında daha fazla bilgi almak ister misiniz?",
+  "noData": "Veri bulunamadı.",
+  "openWebsite": "Web Sitesini Aç",
+  "ourCompanies": "Şirketlerimiz",
+  "overview": "Genel Bakış",
+  "partnerships": "Ortaklıklar",
+  "phone": "Telefon",
+  "professionals": "Uzmanlar",
+  "quick_links": "Hızlı Bağlantılar",
+  "relatedFunds": "İlgili Fonlar",
+  "talk_to_us": "Bizimle Konuşun",
+  "testimonials": "Müşteri Yorumları",
+  "title": "Başlık",
+  "twitter": "X",
+  "we_are_here_to_listen": "Sizi Dinlemek İçin Buradayız",
+  "website": "Web Sitesi",
+  "why_choose": "Neden Bizi Seçmelisiniz",
+  "header": {
+    "investNow": "Şimdi yatırım yap",
+    "languagePreference": "Dil Tercihi",
+    "locationDetected": "Konumunuza göre sitenizin bulunduğu yer {{location}} olarak algılandı. Önerilen dil {{language}}.",
+    "chooseAnotherLanguage": "Veya aşağıdaki seçeneklerden başka bir dil seçin:",
+    "accept": "Kabul Et",
+    "unknownCity": "Bilinmeyen şehir",
+    "unknownRegion": "Bilinmeyen Bölge",
+    "unknownCountry": "Bilinmeyen ülke",
+    "unknownLocation": "Bilinmeyen Konum"
+  },
+  "menu": {
+    "home": "Ana Sayfa",
+    "aboutUs": "Hakkımızda",
+    "investments": "Yatırımlar",
+    "analyticsResearch": "Analiz ve Araştırma",
+    "news": "Haberler",
+    "careers": "Kariyer",
+    "contactUs": "İletişim"
+  },
+  "mobileMenu": {
+    "close": "Menüyü kapat"
+  },
+  "footer": {
+    "mondayFriday": "Pazartesi - Cuma",
+    "builtBy": "Geliştiren",
+    "newsletter": {
+      "title": "Bülten",
+      "text": "Piyasa güncellemeleri, analizler ve yeni fırsatlar için takipte kalın.",
+      "email": "E-posta adresiniz",
+      "button": "Abone Ol"
+    }
+  },
+  "homeAbout": {
+    "kicker": "Jadwa Al Yaqeen",
+    "title": "Hakkımızda",
+    "since": "2013'ten beri",
+    "learnMore": "Daha Fazla Bilgi"
+  },
+  "homeFunds": {
+    "kicker": "Yatırım Fonları",
+    "title": "Verilerdeki Mevcut Fonlar",
+    "description": "Uzun vadeli büyüme için tasarlanmış seçilmiş yatırım fonlarını keşfedin.",
+    "investmentVolume": "Yatırım Hacmi",
+    "targetIrr": "Hedef IRR"
+  },
+  "homeNews": {
+    "kicker": "İçgörüler",
+    "title": "Jadwa'dan içgörüler ve bakış açıları",
+    "description": "Yatırımlar, sektörler ve fırsatlar hakkında en son makaleleri, analizleri ve güncellemeleri keşfedin."
+  },
+  "homeTestimonials": {
+    "kicker": "Yorumlar",
+    "title": "Hırslı ekipler tarafından güveniliyor",
+    "description": "Hız, netlik ve yatırımcı güvenine önem veren kurucular tarafından kullanılır",
+    "client": "Müşteri",
+    "statOne": "Güvenilir ortaklar",
+    "statTwo": "Hedeflenen değer",
+    "statThree": "Daha hızlı iş akışları"
+  },
+  "companiesBrief": {
+    "title": "Şirketlerimize Kısa Bir Bakış",
+    "description": "Ekosistemimizdeki seçili şirketlerin özenle hazırlanmış bir görünümü.",
+    "websiteAria": "{{company}} web sitesi"
+  },
+  "contactPage": {
+    "infoKicker": "İletişim Bilgileri",
+    "infoTitle": "Sizden Haber Almaktan Memnuniyet Duyarız",
+    "infoDescription": "Sorularınız, ortaklık fikirleriniz veya yatırım talepleriniz varsa ekibimiz yardımcı olmaya hazır.",
+    "address": "Adres",
+    "openMap": "Haritayı Aç",
+    "whatsApp": "WhatsApp",
+    "formKicker": "Mesaj Gönder",
+    "formTitle": "Bize Ulaşın",
+    "subject": "Konu",
+    "requestType": "Talep Türü",
+    "sendMessage": "Mesaj Gönder",
+    "sending": "Gönderiliyor...",
+    "retry": "Tekrar Dene",
+    "branchesKicker": "Şubeler",
+    "branchesTitle": "Ofislerimiz ve Şubelerimiz",
+    "branchesDescription": "İhtiyacınıza göre ekiplerimize birden fazla lokasyondan ulaşabilirsiniz.",
+    "map": "Harita",
+    "requestTypes": {
+      "investment-inquiry": "Yatırım Talebi",
+      "partnership": "Ortaklık",
+      "media": "Medya",
+      "support": "Destek"
+    },
+    "validation": {
+      "name": "Lütfen adınızı girin.",
+      "email": "Lütfen e-posta adresinizi girin.",
+      "message": "Lütfen mesajınızı girin.",
+      "submitError": "Mesajınız gönderilemedi. Lütfen tekrar deneyin."
+    },
+    "error": {
+      "title": "İletişim bilgileri yüklenemedi",
+      "description": "Lütfen biraz sonra tekrar deneyin."
+    },
+    "success": {
+      "messageSent": "Mesaj başarıyla gönderildi.",
+      "title": "Teşekkürler, mesajınızı aldık",
+      "description": "Ekibimiz mesajınızı inceleyip size en kısa sürede dönüş yapacaktır.",
+      "continue": "Devam Et"
+    }
+  },
+  "policiesPage": {
+    "breadcrumb": "Politikalar",
+    "subtitle": "Yasal Sayfalar",
+    "title": "Site Politikaları",
+    "description": "Web sitemizin ve hizmetlerimizin kullanımını yöneten yasal ve operasyonel politikaları inceleyin.",
+    "emptyTitle": "Henüz politika yok",
+    "emptyDescription": "Yasal ve site politikaları yakında burada yer alacak.",
+    "defaultType": "Politika"
+  },
+  "projectsPage": {
+    "breadcrumb": "Projeler",
+    "subtitle": "Projelerimiz",
+    "title": "Yayınlanan projeler",
+    "seeLess": "Daha az",
+    "seeMore": "Daha fazla",
+    "openProject": "Projeyi Aç"
+  },
+  "researchPage": {
+    "breadcrumb": "Araştırma",
+    "subtitle": "Araştırma ve İçgörüler",
+    "title": "Yayınlanan Araştırmalar"
+  },
+  "linkedin": "LinkedIn",
+  "shareArticle": {
+    "title": "Bu makaleyi paylaş",
+    "description": "Faydalı bulabilecek biriyle paylaşın.",
+    "share": "Paylaş",
+    "copyLink": "Bağlantıyı kopyala",
+    "copied": "Kopyalandı"
+  },
+  "companyContact": {
+    "eyebrow": "Bize ulaşın",
+    "title": "İletişim ve Ofisler",
+    "description": "Şirket için iletişim kanalları ve ofis bilgileri.",
+    "offices": "Ofisler"
+  },
+  "companyOverview": {
+    "noData": "Henüz ek ayrıntı bulunmuyor."
+  },
+  "errorCard": {
+    "title": "Bir şeyler ters gitti",
+    "description": "Şirket detayları yüklenemedi. Lütfen bağlantınızı kontrol edip tekrar deneyin.",
+    "contactSupport": "Destekle iletişime geç"
+  },
+  "loadingCard": {
+    "company": "Şirket yükleniyor"
+  },
+  "comingSoon": {
+    "launchingSoon": "Yakında Yayında",
+    "title": "Yeni Bir Dijital Deneyim Yolda",
+    "text": "Standartlarımızı, değerlerimizi ve uzun vadeli vizyonumuzu yansıtan gelişmiş bir deneyim hazırlıyoruz. Bu sayfa yakında daha fazla detay, içgörü ve güncellemelerle birlikte yayında olacak.",
+    "backHome": "Ana sayfaya dön",
+    "status": "Durum",
+    "preparation": "Hazırlanıyor",
+    "experience": "Deneyim",
+    "corporatePremium": "Kurumsal ve Premium",
+    "availability": "Kullanılabilirlik",
+    "soon": "Yakında"
+  }
 }

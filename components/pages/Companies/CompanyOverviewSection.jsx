@@ -39,12 +39,8 @@ export default function CompanyOverviewSection({ company }) {
   return (
     <div className="company-overview-wrap">
       <SectionHeading
-        eyebrow={t("overview") === "overview" ? "Overview" : t("overview")}
-        title={
-          t("companyProfile") === "companyProfile"
-            ? "Company Profile"
-            : t("companyProfile")
-        }
+        eyebrow={t("overview")}
+        title={t("companyProfile")}
         description={stripHtml(overviewHtml || profileHtml)}
       />
 
@@ -55,11 +51,7 @@ export default function CompanyOverviewSection({ company }) {
             dangerouslySetInnerHTML={{ __html: profileHtml }}
           />
         ) : (
-          <p>
-            {t("noData") === "noData"
-              ? "No additional details are available yet."
-              : t("noData")}
-          </p>
+          <p>{t("companyOverview.noData")}</p>
         )}
       </div>
 
@@ -72,7 +64,7 @@ export default function CompanyOverviewSection({ company }) {
                   <div className="company-feature-card-head">
                     <div className="jadwa-pill company-feature-pill company-feature-pill-dark">
                       <span className="jadwa-pill-dot" />
-                      <span>Services</span>
+                      <span>{t("services.title")}</span>
                     </div>
                   </div>
 
@@ -97,7 +89,7 @@ export default function CompanyOverviewSection({ company }) {
                   <div className="company-feature-card-head">
                     <div className="jadwa-pill company-feature-pill company-feature-pill-light">
                       <span className="jadwa-pill-dot" />
-                      <span>Values</span>
+                      <span>{t("values.title")}</span>
                     </div>
                   </div>
 

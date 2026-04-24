@@ -11,20 +11,6 @@ export default function Working({ funds = [] }) {
 
   if (!funds?.length) return null;
 
-  const sectionTitle =
-    lang === "ar"
-      ? "الصناديق الاستثمارية"
-      : lang === "tr"
-      ? "Yatırım Fonları"
-      : "Investment Funds";
-
-  const sectionHeading =
-    lang === "ar"
-      ? "الصناديق المتاحة من مصدر البيانات"
-      : lang === "tr"
-      ? "Veri kaynağındaki mevcut fonlar"
-      : "Funds Available In The Data";
-
   const getText = (field) =>
     field?.[lang] || field?.en || field?.ar || field?.tr || "";
 
@@ -37,17 +23,13 @@ export default function Working({ funds = [] }) {
         <div className="jadwa-testimonials-head">
           <div className="jadwa-pill">
             <span className="jadwa-pill-dot" />
-            <span>{sectionTitle}</span>
+            <span>{t("homeFunds.kicker")}</span>
           </div>
 
-          <h2 className="jadwa-testimonials-title">{sectionHeading}</h2>
+          <h2 className="jadwa-testimonials-title">{t("homeFunds.title")}</h2>
 
           <p className="jadwa-testimonials-subtitle">
-            {lang === "ar"
-              ? "اكتشف مجموعة مختارة من الصناديق الاستثمارية المصممة للنمو طويل الأجل وإدارة الفرص بكفاءة."
-              : lang === "tr"
-              ? "Uzun vadeli büyüme ve fırsat yönetimi için tasarlanmış seçkin yatırım fonlarını keşfedin."
-              : "Explore a curated selection of investment funds designed for long-term growth."}
+            {t("homeFunds.description")}
           </p>
         </div>
 
@@ -108,11 +90,7 @@ export default function Working({ funds = [] }) {
                           {investmentVolumeValue ? (
                             <div className="fund-stat-item">
                               <span className="fund-stat-label">
-                                {lang === "ar"
-                                  ? "حجم الاستثمار"
-                                  : lang === "tr"
-                                  ? "Yatırım Hacmi"
-                                  : "Investment Volume"}
+                                {t("homeFunds.investmentVolume")}
                               </span>
                               <strong className="fund-stat-value">
                                 {investmentVolumeValue}
@@ -123,11 +101,7 @@ export default function Working({ funds = [] }) {
                           {irrValue ? (
                             <div className="fund-stat-item">
                               <span className="fund-stat-label">
-                                {lang === "ar"
-                                  ? "العائد السنوي"
-                                  : lang === "tr"
-                                  ? "Hedef IRR"
-                                  : "Target IRR"}
+                                {t("homeFunds.targetIrr")}
                               </span>
                               <strong className="fund-stat-value">
                                 {irrValue}

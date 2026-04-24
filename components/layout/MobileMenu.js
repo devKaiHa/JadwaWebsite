@@ -17,45 +17,20 @@ const socialConfig = [
   { key: "linkedin", icon: "fa-brands fa-linkedin-in", label: "LinkedIn" },
 ];
 
-const links = [
-  {
-    href: "/",
-    label: { ar: "الرئيسية", en: "Home", tr: "Ana Sayfa" },
-  },
-  {
-    href: "/about",
-    label: { ar: "من نحن", en: "About Us", tr: "Hakkımızda" },
-  },
-  {
-    href: "/investments",
-    label: { ar: "الاستثمارات", en: "Investments", tr: "Yatırımlar" },
-  },
-  {
-    href: "/research",
-    label: {
-      ar: "التحليلات والبحوث",
-      en: "Analytics & Research",
-      tr: "Analiz ve Araştırma",
-    },
-  },
-  {
-    href: "/blog-2",
-    label: { ar: "الأخبار", en: "News", tr: "Haberler" },
-  },
-  {
-    href: "/comingsoon",
-    label: { ar: "التوظيف", en: "Careers", tr: "Kariyer" },
-  },
-  {
-    href: "/Contact-us",
-    label: { ar: "تواصل معنا", en: "Contact Us", tr: "İletişim" },
-  },
-];
-
 const MobileMenu = ({ handleMobileMenu, isMobileMenu, footerData }) => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const currentLang = i18n?.language || "en";
   const isAr = currentLang === "ar";
+
+  const links = [
+    { href: "/", label: t("menu.home") },
+    { href: "/about", label: t("menu.aboutUs") },
+    { href: "/investments", label: t("menu.investments") },
+    { href: "/research", label: t("menu.analyticsResearch") },
+    { href: "/blog-2", label: t("menu.news") },
+    { href: "/comingsoon", label: t("menu.careers") },
+    { href: "/Contact-us", label: t("menu.contactUs") },
+  ];
 
   const socialLinks = useMemo(
     () =>
@@ -65,7 +40,7 @@ const MobileMenu = ({ handleMobileMenu, isMobileMenu, footerData }) => {
           ...item,
           href: footerData?.[item.key],
         })),
-    [footerData]
+    [footerData],
   );
 
   const changeLanguage = (lng) => {
@@ -108,7 +83,7 @@ const MobileMenu = ({ handleMobileMenu, isMobileMenu, footerData }) => {
               type="button"
               className="jadwa-mobile-close"
               onClick={handleMobileMenu}
-              aria-label="Close menu"
+              aria-label={t("mobileMenu.close")}
             >
               <i className="fas fa-times" />
             </button>
@@ -151,7 +126,7 @@ const MobileMenu = ({ handleMobileMenu, isMobileMenu, footerData }) => {
               {links.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} onClick={handleMobileMenu}>
-                    <span>{link.label[currentLang] || link.label.en}</span>
+                    <span>{link.label}</span>
                     <i
                       className={`fas ${
                         isAr ? "fa-arrow-left" : "fa-arrow-right"
@@ -171,11 +146,7 @@ const MobileMenu = ({ handleMobileMenu, isMobileMenu, footerData }) => {
               className="jadwa-mobile-invest-btn"
               onClick={handleMobileMenu}
             >
-              {currentLang === "ar"
-                ? "استثمر الآن"
-                : currentLang === "tr"
-                ? "Yatırım yap"
-                : "Invest now"}
+              {t("header.investNow")}
             </Link>
           </div>
         </div>

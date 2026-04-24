@@ -6,7 +6,7 @@ import { getCountryNameByCode, useIsMobile } from "@/lib/helpers";
 import { imageURL } from "@/api/GlobalData";
 
 export default function CompaniesGrid({ CompanyData, setActiveCompany }) {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const lang = i18n.language || "en";
   const isMobile = useIsMobile();
 
@@ -71,7 +71,7 @@ export default function CompaniesGrid({ CompanyData, setActiveCompany }) {
                             >
                               <i
                                 className="fa-brands fa-facebook"
-                                title="Facebook"
+                                title={t("facebook")}
                               />
                             </Link>
                           </li>
@@ -84,7 +84,7 @@ export default function CompaniesGrid({ CompanyData, setActiveCompany }) {
                             >
                               <i
                                 className="fa-brands fa-square-twitter"
-                                title="Twitter"
+                                title={t("twitter")}
                               />
                             </Link>
                           </li>
@@ -97,7 +97,7 @@ export default function CompaniesGrid({ CompanyData, setActiveCompany }) {
                             >
                               <i
                                 className="fa-brands fa-instagram-square"
-                                title="Instagram"
+                                title={t("instagram")}
                               />
                             </Link>
                           </li>
@@ -110,7 +110,7 @@ export default function CompaniesGrid({ CompanyData, setActiveCompany }) {
                             >
                               <i
                                 className="fa-brands fa-linkedin"
-                                title="LinkedIn"
+                                title={t("linkedin")}
                               />
                             </Link>
                           </li>

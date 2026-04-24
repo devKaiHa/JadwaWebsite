@@ -6,32 +6,16 @@ import { truncateText } from "@/GlobalHooks/GlobalHooks";
 import { imageURL } from "@/api/GlobalData";
 
 export default function ResearchPage({ research = [] }) {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const lang = i18n.language || "en";
 
   return (
-    <Layout
-      breadcrumbTitle={
-        lang === "ar" ? "الأبحاث" : lang === "tr" ? "Araştırma" : "Research"
-      }
-    >
+    <Layout breadcrumbTitle={t("researchPage.breadcrumb")}>
       <section className="news-style-two sec-pad">
         <div className="auto-container">
           <div className="sec-title">
-            <span className="sub-title">
-              {lang === "ar"
-                ? "الأبحاث والرؤى"
-                : lang === "tr"
-                  ? "Araştırma ve Analizler"
-                  : "Research & Insights"}
-            </span>
-            <h2>
-              {lang === "ar"
-                ? "الأبحاث المنشورة"
-                : lang === "tr"
-                  ? "Yaıinlanan araştırma içeriği"
-                  : "Published Research"}
-            </h2>
+            <span className="sub-title">{t("researchPage.subtitle")}</span>
+            <h2>{t("researchPage.title")}</h2>
           </div>
           <div className="row clearfix">
             {research.map((item) => (
@@ -65,13 +49,7 @@ export default function ResearchPage({ research = [] }) {
                       />
                       <div className="link">
                         <Link href={`/research/${item?.slug}`}>
-                          <span>
-                            {lang === "ar"
-                              ? "اقرا المزيد"
-                              : lang === "tr"
-                                ? "Devamini Oku"
-                                : "Read More"}
-                          </span>
+                          <span>{t("read_more")}</span>
                         </Link>
                       </div>
                     </div>

@@ -1,9 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { stripHtml } from "../utils/helpers";
 
 const ShareArticle = ({ title = "", description = "", className = "" }) => {
+  const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
 
   const shareUrl = useMemo(() => {
@@ -25,19 +27,19 @@ const ShareArticle = ({ title = "", description = "", className = "" }) => {
     },
     {
       key: "facebook",
-      label: "Facebook",
+      label: t("facebook"),
       icon: "fa-brands fa-facebook-f",
       href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
     },
     {
       key: "linkedin",
-      label: "LinkedIn",
+      label: t("linkedin"),
       icon: "fa-brands fa-linkedin-in",
       href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
     },
     {
       key: "whatsapp",
-      label: "WhatsApp",
+      label: t("contactPage.whatsApp"),
       icon: "fa-brands fa-whatsapp",
       href: `https://api.whatsapp.com/send?text=${encodedText}%20${encodedUrl}`,
     },
@@ -95,7 +97,7 @@ const ShareArticle = ({ title = "", description = "", className = "" }) => {
               color: "#0f172a",
             }}
           >
-            Share this article
+            {t("shareArticle.title")}
           </h5>
           <p
             style={{
@@ -104,7 +106,7 @@ const ShareArticle = ({ title = "", description = "", className = "" }) => {
               color: "#64748b",
             }}
           >
-            Send it to someone who may find it useful.
+            {t("shareArticle.description")}
           </p>
         </div>
 
@@ -121,7 +123,7 @@ const ShareArticle = ({ title = "", description = "", className = "" }) => {
               type="button"
               onClick={handleNativeShare}
               style={buttonStyle}
-              aria-label="Share"
+              aria-label={t("shareArticle.share")}
             >
               <i className="fa-solid fa-arrow-up-from-bracket" />
             </button>
@@ -136,10 +138,10 @@ const ShareArticle = ({ title = "", description = "", className = "" }) => {
               padding: "0 14px",
               gap: "8px",
             }}
-            aria-label="Copy link"
+            aria-label={t("shareArticle.copyLink")}
           >
             <i className="fa-solid fa-link" />
-            <span>{copied ? "Copied" : "Copy link"}</span>
+            <span>{copied ? t("shareArticle.copied") : t("shareArticle.copyLink")}</span>
           </button>
 
           {links.map((item) => (

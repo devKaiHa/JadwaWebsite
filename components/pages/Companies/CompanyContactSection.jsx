@@ -31,21 +31,21 @@ export default function CompanyContactSection({ company }) {
   const contactItems = [
     company.phone
       ? {
-          label: t("phone") === "phone" ? "Phone" : t("phone"),
+          label: t("phone"),
           value: company.phone,
           href: `tel:${company.phone}`,
         }
       : null,
     company.email
       ? {
-          label: t("email") === "email" ? "Email" : t("email"),
+          label: t("email"),
           value: company.email,
           href: `mailto:${company.email}`,
         }
       : null,
     websiteHref
       ? {
-          label: t("website") === "website" ? "Website" : t("website"),
+          label: t("website"),
           value: company.website,
           href: websiteHref,
         }
@@ -57,22 +57,16 @@ export default function CompanyContactSection({ company }) {
   return (
     <div className="company-content-block company-contact-bottom-block">
       <SectionHeading
-        eyebrow={"Contact us"}
-        title={"Contact & Offices"}
-        description={
-          lang === "ar"
-            ? "طرق التواصل والمكاتب المرتبطة بالشركة."
-            : lang === "tr"
-            ? "Şirketle ilişkili iletişim ve ofis bilgileri."
-            : "Contact channels and office information for the company."
-        }
+        eyebrow={t("companyContact.eyebrow")}
+        title={t("companyContact.title")}
+        description={t("companyContact.description")}
       />
 
       <div className="row clearfix">
         {!!contactItems.length && (
           <div className="col-lg-5 col-md-12 col-sm-12 mb-4">
             <div className="company-contact-panel">
-              <h3 className="company-contact-panel-title">Contact us</h3>
+              <h3 className="company-contact-panel-title">{t("contact_us")}</h3>
 
               <ul className="company-contact-list">
                 {contactItems.map((item) => (
@@ -91,7 +85,9 @@ export default function CompanyContactSection({ company }) {
         {!!addresses.length && (
           <div className="col-lg-7 col-md-12 col-sm-12 mb-4">
             <div className="company-contact-panel">
-              <h3 className="company-contact-panel-title">offices</h3>
+              <h3 className="company-contact-panel-title">
+                {t("companyContact.offices")}
+              </h3>
 
               <div className="company-offices-grid">
                 {addresses.map((address, index) => (

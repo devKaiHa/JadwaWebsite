@@ -20,13 +20,13 @@ export default function About({ aboutUs = [], ishomePage = false }) {
 
   const sliderItems = [
     {
-      title: item?.message || { en: "Our Mission", ar: "رسالتنا" },
-      content: item?.messageDescription || { en: "", ar: "" },
+      title: item?.message || { en: t("our_mission"), ar: t("our_mission"), tr: t("our_mission") },
+      content: item?.messageDescription || { en: "", ar: "", tr: "" },
       type: "mission",
     },
     {
-      title: item?.vision || { en: "Our Vision", ar: "رؤيتنا" },
-      content: item?.visionDescription || { en: "", ar: "" },
+      title: item?.vision || { en: t("our_vision"), ar: t("our_vision"), tr: t("our_vision") },
+      content: item?.visionDescription || { en: "", ar: "", tr: "" },
       type: "vision",
     },
   ];
@@ -45,15 +45,15 @@ export default function About({ aboutUs = [], ishomePage = false }) {
               <div className="jadwa-about-glow" />
               <div className="jadwa-about-grid">
                 <figure className="jadwa-about-image jadwa-about-image-main">
-                  <img src="/assets/images/about-2.jpg" alt="about" />
+                  <img src="/assets/images/about-2.jpg" alt={t("about.about-us")} />
                 </figure>
 
                 <figure className="jadwa-about-image jadwa-about-image-float">
-                  <img src="/assets/images/about-1.jpg" alt="about" />
+                  <img src="/assets/images/about-1.jpg" alt={t("about.about-us")} />
                 </figure>
 
                 <div className="jadwa-about-stat-card">
-                  <span className="jadwa-about-stat-year">Since 2013</span>
+                  <span className="jadwa-about-stat-year">{t("homeAbout.since")}</span>
                   <h3>
                     1000<span>+</span>
                   </h3>
@@ -66,13 +66,9 @@ export default function About({ aboutUs = [], ishomePage = false }) {
           <div className="col-lg-5 col-md-12 col-sm-12 content-column">
             <div className="jadwa-about-content">
               <div className="jadwa-section-head">
-                <span className="jadwa-section-kicker">
-                  {lang === "ar" ? "جدوى اليقين" : "Jadwa Al Yaqeen"}
-                </span>
+                <span className="jadwa-section-kicker">{t("homeAbout.kicker")}</span>
 
-                <h2 className="jadwa-section-title">
-                  {lang === "ar" ? "نبذة عن الشركة" : "About us"}
-                </h2>
+                <h2 className="jadwa-section-title">{t("homeAbout.title")}</h2>
                 <div className="jadwa-section-line" />
               </div>
 
@@ -85,11 +81,7 @@ export default function About({ aboutUs = [], ishomePage = false }) {
               {ishomePage && (
                 <div className="jadwa-about-actions">
                   <Link href="/about" className="jadwa-invest-btn">
-                    {lang === "ar"
-                      ? "اعرف المزيد"
-                      : lang === "tr"
-                      ? "Daha Fazla"
-                      : "Learn More"}
+                    {t("homeAbout.learnMore")}
                   </Link>
                 </div>
               )}

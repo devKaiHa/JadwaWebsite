@@ -1,15 +1,18 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const LoadingCard = () => {
+  const { t } = useTranslation();
+
   return (
     <div
-      class="card loading-card"
+      className="card loading-card"
       role="status"
       aria-live="polite"
-      aria-label="Loading company"
+      aria-label={t("loadingCard.company")}
     >
-      <div class="card-right">
-        <div class="spinner" aria-hidden="true"></div>
+      <div className="card-right">
+        <div className="spinner" aria-hidden="true"></div>
       </div>
     </div>
   );

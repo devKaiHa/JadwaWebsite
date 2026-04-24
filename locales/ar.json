@@ -1,7 +1,7 @@
 {
   "about": {
     "about-us": "عن جدوى للاستثمار",
-    "investor": "مستثمر",
+    "investor": "المستثمر",
     "theFounders": "المؤسسون",
     "ourTeam": "فريقنا",
     "moreAboutUs": "المزيد عنا",
@@ -9,26 +9,29 @@
     "businessApproach": "نهج العمل",
     "whyUs": "لماذا نحن؟",
     "governance": "الحوكمة",
-    "recognition": "تعرف",
+    "recognition": "التقدير",
     "prizes": "الجوائز",
     "provider": "الجهة",
     "date": "التاريخ",
     "credentials": "الاعتمادات",
+    "certificates": "الشهادات",
     "testimonials": "الآراء"
   },
   "blog": {
     "Blogs": "المدونة",
-    "BlogDetails": "تفاصيل المقالة"
+    "BlogDetails": "تفاصيل المقالة",
+    "RelatedArticles": "مقالات ذات صلة",
+    "RelatedBlogs": "مدونات ذات صلة"
   },
   "services": {
-    "litreal": "خدمات",
+    "litreal": "الخدمات",
     "title": "الخدمات",
-    "subtitle": "يمكننا أن نقدّم كل شيء",
-    "subtitle2": "الخدمات التي نقدّمها"
+    "subtitle": "يمكننا أن نقدم كل شيء",
+    "subtitle2": "الخدمات التي نقدمها"
   },
   "values": {
     "title": "قيمنا",
-    "subtitle": "قيمنا في شركة جدوى "
+    "subtitle": "قيمنا في شركة جدوى"
   },
   "investmentSectors": {
     "title": "قطاعات الاستثمار",
@@ -36,31 +39,30 @@
   },
   "newsRoom": {
     "title": "مقالات المدونة",
-    "subtitle": "آخر الاخبار"
+    "subtitle": "آخر الأخبار"
   },
   "companies": {
     "title": "شركاتنا",
-    "subtitle": "شركاتنا  "
+    "subtitle": "شركاتنا"
   },
   "partners": {
     "title": "شركاؤنا",
     "subtitle": "شركاؤنا الاستراتيجيون"
   },
-
   "contact": {
-    "title": "ابقى على تواصل معنا",
-    "description": "في حال كان لديك أي أسئلة أو واجهت أي مشاكل، يمكنك الاتصال بنا عن طريق ملء النموذج.",
+    "title": "ابق على تواصل معنا",
+    "description": "في حال كانت لديك أي أسئلة أو واجهت أي مشاكل، يمكنك التواصل معنا عن طريق ملء النموذج.",
     "address": "MAHMUTBEY MAH.HACI BOSTAN CAD.NO.22 \nBAGCILAR - ISTANBUL",
-    "socialTitle": "اتصل بنا :",
+    "socialTitle": "اتصل بنا:",
     "formTitle": "تواصل معنا",
     "followUs": "تابعنا",
-    "name": "اسم المستخدم",
-    "email": "الإيميل",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
     "phone": "رقم الهاتف",
-    "message": "رسالة",
-    "submit": "أرسل"
+    "message": "الرسالة",
+    "submit": "إرسال"
   },
-  "companySpecialization": "شركة متخصصة بإدارة الاستثمار وتأسيس الشركات المساهمة",
+  "companySpecialization": "شركة متخصصة في إدارة الاستثمار وتأسيس الشركات المساهمة",
   "all_rights_reserved": "جميع الحقوق محفوظة",
   "terms_conditions": "الشروط والأحكام",
   "privacy_policy": "سياسة الخصوصية",
@@ -74,36 +76,36 @@
   "strategic_goals": "الأهداف الاستراتيجية",
   "our_strategic_goals": "أهدافنا الاستراتيجية",
   "goal": "الهدف",
-  "more": "اكتشف اكثر",
+  "more": "المزيد",
   "read_more": "قراءة المزيد",
   "Services": "الخدمات",
-  "Phenomenal Consulting Solutions": "أهم خدمات شركة جدوى",
+  "Phenomenal Consulting Solutions": "حلول استشارية استثنائية",
   "Jadwa_most_important_services": "أهم خدمات شركة جدوى",
   "ourTeam": "فريقنا",
   "teamMember": "عضو الفريق",
   "JadwaExpertTeam": "مؤسسو شركة جدوى",
   "fundBenefits": "مزايا الصندوق",
-  "arFundBenefits": "مزايا صندوق",
+  "arFundBenefits": "مزايا الصندوق",
   "InvestmentFunds": "الصناديق الاستثمارية",
-  "EnterKeyword": "ادخل كلمة الرئيسة ",
+  "EnterKeyword": "أدخل كلمة البحث",
   "Categories": "التصنيفات",
-  "noCategories": "لايوجد تصنيفات",
-  "Popular Tags": "اشهر التاغات",
+  "noCategories": "لا توجد تصنيفات",
+  "Popular Tags": "الوسوم الشائعة",
   "ExploreMore": "اكتشف المزيد",
-  "By": "من قبل ",
-  "On": "حرر في",
-  "NextPage": "الصفحة التالية ",
-  "PrevPage": "الصفحة السابقة ",
+  "By": "بواسطة",
+  "On": "في",
+  "NextPage": "الصفحة التالية",
+  "PrevPage": "الصفحة السابقة",
   "Read All Posts": "قراءة جميع المقالات",
   "Breadcrumbhome": "الرئيسية",
   "investGatepartners": "الشركاء",
-  "investGateOurpartners": "شركائنا",
-  "English": "االإنجليزية",
+  "investGateOurpartners": "شركاؤنا",
+  "English": "الإنجليزية",
   "Arabic": "العربية",
   "Turkish": "التركية",
-  "see_more": "رؤية المزيد",
-  "General": "العامة",
-  "Category": "التصنيفات",
+  "see_more": "عرض المزيد",
+  "General": "عام",
+  "Category": "التصنيف",
   "category": "التصنيف",
   "Company_Overview": "نظرة عامة على الصندوق",
   "noTitle": "لا يوجد عنوان",
@@ -111,19 +113,227 @@
     "title": "الأرقام تتحدث عن نفسها",
     "Billion": "مليار",
     "Billion_p": "أصول العملاء تحت الاستشارة.",
-    "Locations": "الفروع",
-    "Locations_p": "الخدمة مع شركة محترفة",
+    "Locations": "المواقع",
+    "Locations_p": "خدمة مع شركة احترافية",
     "Years": "سنوات",
     "Years_p": "خبرة في مجال الاستشارات"
   },
   "All": "الكل",
-  "portfolio": "المَحَافِظ",
+  "portfolio": "المحافظ",
   "investCompFunds": "شركات وصناديق الاستثمار",
-  "leadership": "قادتنا",
-  "meetOur": "تعرف على",
+  "leadership": "القيادة",
+  "meetOur": "تعرّف على",
   "headquarters": "المقر الرئيسي",
   "education": "التعليم",
   "profExp": "الخبرة المهنية",
   "boardMember": "عضو مجلس الإدارة",
-  "bio": "نبذة"
+  "bio": "نبذة",
+  "about_us": "من نحن",
+  "associated_companies": "الشركات المرتبطة",
+  "case_studies": "دراسات الحالة",
+  "company": "الشركة",
+  "companyProfile": "ملف الشركة",
+  "contact_us": "اتصل بنا",
+  "country": "الدولة",
+  "email": "البريد الإلكتروني",
+  "emailCompany": "بريد الشركة الإلكتروني",
+  "error": "حدث خطأ ما.",
+  "essentials": "الأساسيات",
+  "exploreCompany": "استكشف الشركة",
+  "facebook": "فيسبوك",
+  "free_quote": "اطلب عرض سعر",
+  "get_in_touch": "تواصل معنا",
+  "hesitate_help": "لا تتردد في التواصل معنا إذا كنت بحاجة إلى أي مساعدة.",
+  "home": "الرئيسية",
+  "how_it_works": "كيف يعمل",
+  "insights": "الرؤى",
+  "instagram": "إنستغرام",
+  "instagram_post": "منشورات إنستغرام",
+  "investmentFunds": "الصناديق الاستثمارية",
+  "join_with_us": "انضم إلينا",
+  "learnFunds": "تعرّف على الصناديق",
+  "loading": "جارٍ التحميل...",
+  "moreLink": "عرض المزيد",
+  "moreText": "هل تريد معرفة المزيد عن صناديقنا؟",
+  "noData": "لا توجد بيانات متاحة.",
+  "openWebsite": "فتح الموقع الإلكتروني",
+  "ourCompanies": "شركاتنا",
+  "overview": "نظرة عامة",
+  "partnerships": "الشراكات",
+  "phone": "الهاتف",
+  "professionals": "المتخصصون",
+  "quick_links": "روابط سريعة",
+  "relatedFunds": "صناديق ذات صلة",
+  "talk_to_us": "تحدث معنا",
+  "testimonials": "آراء العملاء",
+  "title": "العنوان",
+  "twitter": "إكس",
+  "we_are_here_to_listen": "نحن هنا للاستماع",
+  "website": "الموقع الإلكتروني",
+  "why_choose": "لماذا تختارنا",
+  "header": {
+    "investNow": "استثمر الآن",
+    "languagePreference": "تفضيل اللغة",
+    "locationDetected": "بناءً على موقعك، قمنا بتحديد موقعك في {{location}}. اللغة المقترحة هي {{language}}.",
+    "chooseAnotherLanguage": "أو اختر لغة أخرى من الخيارات أدناه:",
+    "accept": "موافقة",
+    "unknownCity": "مدينة غير معروفة",
+    "unknownRegion": "منطقة غير معروفة",
+    "unknownCountry": "دولة غير معروفة",
+    "unknownLocation": "موقع غير معروف"
+  },
+  "menu": {
+    "home": "الرئيسية",
+    "aboutUs": "من نحن",
+    "investments": "الاستثمارات",
+    "analyticsResearch": "التحليلات والأبحاث",
+    "news": "الأخبار",
+    "careers": "الوظائف",
+    "contactUs": "اتصل بنا"
+  },
+  "mobileMenu": {
+    "close": "إغلاق القائمة"
+  },
+  "footer": {
+    "mondayFriday": "الاثنين - الجمعة",
+    "builtBy": "تم التطوير بواسطة",
+    "newsletter": {
+      "title": "النشرة البريدية",
+      "text": "ابقَ على اطلاع بآخر تحديثات السوق والرؤى والفرص الجديدة.",
+      "email": "عنوان بريدك الإلكتروني",
+      "button": "اشترك"
+    }
+  },
+  "homeAbout": {
+    "kicker": "جدوى اليقين",
+    "title": "من نحن",
+    "since": "منذ 2013",
+    "learnMore": "اعرف المزيد"
+  },
+  "homeFunds": {
+    "kicker": "صناديق الاستثمار",
+    "title": "الصناديق المتاحة في البيانات",
+    "description": "استكشف مجموعة مختارة من صناديق الاستثمار المصممة للنمو طويل الأجل.",
+    "investmentVolume": "حجم الاستثمار",
+    "targetIrr": "العائد الداخلي المستهدف"
+  },
+  "homeNews": {
+    "kicker": "رؤى",
+    "title": "رؤى ووجهات نظر من جدوى",
+    "description": "استكشف أحدث المقالات والتحليلات والتحديثات حول الاستثمارات والقطاعات والفرص."
+  },
+  "homeTestimonials": {
+    "kicker": "آراء العملاء",
+    "title": "موثوق به من قبل فرق طموحة",
+    "description": "يُستخدم من قبل مؤسسين يهتمون بالسرعة والوضوح وثقة المستثمرين",
+    "client": "عميل",
+    "statOne": "شركاء موثوقون",
+    "statTwo": "قيمة مستهدفة",
+    "statThree": "سير عمل أسرع"
+  },
+  "companiesBrief": {
+    "title": "نظرة سريعة على شركاتنا",
+    "description": "عرض مختار لشركات ضمن منظومتنا.",
+    "websiteAria": "موقع الشركة"
+  },
+  "contactPage": {
+    "infoKicker": "معلومات التواصل",
+    "infoTitle": "يسعدنا تواصلك معنا",
+    "infoDescription": "إذا كان لديك أي استفسارات أو أفكار شراكة أو طلبات استثمار، فريقنا جاهز للمساعدة.",
+    "address": "العنوان",
+    "openMap": "فتح الخريطة",
+    "whatsApp": "واتساب",
+    "formKicker": "إرسال رسالة",
+    "formTitle": "اتصل بنا",
+    "subject": "الموضوع",
+    "requestType": "نوع الطلب",
+    "sendMessage": "إرسال الرسالة",
+    "sending": "جارٍ الإرسال...",
+    "retry": "إعادة المحاولة",
+    "branchesKicker": "الفروع",
+    "branchesTitle": "مكاتبنا وفروعنا",
+    "branchesDescription": "تواصل مع فرقنا من خلال عدة مواقع حسب احتياجاتك.",
+    "map": "الخريطة",
+    "requestTypes": {
+      "investment-inquiry": "استفسار استثماري",
+      "partnership": "شراكة",
+      "media": "إعلام",
+      "support": "دعم"
+    },
+    "validation": {
+      "name": "يرجى إدخال اسمك.",
+      "email": "يرجى إدخال بريدك الإلكتروني.",
+      "message": "يرجى إدخال رسالتك.",
+      "submitError": "تعذر إرسال رسالتك. يرجى المحاولة مرة أخرى."
+    },
+    "error": {
+      "title": "تعذر تحميل تفاصيل التواصل",
+      "description": "يرجى المحاولة مرة أخرى بعد قليل."
+    },
+    "success": {
+      "messageSent": "تم إرسال الرسالة بنجاح.",
+      "title": "شكرًا، تم استلام رسالتك",
+      "description": "سيقوم فريقنا بمراجعة رسالتك والرد عليك في أقرب وقت ممكن.",
+      "continue": "متابعة"
+    }
+  },
+  "policiesPage": {
+    "breadcrumb": "السياسات",
+    "subtitle": "الصفحات القانونية",
+    "title": "سياسات الموقع",
+    "description": "اطلع على السياسات القانونية والتشغيلية التي تحكم استخدام موقعنا وخدماتنا.",
+    "emptyTitle": "لا توجد سياسات متاحة",
+    "emptyDescription": "ستظهر السياسات القانونية وسياسات الموقع هنا قريبًا.",
+    "defaultType": "سياسة"
+  },
+  "projectsPage": {
+    "breadcrumb": "المشاريع",
+    "subtitle": "مشاريعنا",
+    "title": "المشاريع المنشورة",
+    "seeLess": "عرض أقل",
+    "seeMore": "عرض المزيد",
+    "openProject": "عرض المشروع"
+  },
+  "researchPage": {
+    "breadcrumb": "الأبحاث",
+    "subtitle": "الأبحاث والرؤى",
+    "title": "الأبحاث المنشورة"
+  },
+  "linkedin": "لينكدإن",
+  "shareArticle": {
+    "title": "مشاركة هذا المقال",
+    "description": "أرسله إلى شخص قد يجده مفيدًا.",
+    "share": "مشاركة",
+    "copyLink": "نسخ الرابط",
+    "copied": "تم النسخ"
+  },
+  "companyContact": {
+    "eyebrow": "تواصل معنا",
+    "title": "التواصل والمكاتب",
+    "description": "قنوات التواصل ومعلومات مكاتب الشركة.",
+    "offices": "المكاتب"
+  },
+  "companyOverview": {
+    "noData": "لا توجد تفاصيل إضافية متاحة حاليًا."
+  },
+  "errorCard": {
+    "title": "حدث خطأ ما",
+    "description": "تعذر تحميل تفاصيل الشركة. يرجى التحقق من اتصالك والمحاولة مرة أخرى.",
+    "contactSupport": "التواصل مع الدعم"
+  },
+  "loadingCard": {
+    "company": "جارٍ تحميل الشركة"
+  },
+  "comingSoon": {
+    "launchingSoon": "قريباً",
+    "title": "تجربة رقمية جديدة في الطريق",
+    "text": "نحن نعمل على إعداد تجربة مميزة تعكس معاييرنا وقيمنا ورؤيتنا طويلة الأمد. ستتوفر هذه الصفحة قريباً مع المزيد من التفاصيل والرؤى والتحديثات.",
+    "backHome": "العودة إلى الرئيسية",
+    "status": "الحالة",
+    "preparation": "قيد التحضير",
+    "experience": "التجربة",
+    "corporatePremium": "مؤسسي ومتميز",
+    "availability": "التوفر",
+    "soon": "قريباً"
+  }
 }

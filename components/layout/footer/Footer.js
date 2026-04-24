@@ -55,7 +55,7 @@ export default function Footer() {
                         <Link href="/index-3">{t("insights")}</Link>
                       </li>
                       <li>
-                        <Link href="/service">{t("services")}</Link>
+                        <Link href="/service">{t("services.title")}</Link>
                       </li>
                       <li>
                         <Link href="/index-3">{t("why_choose")}</Link>
@@ -75,7 +75,7 @@ export default function Footer() {
                         <Link href="/index-3">{t("how_it_works")}</Link>
                       </li>
                       <li>
-                        <Link href="/index-3">{t("partners")}</Link>
+                        <Link href="/index-3">{t("partners.title")}</Link>
                       </li>
                       <li>
                         <Link href="/index-3">{t("testimonials")}</Link>

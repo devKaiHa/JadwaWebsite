@@ -8,11 +8,11 @@ import {
 } from "@/RTK/Api/Contact/ContactApi";
 import LoadingCard from "@/components/utils/LoadingCard";
 
-const requestTypeOptions = [
-  { value: "investment-inquiry", label: "Investment Inquiry" },
-  { value: "partnership", label: "Partnership" },
-  { value: "media", label: "Media" },
-  { value: "support", label: "Support" },
+const requestTypeValues = [
+  "investment-inquiry",
+  "partnership",
+  "media",
+  "support",
 ];
 
 const localize = (value, lang) =>
@@ -21,6 +21,11 @@ const localize = (value, lang) =>
 const ContactForm = () => {
   const { t, i18n } = useTranslation();
   const lang = i18n.language || "en";
+
+  const requestTypeOptions = requestTypeValues.map((value) => ({
+    value,
+    label: t(`contactPage.requestTypes.${value}`),
+  }));
 
   const [formData, setFormData] = useState({
     name: "",
@@ -55,7 +60,7 @@ const ContactForm = () => {
             .filter((item) => item?.isActive !== false)
             .sort((a, b) => (a?.order || 0) - (b?.order || 0))
         : [],
-    [contact?.branches]
+    [contact?.branches],
   );
 
   const handleChange = (field) => (e) => {
@@ -85,9 +90,9 @@ const ContactForm = () => {
   };
 
   const validateForm = () => {
-    if (!formData.name.trim()) return "Please enter your name.";
-    if (!formData.email.trim()) return "Please enter your email address.";
-    if (!formData.message.trim()) return "Please enter your message.";
+    if (!formData.name.trim()) return t("contactPage.validation.name");
+    if (!formData.email.trim()) return t("contactPage.validation.email");
+    if (!formData.message.trim()) return t("contactPage.validation.message");
     return "";
   };
 
@@ -116,7 +121,7 @@ const ContactForm = () => {
       setShowSuccess(true);
       setSubmitState({
         type: "success",
-        message: result?.message || "Message sent successfully.",
+        message: result?.message || t("contactPage.success.messageSent"),
       });
       clearForm();
     } catch (error) {
@@ -125,7 +130,7 @@ const ContactForm = () => {
         message:
           error?.data?.message ||
           error?.error ||
-          "We couldn't send your message. Please try again.",
+          t("contactPage.validation.submitError"),
       });
     }
   };
@@ -137,14 +142,14 @@ const ContactForm = () => {
       <section className="jadwa-contact-v2">
         <div className="auto-container">
           <div className="jadwa-contact-v2-error">
-            <h3>Unable to load contact details</h3>
-            <p>Please try again in a moment.</p>
+            <h3>{t("contactPage.error.title")}</h3>
+            <p>{t("contactPage.error.description")}</p>
             <button
               type="button"
               className="jadwa-contact-v2-submit"
               onClick={() => refetch()}
             >
-              Retry
+              {t("contactPage.retry")}
             </button>
           </div>
         </div>
@@ -165,25 +170,15 @@ const ContactForm = () => {
               <div className="jadwa-contact-v2-info-inner">
                 <div className="jadwa-pill jadwa-contact-v2-pill-dark">
                   <span className="jadwa-pill-dot" />
-                  <span>
-                    {t("contact.title") === "contact.title"
-                      ? "Contact Information"
-                      : t("contact.title")}
-                  </span>
+                  <span>{t("contactPage.infoKicker")}</span>
                 </div>
 
                 <h2 className="jadwa-contact-v2-title">
-                  {lang === "ar"
-                    ? "يسعدنا تواصلك معنا"
-                    : lang === "tr"
-                    ? "Bizimle iletişime geçin"
-                    : "We’d Love to Hear From You"}
+                  {t("contactPage.infoTitle")}
                 </h2>
 
                 <p className="jadwa-contact-v2-text">
-                  {t("contact.description") === "contact.description"
-                    ? "If you have any questions, partnership ideas, or investment inquiries, our team is ready to help."
-                    : t("contact.description")}
+                  {t("contactPage.infoDescription")}
                 </p>
 
                 <div className="jadwa-contact-v2-list">
@@ -193,13 +188,7 @@ const ContactForm = () => {
                         <i className="fa-solid fa-location-dot" />
                       </div>
                       <div className="jadwa-contact-v2-item-body">
-                        <h4>
-                          {lang === "ar"
-                            ? "العنوان"
-                            : lang === "tr"
-                            ? "Adres"
-                            : "Address"}
-                        </h4>
+                        <h4>{t("contactPage.address")}</h4>
                         <p>{localize(contact.address, lang)}</p>
                         {contact?.mapLink ? (
                           <a
@@ -207,11 +196,7 @@ const ContactForm = () => {
                             target="_blank"
                             rel="noreferrer"
                           >
-                            {lang === "ar"
-                              ? "عرض الموقع"
-                              : lang === "tr"
-                              ? "Haritada Aç"
-                              : "Open Map"}
+                            {t("contactPage.openMap")}
                           </a>
                         ) : null}
                       </div>
@@ -225,13 +210,7 @@ const ContactForm = () => {
                         <i className="fa-solid fa-envelope" />
                       </div>
                       <div className="jadwa-contact-v2-item-body">
-                        <h4>
-                          {lang === "ar"
-                            ? "البريد الإلكتروني"
-                            : lang === "tr"
-                            ? "E-posta"
-                            : "Email"}
-                        </h4>
+                        <h4>{t("contact.email")}</h4>
                         {contact.emails.filter(Boolean).map((item) => (
                           <p key={item}>
                             <a href={`mailto:${item}`}>{item}</a>
@@ -248,13 +227,7 @@ const ContactForm = () => {
                         <i className="fa-solid fa-phone" />
                       </div>
                       <div className="jadwa-contact-v2-item-body">
-                        <h4>
-                          {lang === "ar"
-                            ? "الهاتف"
-                            : lang === "tr"
-                            ? "Telefon"
-                            : "Phone"}
-                        </h4>
+                        <h4>{t("contact.phone")}</h4>
                         {contact.phones.filter(Boolean).map((item) => (
                           <p key={item}>
                             <a href={`tel:${item.replace(/\s+/g, "")}`}>
@@ -267,12 +240,12 @@ const ContactForm = () => {
                             <a
                               href={`https://wa.me/${contact.whatsapp.replace(
                                 /[^\d]/g,
-                                ""
+                                "",
                               )}`}
                               target="_blank"
                               rel="noreferrer"
                             >
-                              WhatsApp: {contact.whatsapp}
+                              {t("contactPage.whatsApp")}: {contact.whatsapp}
                             </a>
                           </p>
                         ) : null}
@@ -287,19 +260,11 @@ const ContactForm = () => {
               <div className="jadwa-contact-v2-form-card">
                 <div className="jadwa-pill jadwa-contact-v2-pill-light">
                   <span className="jadwa-pill-dot" />
-                  <span>
-                    {t("contact.formTitle") === "contact.formTitle"
-                      ? "Send Message"
-                      : t("contact.formTitle")}
-                  </span>
+                  <span>{t("contactPage.formKicker")}</span>
                 </div>
 
                 <h3 className="jadwa-contact-v2-form-title">
-                  {lang === "ar"
-                    ? "تواصل معنا"
-                    : lang === "tr"
-                    ? "Bize Yazın"
-                    : "Contact Us"}
+                  {t("contactPage.formTitle")}
                 </h3>
 
                 <form
@@ -340,23 +305,17 @@ const ContactForm = () => {
                     </div>
 
                     <div className="jadwa-contact-v2-field">
-                      <label>Subject</label>
+                      <label>{t("contactPage.subject")}</label>
                       <input
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange("subject")}
-                        placeholder="Subject"
+                        placeholder={t("contactPage.subject")}
                       />
                     </div>
 
                     <div className="jadwa-contact-v2-field jadwa-contact-v2-field-full">
-                      <label>
-                        {lang === "ar"
-                          ? "نوع الطلب"
-                          : lang === "tr"
-                          ? "Talep Türü"
-                          : "Request Type"}
-                      </label>
+                      <label>{t("contactPage.requestType")}</label>
                       <select
                         name="requestType"
                         value={formData.requestType}
@@ -393,10 +352,8 @@ const ContactForm = () => {
                     disabled={isSubmitting}
                   >
                     {isSubmitting
-                      ? "Sending..."
-                      : t("contact.submit") === "contact.submit"
-                      ? "Send Message"
-                      : t("contact.submit")}
+                      ? t("contactPage.sending")
+                      : t("contactPage.sendMessage")}
                   </button>
                 </form>
               </div>
@@ -408,27 +365,15 @@ const ContactForm = () => {
             <div className="jadwa-testimonials-head jadwa-contact-v2-branches-head">
               <div className="jadwa-pill">
                 <span className="jadwa-pill-dot" />
-                <span>
-                  {t("headquarters") === "headquarters"
-                    ? "Branches"
-                    : t("headquarters")}
-                </span>
+                <span>{t("contactPage.branchesKicker")}</span>
               </div>
 
               <h2 className="jadwa-testimonials-title">
-                {lang === "ar"
-                  ? "مكاتبنا وفروعنا"
-                  : lang === "tr"
-                  ? "Ofislerimiz ve Şubelerimiz"
-                  : "Our Offices & Branches"}
+                {t("contactPage.branchesTitle")}
               </h2>
 
               <p className="jadwa-testimonials-subtitle">
-                {lang === "ar"
-                  ? "يمكنك الوصول إلى فرقنا عبر أكثر من موقع حسب احتياجك."
-                  : lang === "tr"
-                  ? "Ekiplerimize ihtiyacınıza göre birden fazla lokasyondan ulaşabilirsiniz."
-                  : "Reach our teams through multiple locations based on your needs."}
+                {t("contactPage.branchesDescription")}
               </p>
             </div>
 
@@ -466,11 +411,7 @@ const ContactForm = () => {
                           target="_blank"
                           rel="noreferrer"
                         >
-                          {lang === "ar"
-                            ? "الخريطة"
-                            : lang === "tr"
-                            ? "Harita"
-                            : "Map"}
+                          {t("contactPage.map")}
                         </a>
                       ) : null}
 
@@ -478,12 +419,12 @@ const ContactForm = () => {
                         <a
                           href={`https://wa.me/${branch.whatsapp.replace(
                             /[^\d]/g,
-                            ""
+                            "",
                           )}`}
                           target="_blank"
                           rel="noreferrer"
                         >
-                          WhatsApp
+                          {t("contactPage.whatsApp")}
                         </a>
                       ) : null}
                     </div>
@@ -516,32 +457,16 @@ const ContactForm = () => {
               <i className="fa-solid fa-check" />
             </div>
 
-            <h3>
-              {lang === "ar"
-                ? "شكراً، تم استلام رسالتك"
-                : lang === "tr"
-                ? "Teşekkürler, mesajınız alındı"
-                : "Thanks, we got your message"}
-            </h3>
+            <h3>{t("contactPage.success.title")}</h3>
 
-            <p>
-              {lang === "ar"
-                ? "سيقوم فريقنا بمراجعة رسالتك والرد عليك في أقرب وقت ممكن."
-                : lang === "tr"
-                ? "Ekibimiz mesajınızı inceleyip size en kısa sürede dönüş yapacaktır."
-                : "Our team will review your message and get back to you as soon as possible."}
-            </p>
+            <p>{t("contactPage.success.description")}</p>
 
             <button
               type="button"
               onClick={closeSuccessModal}
               className="jadwa-contact-v2-submit"
             >
-              {lang === "ar"
-                ? "متابعة"
-                : lang === "tr"
-                ? "Devam Et"
-                : "Continue"}
+              {t("contactPage.success.continue")}
             </button>
           </div>
         </div>

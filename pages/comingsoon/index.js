@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 export default function ComingSoonPage() {
+  const { t } = useTranslation();
   return (
     <section className="coming-soon-page">
       <div className="coming-soon-bg-shape coming-soon-bg-shape-one" />
@@ -12,48 +14,52 @@ export default function ComingSoonPage() {
         <div className="coming-soon-wrap">
           <div className="coming-soon-badge">
             <span className="coming-soon-badge-dot" />
-            <span>Launching Soon</span>
+            <span>{t("comingSoon.launchingSoon")}</span>
           </div>
 
-          <h1 className="coming-soon-title">
-            A New Digital Experience Is On The Way
-          </h1>
+          <h1 className="coming-soon-title">{t("comingSoon.title")}</h1>
 
-          <p className="coming-soon-text">
-            We are preparing a refined experience that reflects our standards,
-            values, and long-term vision. This page will be available soon with
-            more details, insights, and updates.
-          </p>
+          <p className="coming-soon-text">{t("comingSoon.text")}</p>
 
           <div className="coming-soon-actions">
             <Link href="/" className="coming-soon-btn coming-soon-btn-primary">
-              Back to Home
+              {t("comingSoon.backHome")}
             </Link>
 
             <a
               href="/Contact-us"
               className="coming-soon-btn coming-soon-btn-secondary"
             >
-              Contact Us
+              {t("contact.formTitle")}
             </a>
           </div>
 
           <div className="coming-soon-meta">
             <div className="coming-soon-meta-card">
-              <span className="coming-soon-meta-label">Status</span>
-              <strong className="coming-soon-meta-value">In Preparation</strong>
-            </div>
-
-            <div className="coming-soon-meta-card">
-              <span className="coming-soon-meta-label">Experience</span>
+              <span className="coming-soon-meta-label">
+                {t("comingSoon.status")}
+              </span>
               <strong className="coming-soon-meta-value">
-                Corporate & Premium
+                {t("comingSoon.preparation")}
               </strong>
             </div>
 
             <div className="coming-soon-meta-card">
-              <span className="coming-soon-meta-label">Availability</span>
-              <strong className="coming-soon-meta-value">Coming Soon</strong>
+              <span className="coming-soon-meta-label">
+                {t("comingSoon.experience")}
+              </span>
+              <strong className="coming-soon-meta-value">
+                {t("comingSoon.corporatePremium")}
+              </strong>
+            </div>
+
+            <div className="coming-soon-meta-card">
+              <span className="coming-soon-meta-label">
+                {t("comingSoon.availability")}
+              </span>
+              <strong className="coming-soon-meta-value">
+                {t("comingSoon.soon")}
+              </strong>
             </div>
           </div>
         </div>

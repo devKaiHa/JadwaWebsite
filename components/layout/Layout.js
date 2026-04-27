@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/router";
 import BackToTop from "../elements/BackToTop";
 import Breadcrumb from "./Breadcrumb";
 import Header from "./header/Header";
@@ -8,17 +9,35 @@ import CustomFooter from "./footer/CustomFooter";
 import MobileMenu from "./MobileMenu";
 import baseURL from "@/api/GlobalData";
 import { fetchJSON } from "@/GlobalHooks/GlobalHooks";
+import {
+  getPageBanners,
+  pagePathToBannerKey,
+  resolvePageBanner,
+} from "@/lib/pageBanner";
 
 export default function Layout({
   breadcrumbTitle,
   image,
+  pageBannerKey,
   children,
   wrapperCls,
   sticky,
 }) {
+  const router = useRouter();
   const [scroll, setScroll] = useState(false);
   const [isMobileMenu, setMobileMenu] = useState(false);
   const [footerData, setFooterData] = useState(null);
+  const [pageBanners, setPageBanners] = useState({});
+
+  const resolvedPageBannerKey = useMemo(
+    () => pageBannerKey || pagePathToBannerKey(router?.pathname || ""),
+    [pageBannerKey, router?.pathname],
+  );
+
+  const breadcrumbImage = useMemo(
+    () => resolvePageBanner(resolvedPageBannerKey, pageBanners, image),
+    [resolvedPageBannerKey, pageBanners, image],
+  );
 
   const handleMobileMenu = () => {
     setMobileMenu((prev) => {
@@ -66,6 +85,20 @@ export default function Layout({
     };
   }, []);
 
+  useEffect(() => {
+    if (!breadcrumbTitle) return undefined;
+
+    let mounted = true;
+
+    getPageBanners().then((banners) => {
+      if (mounted) setPageBanners(banners);
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, [breadcrumbTitle]);
+
   return (
     <>
       <div className={`boxed_wrapper ${wrapperCls || ""}`} id="top">
@@ -83,7 +116,7 @@ export default function Layout({
         />
 
         {breadcrumbTitle && (
-          <Breadcrumb breadcrumbTitle={breadcrumbTitle} img={image} />
+          <Breadcrumb breadcrumbTitle={breadcrumbTitle} img={breadcrumbImage} />
         )}
 
         {children}
